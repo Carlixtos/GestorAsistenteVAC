@@ -1,7 +1,7 @@
 package gestorAsistenteVAC.util;
 
 /**
- * Clase generica nodo, pensada para ser utilizada en la implementación de listas doblemente enlazadas. 
+ * Clase generica nodo, pensada para ser utilizada en la implementación de listas. 
  * @author Dafty-Punky-Boy
  * @version 1.0, 17/04/2021
  */
@@ -11,7 +11,7 @@ public class Node<T> {
 	Node<T> next;
 	Node<T> previous;
 	
-	Node(T data){
+	Node(T data) {
 		this.data = data;
 		next = null;
 		previous = null;
