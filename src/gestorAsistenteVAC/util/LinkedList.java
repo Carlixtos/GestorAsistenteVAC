@@ -52,6 +52,14 @@ public class LinkedList<T> {
 		return tail;
 	}
 	
+	public boolean isEmpty() {
+		if(tail == null) {
+			return true;
+		}
+		
+		return false;
+	}
+	
 	/**
 	 * Agrega un nodo almacenando un dato de tipo T al frente de la lista.
 	 * @param data El dato de tipo T a agregar.  
@@ -59,7 +67,7 @@ public class LinkedList<T> {
 	public void addFront(T data) {
 		Node<T> node = new Node<T>(data);
 		
-		if(tail == null) {
+		if(isEmpty()) {
 			head = node;
 			tail = head;
 		}
@@ -78,7 +86,7 @@ public class LinkedList<T> {
 	public void addBack(T data) {
 		Node<T> node = new Node<T>(data);
 		
-		if(tail == null) {
+		if(isEmpty()) {
 			head = node;
 			tail = head;
 		}
@@ -89,4 +97,11 @@ public class LinkedList<T> {
 			tail = node;
 		}
 	}
+	
+	
+	public Node<T> search(T data) {
+		if(isEmpty()){
+		}
+	}
+	
 }
