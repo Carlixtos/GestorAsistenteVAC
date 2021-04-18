@@ -10,17 +10,68 @@ package gestorAsistenteVAC.util;
  * @param data El dato de tipo T que almacena el nodo.
  */
 public class Node<T> {
-	public T data;
-	public Node<T> next;
-	Node<T> previous;
+	T data;
+	Node<T> next;
+	Node<T> prev;
 	
 	/**
 	 * Crea un nodo que almacena un dato de tipo T.
 	 * @param data El dato de tipo T.
 	 */
-	public Node(T data) {
+	Node(T data) {
 		this.data = data;
 		next = null;
-		previous = null;
-	}	
+		prev = null;
+	}
+	
+	/**
+	 * Setter de data.
+	 * @param data El dato de tipo T que se quiere establecer.
+	 */
+	public void setData(T data) {
+		this.data = data;
+	}
+	
+	/**
+	 * Setter de next.
+	 * @param next El nodo al que se quiere referenciar como siguiente.
+	 */
+	public void setNext(Node<T> next) {
+		this.next = next;
+	}
+	
+	/**
+	 * Setter de prev.
+	 * @param prev El nodo al que se quiere referenciar como previo.
+	 */
+	public void setPrev(Node<T> prev) {
+		this.prev = prev;
+	}
+	
+	/**
+	 * Getter de data.
+	 * @return El dato u objeto de tipo T que almacena el nodo.
+	 */
+	public T getData() {
+		return data;
+	}
+	
+	/**
+	 * Getter de next.
+	 * @return El siguiente nodo.
+	 */
+	public Node<T> getNext(){
+		return next;
+	}
+	
+	/**
+	 * Getter de prev.
+	 * @return El nodo anterior. 
+	 */
+	public Node<T> getPrev(){
+		return prev;
+	}
+	
+	
+	
 }

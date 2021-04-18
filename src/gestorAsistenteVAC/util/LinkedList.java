@@ -9,8 +9,8 @@ package gestorAsistenteVAC.util;
  * @param head Referencia al ultimo nodo de la lista. 
  */
 public class LinkedList<T> {
-	public Node<T> head;
-	public Node<T> tail;
+	Node<T> head;
+	Node<T> tail;
 	
 	/**
 	 * Crea una lista vacía.
@@ -21,8 +21,40 @@ public class LinkedList<T> {
 	}
 	
 	/**
+	 * Setter de head.
+	 * @param head Nodo que se quiere asignar a la cabeza de la lista.
+	 */
+	public void setHead(Node<T> head) {
+		this.head = head;
+	}
+	
+	/**
+	 * Setter de tail.
+	 * @param tail Nodo que se quiere asignar a la cola de la lista.
+	 */
+	public void setTail(Node<T> tail) {
+		this.tail = tail;
+	}
+	
+	/**
+	 * Getter de head.
+	 * @return El nodo correspondiente a la cabeza de la lista.
+	 */
+	public Node<T> getHead() {
+		return head;
+	}
+	
+	/**
+	 * Getter de tail.
+	 * @return El nodo correspondiente a la cola de la lista.
+	 */
+	public Node<T> getTail(){
+		return tail;
+	}
+	
+	/**
 	 * Agrega un nodo almacenando un dato de tipo T al frente de la lista.
-	 * @param node El nodo de tipo T que se desea agregar.  
+	 * @param data El dato de tipo T a agregar.  
 	 */
 	public void addFront(T data) {
 		Node<T> node = new Node<T>(data);
@@ -33,15 +65,15 @@ public class LinkedList<T> {
 		}
 		
 		else {
-			node.next = head;
-			head.previous = node;
+			node.setNext(head);
+			head.setPrev(node);
 			head = node;
 		}
 	}
 	
 	/**
 	 * Agrega un nodo almacenando un dato de tipo T al final de la lista.
-	 * @param node El nodo de tipo T que se desea agregar.
+	 * @param data El dato de tipo T a agregar.
 	 */
 	public void addBack(T data) {
 		Node<T> node = new Node<T>(data);
@@ -52,8 +84,8 @@ public class LinkedList<T> {
 		}
 		
 		else {
-			node.previous = tail;
-			tail.next = node;
+			node.setPrev(tail);
+			tail.setNext(node);
 			tail = node;
 		}
 	}
