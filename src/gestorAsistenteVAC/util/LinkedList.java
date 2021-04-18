@@ -52,6 +52,10 @@ public class LinkedList<T> {
 		return tail;
 	}
 	
+	/**
+	 * Indica si la lista está vacia.
+	 * @return true si la lista está vacia y false si no.
+	 */
 	public boolean isEmpty() {
 		if(tail == null) {
 			return true;
@@ -98,10 +102,37 @@ public class LinkedList<T> {
 		}
 	}
 	
-	
+	/**
+	 * Busca un dato de tipo T en la lista.
+	 * @param data El dato que se desea buscar.
+	 * @return Una referencia al nodo que lo contiene o null si no existe.
+	 */
 	public Node<T> search(T data) {
 		if(isEmpty()){
+			return null;
 		}
+		
+		if(head == tail && head.getData() == data) {
+			return head;
+		}
+		
+		Node<T> nodeTemp1 = head;
+		Node<T> nodeTemp2 = tail;
+		
+		while(nodeTemp1 != tail && nodeTemp2 != head) {
+			if(nodeTemp1.getData() == data) {
+				return nodeTemp1;
+			}
+			
+			if(nodeTemp2.getData() == data) {
+				return nodeTemp2;
+			}
+			
+			nodeTemp1 = nodeTemp1.getNext();
+			nodeTemp2 = nodeTemp2.getPrev();
+		}
+		
+		return null;
 	}
 	
 }
