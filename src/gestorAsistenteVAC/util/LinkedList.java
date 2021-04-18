@@ -9,13 +9,13 @@ package gestorAsistenteVAC.util;
  * @param head Referencia al ultimo nodo de la lista. 
  */
 public class LinkedList<T> {
-	Node<T> head;
-	Node<T> tail;
+	public Node<T> head;
+	public Node<T> tail;
 	
 	/**
 	 * Crea una lista vacía.
 	 */
-	LinkedList(){
+	public LinkedList(){
 		head = null;
 		tail = null;
 	}
@@ -24,7 +24,9 @@ public class LinkedList<T> {
 	 * Agrega un nodo almacenando un dato de tipo T al frente de la lista.
 	 * @param node El nodo de tipo T que se desea agregar.  
 	 */
-	public void addFront(Node<T> node) {
+	public void addFront(T data) {
+		Node<T> node = new Node<T>(data);
+		
 		if(tail == null) {
 			head = node;
 			tail = head;
@@ -41,7 +43,9 @@ public class LinkedList<T> {
 	 * Agrega un nodo almacenando un dato de tipo T al final de la lista.
 	 * @param node El nodo de tipo T que se desea agregar.
 	 */
-	public void addBack(Node<T> node) {
+	public void addBack(T data) {
+		Node<T> node = new Node<T>(data);
+		
 		if(tail == null) {
 			head = node;
 			tail = head;
