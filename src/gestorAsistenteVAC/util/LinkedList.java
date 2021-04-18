@@ -135,4 +135,24 @@ public class LinkedList<T> {
 		return null;
 	}
 	
+	
+	/**
+	 * Remplaza un dato tipo T en la lista si este existe.
+	 * @param prevData El dato que se pretende remplazar.  
+	 * @param newData El nuevo dato.
+	 */
+	public void dataReplace(T prevData, T newData) {
+		if(isEmpty()) {
+			;
+		}
+		
+		else {
+			Node<T> nodeTemp = search(prevData);
+			
+			if(nodeTemp != null) {
+				nodeTemp.setData(newData);
+			}
+		}
+	}
+	
 }
