@@ -40,7 +40,7 @@ public class Queues <T>  {
 		}
 		
 		else {
-			head.previous=node;
+			head.prev=node;
 			node.next=head;
 			head=node;
 			
@@ -63,8 +63,8 @@ public class Queues <T>  {
 		}
 		else {
 			Node<T> temp = tail;
-			tail=temp.previous;
-			temp.previous=null;
+			tail=temp.prev;
+			temp.prev=null;
 			if(tail==null) {
 				head=null;
 			}
