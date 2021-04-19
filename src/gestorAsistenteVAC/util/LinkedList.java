@@ -3,14 +3,16 @@ package gestorAsistenteVAC.util;
 /**
  * Clase generica lista enlazada, una implementación de una lista doblemente enlazada. 
  * @author Dafty-Punky-Boy
- * @version 1.0, 17/04/2021
+ * @version 1.1, 19/04/2021
  * 
  * @param tail Referencia al primer nodo de la lista.
- * @param head Referencia al ultimo nodo de la lista. 
+ * @param head Referencia al ultimo nodo de la lista.
+ * @param length El tamaño de la lista (cantidad de nodos que posee).
  */
 public class LinkedList<T> {
 	Node<T> head;
 	Node<T> tail;
+	int length;
 	
 	/**
 	 * Crea una lista vacía.
@@ -18,6 +20,7 @@ public class LinkedList<T> {
 	public LinkedList(){
 		head = null;
 		tail = null;
+		length = 0;
 	}
 	
 	/**
@@ -53,6 +56,14 @@ public class LinkedList<T> {
 	}
 	
 	/**
+	 * 
+	 * @return
+	 */
+	public int getLength() {
+		return length;
+	}
+	
+	/**
 	 * Indica si la lista está vacia.
 	 * @return true si la lista está vacia y false si no.
 	 */
@@ -81,6 +92,8 @@ public class LinkedList<T> {
 			head.setPrev(node);
 			head = node;
 		}
+		
+		++length;
 	}
 	
 	/**
@@ -100,12 +113,14 @@ public class LinkedList<T> {
 			tail.setNext(node);
 			tail = node;
 		}
+		
+		++length;
 	}
 	
 	/**
 	 * Busca un dato de tipo T en la lista.
 	 * @param data El dato que se desea buscar.
-	 * @return Una referencia al nodo que lo contiene o null si no existe.
+	 * @return Una referencia al nodo que lo contiene o null si no existe. Si es un dato repetido retornará el nodo con la menor distancia a uno de los extremos.
 	 */
 	public Node<T> search(T data) {
 		if(isEmpty()){
@@ -137,7 +152,7 @@ public class LinkedList<T> {
 	
 	
 	/**
-	 * Remplaza un dato tipo T en la lista si este existe.
+	 * Remplaza un dato tipo T en la lista si este existe. En el caso de un dato repetido, remplazará el nodo más cercano a uno de los extremos de la lista.
 	 * @param prevData El dato que se pretende remplazar.  
 	 * @param newData El nuevo dato.
 	 */
@@ -156,7 +171,7 @@ public class LinkedList<T> {
 	}
 	
 	/**
-	 * Elimina el node que contiene un dato tipo T de la lista. En el caso de un dato repetido, eliminará el node más cercano a uno de los extremos de la lista.
+	 * Elimina el nodo que contiene un dato tipo T de la lista. En el caso de un dato repetido, eliminará el node más cercano a uno de los extremos de la lista.
 	 * @param data El dato que se pretende eliminar de la lista.
 	 */
 	public void nodeDrop(T data) {
@@ -180,6 +195,8 @@ public class LinkedList<T> {
 					nodeTemp.getNext().setPrev(nodeTemp.getPrev());
 					nodeTemp.getPrev().setNext(nodeTemp.getNext());
 				}
+				
+				--length;
 			}
 		}
 	}

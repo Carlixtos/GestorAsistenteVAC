@@ -23,13 +23,16 @@ public class LinkedListTest {
 		}
 		
 		System.out.println("INICIO LinkedList.nodeDrop() Test\n");
+		
 		System.out.print("Lista inicial: ");
 		printList(testList1);
+		System.out.println("Tamaño: " + testList1.getLength() + "\n");
 		
 		testList1.nodeDrop(1);
 		
 		System.out.print("Lista final: ");
 		printList(testList1);
+		System.out.println("Tamaño: " + testList1.getLength() + "\n");
 		
 		System.out.println("FIN LinkedList.nodeDrop() Test\n");
 	}
