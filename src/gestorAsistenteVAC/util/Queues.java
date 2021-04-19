@@ -84,6 +84,7 @@ public class Queues <T>  {
 	 */
 	public boolean empaty() {
 			return head==null;		
+			
 		
 	}
 	
