@@ -16,8 +16,7 @@ public class LinkedListTest {
 	 */
 	public static void nodeDropTest() {
 		LinkedList<Integer> testList1 = new LinkedList<Integer>();
-		testList1.addFront(1);
-		testList1.addFront(8);
+		
 		for(int i = 1; i < 4;  ++i) {
 			testList1.addFront(i);
 		}
@@ -28,7 +27,7 @@ public class LinkedListTest {
 		printList(testList1);
 		System.out.println("Tamaño: " + testList1.getLength() + "\n");
 		
-		testList1.nodeDrop(1);
+		testList1.nodeDrop(2);
 		
 		System.out.print("Lista final: ");
 		printList(testList1);

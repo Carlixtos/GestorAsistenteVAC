@@ -184,10 +184,12 @@ public class LinkedList<T> {
 		
 			if(nodeTemp != null) {
 				if(nodeTemp == head) {
+					head = nodeTemp.getNext();
 					nodeTemp.getNext().setPrev(null);
 				}
 				
 				else if(nodeTemp == tail) {
+					tail = nodeTemp.getPrev();
 					nodeTemp.getPrev().setNext(null);
 				}
 				
@@ -199,6 +201,25 @@ public class LinkedList<T> {
 				--length;
 			}
 		}
+	}
+	
+	/**
+	 * 
+	 * @param node
+	 * @return
+	 */
+	public T nodeConsult(int node) {
+		if(node + 1 > length) {
+			return null;
+		}
+		
+		Node<T> nodeTemp = head;
+		
+		for(int i = 0; i < node; ++i) {
+			nodeTemp = nodeTemp.getNext();
+		}
+		
+		return nodeTemp.getData();
 	}
 	
 }
