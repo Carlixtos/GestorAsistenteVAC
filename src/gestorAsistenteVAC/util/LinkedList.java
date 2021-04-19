@@ -112,7 +112,7 @@ public class LinkedList<T> {
 			return null;
 		}
 		
-		if(head == tail && head.getData() == data) {
+		if(head.getNext() == null && head.getData() == data) {
 			return head;
 		}
 		
@@ -168,8 +168,18 @@ public class LinkedList<T> {
 			Node<T> nodeTemp = search(data);
 		
 			if(nodeTemp != null) {
-				nodeTemp.getNext().setPrev(nodeTemp.getPrev());
-				nodeTemp.getPrev().setNext(nodeTemp.getNext());
+				if(nodeTemp == head) {
+					nodeTemp.getNext().setPrev(null);
+				}
+				
+				else if(nodeTemp == tail) {
+					nodeTemp.getPrev().setNext(null);
+				}
+				
+				else {
+					nodeTemp.getNext().setPrev(nodeTemp.getPrev());
+					nodeTemp.getPrev().setNext(nodeTemp.getNext());
+				}
 			}
 		}
 	}

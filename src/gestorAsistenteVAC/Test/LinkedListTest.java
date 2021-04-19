@@ -35,7 +35,7 @@ public class LinkedListTest {
 		}
 		
 		else {
-			System.out.println("Eliminar dato de la lista: Incorrecto\n");
+			System.out.println(testList1.search(1).getData());
 		}
 		/////////////////////////////////////////////////////////////////
 		System.out.println("FIN LinkedList.nodeDrop() Test\n");
