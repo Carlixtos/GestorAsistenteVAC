@@ -156,7 +156,7 @@ public class LinkedList<T> {
 	}
 	
 	/**
-	 * Elimina el node que contiene un dato tipo T de la lista.
+	 * Elimina el node que contiene un dato tipo T de la lista. En el caso de un dato repetido, eliminará el node más cercano a uno de los extremos de la lista.
 	 * @param data El dato que se pretende eliminar de la lista.
 	 */
 	public void nodeDrop(T data) {
