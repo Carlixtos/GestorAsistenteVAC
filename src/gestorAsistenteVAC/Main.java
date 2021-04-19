@@ -8,6 +8,7 @@ public class Main {
 	public static void main(String[] args) { // Codigo de prueba
 		
 		LinkedListTest.nodeDropTest();
+		LinkedListTest.nodeConsultTest();
 		
 		/*LinkedList<Integer> intList = new LinkedList<Integer>();
 		LinkedList<Integer> intList2 = new LinkedList<Integer>();
