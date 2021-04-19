@@ -1,11 +1,15 @@
 package gestorAsistenteVAC;
 
-import gestorAsistenteVAC.util.*; 
+import gestorAsistenteVAC.util.*;
+import gestorAsistenteVAC.Test.LinkedListTest;
 
 public class Main {
 
 	public static void main(String[] args) { // Codigo de prueba
-		LinkedList<Integer> intList = new LinkedList<Integer>();
+		
+		LinkedListTest.nodeDropTest();
+		
+		/*LinkedList<Integer> intList = new LinkedList<Integer>();
 		LinkedList<Integer> intList2 = new LinkedList<Integer>();
 		Node<Integer> nodeTemp;
 		Node<Integer> nodeTemp2;
@@ -42,7 +46,7 @@ public class Main {
 		
 		//nodeTemp = intList.search(0);
 		
-		/*System.out.println("\nData: " + nodeTemp.getData());
+		System.out.println("\nData: " + nodeTemp.getData());
 		System.out.println("Previous: " + nodeTemp.getPrev().getData());
 		System.out.println("Next: " + nodeTemp.getNext().getData());
 		

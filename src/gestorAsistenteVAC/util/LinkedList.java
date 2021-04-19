@@ -155,4 +155,23 @@ public class LinkedList<T> {
 		}
 	}
 	
+	/**
+	 * Elimina el node que contiene un dato tipo T de la lista.
+	 * @param data El dato que se pretende eliminar de la lista.
+	 */
+	public void nodeDrop(T data) {
+		if(isEmpty()) {
+			;
+		}
+		
+		else {
+			Node<T> nodeTemp = search(data);
+		
+			if(nodeTemp != null) {
+				nodeTemp.getNext().setPrev(nodeTemp.getPrev());
+				nodeTemp.getPrev().setNext(nodeTemp.getNext());
+			}
+		}
+	}
+	
 }
