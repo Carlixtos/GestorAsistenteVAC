@@ -83,6 +83,7 @@ public class Queues <T>  {
 	 * @return boolean; si esta vacia retorna true; si tiene uno o mas elementos retorna false
 	 */
 	public boolean empaty() {
+		
 			return head==null;		
 	}
 	
