@@ -40,8 +40,8 @@ public class Queues <T>  {
 		}
 		
 		else {
-			head.prev=node;
-			node.next=head;
+			head.setPrev(node);
+			node.setNext(head);
 			head=node;
 			
 		}
@@ -63,13 +63,13 @@ public class Queues <T>  {
 		}
 		else {
 			Node<T> temp = tail;
-			tail=temp.prev;
-			temp.prev=null;
+			tail=temp.getPrev();
+			temp.setPrev(null);
 			if(tail==null) {
 				head=null;
 			}
 			else {
-			tail.next=null;
+			tail.setNext(null);
 			}
 			return temp;
 			

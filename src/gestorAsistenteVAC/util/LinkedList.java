@@ -10,9 +10,9 @@ package gestorAsistenteVAC.util;
  * @param length El tamaño de la lista (cantidad de nodos que posee).
  */
 public class LinkedList<T> {
-	Node<T> head;
-	Node<T> tail;
-	int length;
+	private Node<T> head;
+	private Node<T> tail;
+	private int length;
 	
 	/**
 	 * Crea una lista vacía.
@@ -204,18 +204,18 @@ public class LinkedList<T> {
 	}
 	
 	/**
-	 * 
-	 * @param node
-	 * @return
+	 * Consulta el dato de tipo T del nodo en una posición determinada.
+	 * @param pos La posición del nodo, comenzando desde la posición 0.
+	 * @return El dato de tipo T que almacena el nodo que corresponda a esa posición en la lista. Si la posición dada no corresponde al numero de nodos en la lista.
 	 */
-	public T nodeConsult(int node) {
-		if(node + 1 > length) {
+	public T nodeConsult(int pos) {
+		if(pos + 1 > length) {
 			return null;
 		}
 		
 		Node<T> nodeTemp = head;
 		
-		for(int i = 0; i < node; ++i) {
+		for(int i = 0; i < pos; ++i) {
 			nodeTemp = nodeTemp.getNext();
 		}
 		

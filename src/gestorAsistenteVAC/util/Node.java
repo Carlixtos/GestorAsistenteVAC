@@ -10,9 +10,9 @@ package gestorAsistenteVAC.util;
  * @param data El dato de tipo T que almacena el nodo.
  */
 public class Node<T> {
-	T data;
-	Node<T> next;
-	Node<T> prev;
+	private T data;
+	private Node<T> next;
+	private Node<T> prev;
 	
 	/**
 	 * Crea un nodo que almacena un dato de tipo T.

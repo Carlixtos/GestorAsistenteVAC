@@ -36,6 +36,15 @@ public class LinkedListTest {
 		System.out.println("FIN LinkedList.nodeDrop() Test\n");
 	}
 	
+	
+	public static void nodeConsultTest() {
+		LinkedList<Integer> testList1 = new LinkedList<Integer>();
+		
+		for(int i = 1; i < 4;  ++i) {
+			testList1.addFront(i);
+		}
+	}
+	
 	/**
 	 * Imprime la lista enlazada. Configurada inicialmente para datos enteros.
 	 * @param testList Lista enlazada que se quiere imprimir
