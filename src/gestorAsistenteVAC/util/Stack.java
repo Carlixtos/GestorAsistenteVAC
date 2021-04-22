@@ -16,11 +16,11 @@ public class Stack<T> extends LinkedList<T>{
 	}
 	
 	/**
-	 * Agrega un nodo almacenando un dato de tipo T en la pila.
+	 * Agrega un nodo almacenando un dato de tipo T en la pila. 
 	 * @param key EL dato de tipo T que se quiere almacenar.
 	 */
 	public void push(T key) {
-		addBack(key);
+		super.addBack(key);
 	}
 	
 	/**
@@ -34,7 +34,10 @@ public class Stack<T> extends LinkedList<T>{
 		
 		T key = tail.getKey();
 		tail = tail.getPrev();
-		tail.setNext(null);
+		
+		if(tail != null) {
+			tail.setNext(null);
+		}
 		
 		return key;		
 	}
@@ -49,7 +52,6 @@ public class Stack<T> extends LinkedList<T>{
 		}
 		
 		return tail.getKey();
-	}	
-	
+	}
 	
 }
