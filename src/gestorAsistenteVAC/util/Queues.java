@@ -23,7 +23,7 @@ public class Queues <T>  {
 	 * 
 	 * Creacion de una cola vacia.
 	 */
-	Queues(){
+	public Queues(){
 		
 		head = null;
 		tail = null;
@@ -97,7 +97,7 @@ public class Queues <T>  {
 	 * Revisa si la cola esta vacia 
 	 * @return boolean; si esta vacia retorna true; si tiene uno o mas elementos retorna false
 	 */
-	public boolean empaty() {
+	public boolean isEmpty() {
 		
 			return head==null;		
 	}
