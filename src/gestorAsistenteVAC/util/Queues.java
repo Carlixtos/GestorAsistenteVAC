@@ -10,11 +10,14 @@ package gestorAsistenteVAC.util;
 public class Queues <T>  {
 	
 	/**
-	*@param tail Referencia al primer nodo de la lista.
-	*@param head Referencia al ultimo nodo de la lista.
+	*@param tail Referencia al primer nodo de la cola.
+	*@param head Referencia al ultimo nodo de la cola.
+	*@param length Referencia al numero de nodos en la cola.
 	*/
 	private Node<T> head;
 	private Node<T> tail;
+	private int length;
+	
 	
 	/**
 	 * 
@@ -24,6 +27,16 @@ public class Queues <T>  {
 		
 		head = null;
 		tail = null;
+		length=0;
+	}
+	
+	/**
+	 * 
+	 * Devuelve la cantidad de nodos en la cola.
+	 * @return Entero que representa la cantidad de nodos en la cola.
+	 */
+	public int getlength() {
+		return length;
 	}
 	
 	/**
@@ -45,6 +58,7 @@ public class Queues <T>  {
 			head=node;
 			
 		}
+		length++;
 		
 	}
 	
@@ -71,13 +85,14 @@ public class Queues <T>  {
 			else {
 			tail.setNext(null);
 			}
+			length--;
 			return temp;
 			
 		}
 		
 	}
 	
-	
+
 	/**
 	 * Revisa si la cola esta vacia 
 	 * @return boolean; si esta vacia retorna true; si tiene uno o mas elementos retorna false
