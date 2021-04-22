@@ -1,34 +1,55 @@
 package gestorAsistenteVAC.util;
 
 /**
- * Clase generica Pila.
+ * Clase generica Pila. Deinida como una Subclase de LinkedList.
  * @author Dafty-Punky-Boy
  * @version 1.0, 22/04/21
  * 
  */
-public class Stack<T>{
-	private Node<T> head;
-	private Node<T> tail;
-	private int length;
+public class Stack<T> extends LinkedList<T>{
 	
+	/**
+	 * Crea una pila vacía.
+	 */
 	public Stack(){
-		head = null;
-		tail = null;
-		length = 0;
+		super();
 	}
 	
-	public int getLength(){
-		return length;
-	}
-	
+	/**
+	 * Agrega un nodo almacenando un dato de tipo T en la pila.
+	 * @param key EL dato de tipo T que se quiere almacenar.
+	 */
 	public void push(T key) {
-		if(isEmpty()) {
-			////
-		}
+		addBack(key);
 	}
 	
-	public boolean isEmpty() {
-		return tail == null;
+	/**
+	 * Extrae el dato de tipo T del utlimo nodo de la pila.
+	 * @return El ultimo dato de tipo T añadido.
+	 */
+	public T pop() {
+		if(isEmpty()) {
+			return null;
+		}
+		
+		T key = tail.getKey();
+		tail = tail.getPrev();
+		tail.setNext(null);
+		
+		return key;		
 	}
+	
+	/**
+	 * Consulta el dato de tipo T del utlimo nodo de la pila. 
+	 * @return El ultimo dato de tipo T añadido.
+	 */
+	public T peek() {
+		if(isEmpty()) {
+			return null;
+		}
+		
+		return tail.getKey();
+	}	
+	
 	
 }

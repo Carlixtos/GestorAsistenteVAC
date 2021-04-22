@@ -72,7 +72,7 @@ public class LinkedListTest {
 		
 		else {
 			while(nodeTemp != null) {
-				System.out.print(nodeTemp.getData() + " ");
+				System.out.print(nodeTemp.getKey() + " ");
 				
 				nodeTemp = nodeTemp.getNext();
 			}

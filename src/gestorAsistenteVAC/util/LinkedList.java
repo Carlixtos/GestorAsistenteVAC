@@ -10,9 +10,9 @@ package gestorAsistenteVAC.util;
  * @param length El tamaño de la lista (cantidad de nodos que posee).
  */
 public class LinkedList<T> {
-	private Node<T> head;
-	private Node<T> tail;
-	private int length;
+	protected Node<T> head;
+	protected Node<T> tail;
+	protected int length;
 	
 	/**
 	 * Crea una lista vacía.
