@@ -21,8 +21,10 @@ public class Stack<T>{
 		return length;
 	}
 	
-	public void push() {
-		if()
+	public void push(T key) {
+		if(isEmpty()) {
+			////
+		}
 	}
 	
 	public boolean isEmpty() {
