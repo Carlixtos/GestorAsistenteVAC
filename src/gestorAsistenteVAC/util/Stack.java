@@ -17,8 +17,16 @@ public class Stack<T>{
 		length = 0;
 	}
 	
-	public void setHead(){
-		
+	public int getLength(){
+		return length;
+	}
+	
+	public void push() {
+		if()
+	}
+	
+	public boolean isEmpty() {
+		return tail == null;
 	}
 	
 }

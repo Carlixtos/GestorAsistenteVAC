@@ -68,11 +68,7 @@ public class LinkedList<T> {
 	 * @return true si la lista está vacia y false si no.
 	 */
 	public boolean isEmpty() {
-		if(tail == null) {
-			return true;
-		}
-		
-		return false;
+		return tail == null;
 	}
 	
 	/**
