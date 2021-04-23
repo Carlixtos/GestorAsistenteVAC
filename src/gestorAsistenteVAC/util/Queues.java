@@ -29,7 +29,7 @@ public class Queues<T> extends LinkedList <T>  {
 	
 	/**
 	 * 
-	 * Agrega un objeto Node a la cola.
+	 * Agrega un Node a la cola.
 	 * @param node
 	 */
 	public void enqueue(T key) {
@@ -43,7 +43,7 @@ public class Queues<T> extends LinkedList <T>  {
 	 * 
 	 * Retira el primer dato de la cola.
 	 * 
-	 * @return Un objeto dato del principio de la cola.
+	 * @return Un dato del principio de la cola.
 	 * @throws No se puede retirar un dato de una cola vacia
 	 *  
 	 */
