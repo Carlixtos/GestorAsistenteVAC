@@ -7,17 +7,7 @@ package gestorAsistenteVAC.util;
  * @version 1.0, 18/04/2021
  * 
  */
-public class Queues <T>  {
-	
-	/**
-	*@param tail Referencia al primer nodo de la cola.
-	*@param head Referencia al ultimo nodo de la cola.
-	*@param length Referencia al numero de nodos en la cola.
-	*/
-	private Node<T> head;
-	private Node<T> tail;
-	private int length;
-	
+public class Queues<T> extends LinkedList <T>  {
 	
 	/**
 	 * 
@@ -25,9 +15,7 @@ public class Queues <T>  {
 	 */
 	public Queues(){
 		
-		head = null;
-		tail = null;
-		length=0;
+		super();
 	}
 	
 	/**
@@ -44,34 +32,22 @@ public class Queues <T>  {
 	 * Agrega un objeto Node a la cola.
 	 * @param node
 	 */
-	public void enqueue(Node <T> node) {
+	public void enqueue(T key) {
 		
-		if( head ==null) {
-			
-			head=node;
-			tail=node;
-		}
-		
-		else {
-			head.setPrev(node);
-			node.setNext(head);
-			head=node;
-			
-		}
-		length++;
+	super.addFront(key);
 		
 	}
 	
 	
 	/**
 	 * 
-	 * Retira el primer nodo de la cola.
+	 * Retira el primer dato de la cola.
 	 * 
-	 * @return Un objeto Node del principio de la cola.
-	 * @throws No se puede retirar un nodo de una cola vacia
+	 * @return Un objeto dato del principio de la cola.
+	 * @throws No se puede retirar un dato de una cola vacia
 	 *  
 	 */
-	public Node <T> dequeue() {
+	public T dequeue() {
 		if (tail==null) {
 			throw new RuntimeException(" La cola esta vacia. ");
 		}
@@ -86,7 +62,8 @@ public class Queues <T>  {
 			tail.setNext(null);
 			}
 			length--;
-			return temp;
+
+			return temp.getKey() ;
 			
 		}
 		
