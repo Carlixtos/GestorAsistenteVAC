@@ -7,13 +7,13 @@ package gestorAsistenteVAC.util;
  * @version 1.0, 18/04/2021
  * 
  */
-public class Queues<T> extends LinkedList <T>  {
+public class QueuesU<T> extends LinkedListU <T>  {
 	
 	/**
 	 * 
 	 * Creacion de una cola vacia.
 	 */
-	public Queues(){
+	public QueuesU(){
 		
 		super();
 	}
@@ -52,7 +52,7 @@ public class Queues<T> extends LinkedList <T>  {
 			throw new RuntimeException(" La cola esta vacia. ");
 		}
 		else {
-			Node<T> temp = tail;
+			NodeU<T> temp = tail;
 			tail=temp.getPrev();
 			temp.setPrev(null);
 			if(tail==null) {

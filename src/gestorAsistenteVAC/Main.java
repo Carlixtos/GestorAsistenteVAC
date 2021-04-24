@@ -1,16 +1,23 @@
 package gestorAsistenteVAC;
 
 import gestorAsistenteVAC.util.*;
+import gestorAsistenteVAC.interfaz.*;
 import gestorAsistenteVAC.Test.LinkedListTest;
 import gestorAsistenteVAC.Test.StackTest;
 
 public class Main {
 
 	public static void main(String[] args) { // Codigo de prueba
+		/*InterfazG gestorIntf = new InterfazG();
+		
+		gestorIntf.accesScreen();*/
+		
+		
+		
 		
 		//LinkedListTest.nodeDropTest();
 		//LinkedListTest.nodeConsultTest();
-		StackTest.generalTest();
+		//StackTest.generalTest();
 		
 		/*LinkedList<Integer> intList = new LinkedList<Integer>();
 		LinkedList<Integer> intList2 = new LinkedList<Integer>();

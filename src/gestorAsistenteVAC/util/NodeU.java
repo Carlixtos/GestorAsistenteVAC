@@ -9,16 +9,16 @@ package gestorAsistenteVAC.util;
  * @param previous Referencia al nodo previo de la lista.
  * @param key El dato de tipo T que almacena el nodo.
  */
-public class Node<T> {
+public class NodeU<T> {
 	private T key;
-	private Node<T> next;
-	private Node<T> prev;
+	private NodeU<T> next;
+	private NodeU<T> prev;
 	
 	/**
 	 * Crea un nodo que almacena un dato de tipo T.
 	 * @param key El dato de tipo T.
 	 */
-	Node(T key) {
+	NodeU(T key) {
 		this.key = key;
 		next = null;
 		prev = null;
@@ -36,7 +36,7 @@ public class Node<T> {
 	 * Setter de next.
 	 * @param next El nodo al que se quiere referenciar como siguiente.
 	 */
-	public void setNext(Node<T> next) {
+	public void setNext(NodeU<T> next) {
 		this.next = next;
 	}
 	
@@ -44,7 +44,7 @@ public class Node<T> {
 	 * Setter de prev.
 	 * @param prev El nodo al que se quiere referenciar como previo.
 	 */
-	public void setPrev(Node<T> prev) {
+	public void setPrev(NodeU<T> prev) {
 		this.prev = prev;
 	}
 	
@@ -60,7 +60,7 @@ public class Node<T> {
 	 * Getter de next.
 	 * @return El siguiente nodo.
 	 */
-	public Node<T> getNext(){
+	public NodeU<T> getNext(){
 		return next;
 	}
 	
@@ -68,7 +68,7 @@ public class Node<T> {
 	 * Getter de prev.
 	 * @return El nodo anterior. 
 	 */
-	public Node<T> getPrev(){
+	public NodeU<T> getPrev(){
 		return prev;
 	}
 	

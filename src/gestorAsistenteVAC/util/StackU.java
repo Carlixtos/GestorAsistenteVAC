@@ -6,12 +6,12 @@ package gestorAsistenteVAC.util;
  * @version 1.0, 22/04/21
  * 
  */
-public class Stack<T> extends LinkedList<T>{
+public class StackU<T> extends LinkedListU<T>{
 	
 	/**
 	 * Crea una pila vacía.
 	 */
-	public Stack(){
+	public StackU(){
 		super();
 	}
 	

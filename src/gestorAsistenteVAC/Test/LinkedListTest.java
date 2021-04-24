@@ -1,7 +1,7 @@
 package gestorAsistenteVAC.Test;
 
-import gestorAsistenteVAC.util.LinkedList;
-import gestorAsistenteVAC.util.Node;
+import gestorAsistenteVAC.util.LinkedListU;
+import gestorAsistenteVAC.util.NodeU;
 
 /**
  * Clase que contiene los metodos estaticos para realizar pruebas sobre la clase LinkedList.
@@ -15,7 +15,7 @@ public class LinkedListTest {
 	 * Prueba el metodo nodeDrop.
 	 */
 	public static void nodeDropTest() {
-		LinkedList<Integer> testList1 = new LinkedList<Integer>();
+		LinkedListU<Integer> testList1 = new LinkedListU<Integer>();
 		
 		for(int i = 1; i < 4;  ++i) {
 			testList1.addFront(i);
@@ -38,7 +38,7 @@ public class LinkedListTest {
 	
 	
 	public static void nodeConsultTest() {
-		LinkedList<Integer> testList1 = new LinkedList<Integer>();
+		LinkedListU<Integer> testList1 = new LinkedListU<Integer>();
 		int n1;
 		int pos = 2;
 		
@@ -63,8 +63,8 @@ public class LinkedListTest {
 	 * Imprime la lista enlazada. Configurada inicialmente para datos enteros.
 	 * @param testList Lista enlazada que se quiere imprimir
 	 */
-	public static void printList(LinkedList<Integer> testList) {
-		Node<Integer> nodeTemp = testList.getHead();
+	public static void printList(LinkedListU<Integer> testList) {
+		NodeU<Integer> nodeTemp = testList.getHead();
 		
 		if(nodeTemp == null) {
 			System.out.println("Lista vacia\n");

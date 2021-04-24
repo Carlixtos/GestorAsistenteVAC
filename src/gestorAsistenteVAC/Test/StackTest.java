@@ -1,11 +1,11 @@
 package gestorAsistenteVAC.Test;
 
-import gestorAsistenteVAC.util.Stack;
+import gestorAsistenteVAC.util.StackU;
 
 public class StackTest {
 	
 	public static void generalTest() {
-		Stack<Integer> stack = new Stack<Integer>();
+		StackU<Integer> stack = new StackU<Integer>();
 		
 		for(int i = 1; i < 4; ++i) {
 			stack.push(i);

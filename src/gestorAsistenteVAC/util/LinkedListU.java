@@ -9,15 +9,15 @@ package gestorAsistenteVAC.util;
  * @param head Referencia al ultimo nodo de la lista.
  * @param length El tamaño de la lista (cantidad de nodos que posee).
  */
-public class LinkedList<T> {
-	protected Node<T> head;
-	protected Node<T> tail;
+public class LinkedListU<T> {
+	protected NodeU<T> head;
+	protected NodeU<T> tail;
 	protected int length;
 	
 	/**
 	 * Crea una lista vacía.
 	 */
-	public LinkedList(){
+	public LinkedListU(){
 		head = null;
 		tail = null;
 		length = 0;
@@ -27,7 +27,7 @@ public class LinkedList<T> {
 	 * Setter de head.
 	 * @param head Nodo que se quiere asignar a la cabeza de la lista.
 	 */
-	public void setHead(Node<T> head) {
+	public void setHead(NodeU<T> head) {
 		this.head = head;
 	}
 	
@@ -35,7 +35,7 @@ public class LinkedList<T> {
 	 * Setter de tail.
 	 * @param tail Nodo que se quiere asignar a la cola de la lista.
 	 */
-	public void setTail(Node<T> tail) {
+	public void setTail(NodeU<T> tail) {
 		this.tail = tail;
 	}
 	
@@ -43,7 +43,7 @@ public class LinkedList<T> {
 	 * Getter de head.
 	 * @return El nodo correspondiente a la cabeza de la lista.
 	 */
-	public Node<T> getHead() {
+	public NodeU<T> getHead() {
 		return head;
 	}
 	
@@ -51,7 +51,7 @@ public class LinkedList<T> {
 	 * Getter de tail.
 	 * @return El nodo correspondiente a la cola de la lista.
 	 */
-	public Node<T> getTail(){
+	public NodeU<T> getTail(){
 		return tail;
 	}
 	
@@ -76,7 +76,7 @@ public class LinkedList<T> {
 	 * @param key El dato de tipo T a agregar.  
 	 */
 	public void addFront(T key) {
-		Node<T> node = new Node<T>(key);
+		NodeU<T> node = new NodeU<T>(key);
 		
 		if(isEmpty()) {
 			head = node;
@@ -97,7 +97,7 @@ public class LinkedList<T> {
 	 * @param key El dato de tipo T a agregar.
 	 */
 	public void addBack(T key) {
-		Node<T> node = new Node<T>(key);
+		NodeU<T> node = new NodeU<T>(key);
 		
 		if(isEmpty()) {
 			head = node;
@@ -118,7 +118,7 @@ public class LinkedList<T> {
 	 * @param key El dato que se desea buscar.
 	 * @return Una referencia al nodo que lo contiene o null si no existe. Si es un dato repetido retornará el nodo con la menor distancia a uno de los extremos.
 	 */
-	public Node<T> search(T key) {
+	public NodeU<T> search(T key) {
 		if(isEmpty()){
 			return null;
 		}
@@ -127,8 +127,8 @@ public class LinkedList<T> {
 			return head;
 		}
 		
-		Node<T> nodeTemp1 = head;
-		Node<T> nodeTemp2 = tail;
+		NodeU<T> nodeTemp1 = head;
+		NodeU<T> nodeTemp2 = tail;
 		
 		while(nodeTemp1 != tail && nodeTemp2 != head) {
 			if(nodeTemp1.getKey() == key) {
@@ -158,7 +158,7 @@ public class LinkedList<T> {
 		}
 		
 		else {
-			Node<T> nodeTemp = search(prevkey);
+			NodeU<T> nodeTemp = search(prevkey);
 			
 			if(nodeTemp != null) {
 				nodeTemp.setKey(newkey);
@@ -176,7 +176,7 @@ public class LinkedList<T> {
 		}
 		
 		else {
-			Node<T> nodeTemp = search(key);
+			NodeU<T> nodeTemp = search(key);
 		
 			if(nodeTemp != null) {
 				if(nodeTemp == head) {
@@ -209,7 +209,7 @@ public class LinkedList<T> {
 			return null;
 		}
 		
-		Node<T> nodeTemp = head;
+		NodeU<T> nodeTemp = head;
 		
 		for(int i = 0; i < pos; ++i) {
 			nodeTemp = nodeTemp.getNext();
