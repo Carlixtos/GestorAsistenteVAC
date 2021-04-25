@@ -16,8 +16,14 @@ public class Main {
 					gestorIntf.accesScreen();
 					break;
 				}
+				
+				case 10:{
+					System.out.println("FUNCIONA PIROBO");
+					break;
+				}
 			}
 		}
+		
 		
 		
 		

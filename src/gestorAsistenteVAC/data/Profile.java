@@ -13,12 +13,28 @@ public class Profile {
 	 * Crea un nuevo perfil de acceso.
 	 * @param userName String del nombre de usuario. No debe contener "\", ".", ";", ",". 
 	 * @param passw String de la contraseña de usuario. No debe contener "\", ".", ";", ",". 
-	 * @param profileType String del tipo de usuario. Obligatoriamente uno de los siguientes: "Administrador", "Aplicador", "Analista".
+	 * @param profileType String del tipo de usuario. Obligatoriamente uno de los siguientes: "Administrador", "Aplicador", "Analista", "Temporal".
 	 */
 	public Profile(String userName, String passw, String profileType) {
 		this.userName = userName;
 		this.passw = passw;
 		this.profileType = profileType;
+	}
+	
+	public String getUserN() {
+		return userName;
+	}
+	
+	public String getPassw() {
+		return passw;
+	}
+	
+	public String getType() {
+		return profileType;
+	}
+	
+	public boolean equals(Profile otherProf) {
+		return userName.equals(otherProf.getUserN()) && passw.equals(otherProf.getPassw());
 	}
 	
 }
