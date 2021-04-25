@@ -4,27 +4,33 @@ import gestorAsistenteVAC.util.*;
 import gestorAsistenteVAC.interfaz.*;
 import gestorAsistenteVAC.Test.LinkedListTest;
 import gestorAsistenteVAC.Test.StackTest;
+import gestorAsistenteVAC.data.*;
+
 
 public class Main {
 
 	public static void main(String[] args) { // Codigo de prueba
 		InterfazG gestorIntf = new InterfazG();
+		Data datos= new Data();
 		
+
 		while(!gestorIntf.noScreens()) {
 			switch(gestorIntf.getScreen()) {
 				case 0:{
 					gestorIntf.accesScreen();
 					break;
 				}
-				
 				case 10:{
-					System.out.println("FUNCIONA PIROBO");
+					gestorIntf.administradorScreen();
 					break;
 				}
-			}
+				case 11:{
+					gestorIntf.creacionpacienteScreen();
+					break;
+				}
 		}
 		
-		
+		}
 		
 		
 		

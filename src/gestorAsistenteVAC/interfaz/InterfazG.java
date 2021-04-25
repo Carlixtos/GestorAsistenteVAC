@@ -34,9 +34,67 @@ public class InterfazG {
 		return screenMemory.peek();
 	}
 	
-	public void administratorMScreen() {
-		;
+	/**
+	 * Pantalla para el perfil de administrador
+	 * 
+	 */
+	public void administradorScreen() {
+		
+		Scanner scan = new Scanner(System.in);
+		String opcion;
+		
+		System.out.println("\t\tBIENVENIDO ADMIN\n\n");
+		System.out.println("¿Que desea hacer?: 1. Crear el perfil de un paciente   ");
+		System.out.println("\\t\2. Crear el perfil de un funcionario   ");
+		System.out.println("\\t\3. eliminar el perfil de un paciente   ");
+		System.out.println("\\t\4. eliminar el perfil de un funcionario   ");
+		System.out.println("(INTRODUZCA \"0\" PARA SALIR)\n");
+		
+		opcion=scan.nextLine();
+		if(opcion.equals("0")) {
+			screenMemory.pop();
+		}
+		else {
+			if(opcion.isEmpty() || charVerif(opcion)) {
+				System.out.println("\nSE HA INGRESADO CARACTERES INVALIDOS, VUELVA A INTENTARLO\n");
+			}
+			else {
+				switch(opcion) {
+				  case "1":
+					  screenMemory.push(11);
+				    break;
+				    
+				  case "2":
+					  screenMemory.push(12);
+				    break;
+				  case "3":
+					  screenMemory.push(13);
+				    break;
+				  case "4":
+					  screenMemory.push(14);
+				    break;
+				  default:
+				System.out.println("\nSE HA INGRESADO CARACTERES INVALIDOS, VUELVA A INTENTARLO\n");
+				}
+				
+			}
+		}
+		scan.close();
+	
 	}
+	
+public void creacionpacienteScreen() {
+		
+		Scanner scan = new Scanner(System.in);
+		String opcion;
+		
+		System.out.println("\t\t Por fin inservible \n\n");
+
+		scan.close();	
+	}
+	
+	
+	
 	
 	/**
 	 * La pantalla de acceso o pantalla inicial (0)
