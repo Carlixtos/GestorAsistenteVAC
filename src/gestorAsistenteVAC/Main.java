@@ -8,9 +8,16 @@ import gestorAsistenteVAC.Test.StackTest;
 public class Main {
 
 	public static void main(String[] args) { // Codigo de prueba
-		/*InterfazG gestorIntf = new InterfazG();
+		InterfazG gestorIntf = new InterfazG();
 		
-		gestorIntf.accesScreen();*/
+		while(!gestorIntf.noScreens()) {
+			switch(gestorIntf.getScreen()) {
+				case 0:{
+					gestorIntf.accesScreen();
+					break;
+				}
+			}
+		}
 		
 		
 		
