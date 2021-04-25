@@ -34,6 +34,10 @@ public class InterfazG {
 		return screenMemory.peek();
 	}
 	
+	public void administratorMScreen() {
+		;
+	}
+	
 	/**
 	 * La pantalla de acceso o pantalla inicial (0)
 	 */
