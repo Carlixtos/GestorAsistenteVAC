@@ -3,7 +3,7 @@ package gestorAsistenteVAC.gest;
 public class Funcionario extends Perfiles{
 	private int[][] horario;
 
-	Funcionario(String nombre, String apellido, int edad, String genero, String tDocumento, int documento,
+	public Funcionario(String nombre, String apellido, int edad, String genero, String tDocumento, int documento,
 			String sangre, String perfil,int[][] horario) {
 		super(nombre, apellido, edad, genero, tDocumento, documento, sangre, perfil);
 		// TODO Auto-generated constructor stub

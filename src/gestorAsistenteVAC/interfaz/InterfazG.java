@@ -35,107 +35,10 @@ public class InterfazG {
 	public int getScreen() {
 		return screenMemory.peek();
 	}
-	
-	/**
-	 * Pantalla para el perfil de administrador
-	 * 
-	 */
-	public void administradorScreen() {
-		
-		String opcion;
-		
-		System.out.println("\t\tBIENVENIDO ADMIN\n\n");
-		System.out.println("¿Que desea hacer?: 1. Crear el perfil de un paciente   ");
-		System.out.println("\t\t 2. Crear el perfil de un funcionario   ");
-		System.out.println("\t\t 3. eliminar el perfil de un paciente   ");
-		System.out.println("\t\t 4. eliminar el perfil de un funcionario   ");
-		System.out.println("(INTRODUZCA \"0\" PARA SALIR)");
-		
-		opcion = this.scan.nextLine();
-		
-		if(opcion.equals("0")) {
-			screenMemory.pop();
-		}
-		else {
-			if(opcion.isEmpty() || charVerif(opcion)) {
-				System.out.println("\nSE HA INGRESADO CARACTERES INVALIDOS, VUELVA A INTENTARLO\n");
-			}
-			else {
-				switch(opcion) {
-				  case "1":
-					  screenMemory.push(11);
-				    break;
-				    
-				  case "2":
-					  screenMemory.push(12);
-				    break;
-				  case "3":
-					  screenMemory.push(13);
-				    break;
-				  case "4":
-					  screenMemory.push(14);
-				    break;
-				  default:
-				System.out.println("\nSE HA INGRESADO CARACTERES INVALIDOS, VUELVA A INTENTARLO\n");
-				}
-				
-			}
-		}
-		
-	//	scan.close();
-	
+	public void popscreen() {
+		this.screenMemory.pop();
 	}
-	
-public String[] creacionpacienteScreen() {
-		
-		String opcion;
-		String[] mensaje= {"nombre","apellido","edad","genero","tipo de Documento", "Documento", "tipo de sangre","perfil","tipo de vacuna", "dosis"};
-		String[] paciente=new String[10];
-		int i=0;
-		while(i<10) {
-			while(i<10) {
-				System.out.println("\t\t ingrese el "+mensaje[i]+ "\n\n");
-				opcion=this.scan.nextLine();
-				if(opcion.isEmpty()) {
-					System.out.println("\nSE HA INGRESADO CARACTERES INVALIDOS, VUELVA A INTENTARLO\n");
-				}
-				else {
-					if(i==2||i==5||i==9) {
-							try {
-								Integer.valueOf(opcion);
-							}
-							catch(Exception e) {
-								System.out.println("\nSE HA INGRESADO CARACTERES INVALIDOS, VUELVA A INTENTARLO\n");
-								break;
-							}
-							paciente[i]=opcion;
-							i++;	
-							
-				
-					}
-					else {
-						if(charVerif(opcion)) {
-							System.out.println("\nSE HA INGRESADO CARACTERES INVALIDOS, VUELVA A INTENTARLO\n");
-							break;
-						}
-						else {
-							paciente[i]=opcion;
-							i++;
-						}
-					}
-				}
-				}
-			}
-		System.out.println("\nCreacion de paciente exitosa\n");
-		screenMemory.pop();
-		return paciente;
-		
-	//	scan.close();	
-	}
-	
-	
-	
-	
+
 	/**
 	 * La pantalla de acceso o pantalla inicial (0)
 	 */
@@ -199,6 +102,180 @@ public String[] creacionpacienteScreen() {
 	//	scan.close();
 	}
 	
+	
+	
+	
+	
+	/**
+	 * Pantalla para el perfil de administrador
+	 * 
+	 */
+	public void administradorScreen() {
+		
+		String opcion;
+		
+		System.out.println("\t\tBIENVENIDO ADMIN\n\n");
+		System.out.println("¿Que desea hacer?: 1. Crear el perfil de un paciente   ");
+		System.out.println("\t\t 2. Crear el perfil de un funcionario   ");
+		System.out.println("\t\t 3. eliminar el perfil de un paciente   ");
+		System.out.println("\t\t 4. eliminar el perfil de un funcionario   ");
+		System.out.println("\t\t 5. ver los pacientes creados   ");
+		System.out.println("\t\t 6. ver los funcionarios creados    ");
+		System.out.println("(INTRODUZCA \"0\" PARA SALIR)");
+		boolean l = false;
+		while(l!=true) {
+		opcion = this.scan.nextLine();
+		
+		if(opcion.equals("0")) {
+			screenMemory.pop();
+			l=true;
+		}
+		else {
+			if(opcion.isEmpty() || charVerif(opcion)) {
+				System.out.println("\nSE HA INGRESADO CARACTERES INVALIDOS, VUELVA A INTENTARLO\n");
+			}
+			else {
+				switch(opcion) {
+				  case "1":
+					  screenMemory.push(11);
+					  l=true;
+				    break;
+				    
+				  case "2":
+					  screenMemory.push(12);
+					  l=true;
+				    break;
+				  case "3":
+					  screenMemory.push(13);
+					  l=true;
+				    break;
+				  case "4":
+					  screenMemory.push(14);
+					  l=true;
+				    break;
+				  case "5":
+					  screenMemory.push(15);
+					  l=true;
+					 break;
+				  case "6":
+					  screenMemory.push(16);
+					  l=true;
+					 break;
+				  default:
+				System.out.println("\nSE HA INGRESADO CARACTERES INVALIDOS, VUELVA A INTENTARLO\n");
+				}
+				
+			}
+		}
+		
+		}
+		
+		
+	//	scan.close();
+	
+	}
+	
+public String[] creacionpacienteScreen() {
+		
+		String opcion;
+		String[] mensaje= {"nombre","apellido","edad","genero","tipo de Documento", "Documento", "tipo de sangre","perfil","tipo de vacuna", "dosis"};
+		String[] paciente=new String[10];
+		int i=0;
+		while(i<10) {
+			while(i<10) {
+				System.out.println("\t\t ingrese el "+mensaje[i]+ "\n\n");
+				opcion=this.scan.nextLine();
+				if(opcion.isEmpty()) {
+					System.out.println("\nSE HA INGRESADO CARACTERES INVALIDOS, VUELVA A INTENTARLO\n");
+				}
+				else {
+					if(i==2||i==5||i==9) {
+							try {
+								Integer.valueOf(opcion);
+							}
+							catch(Exception e) {
+								System.out.println("\nSE HA INGRESADO CARACTERES INVALIDOS, VUELVA A INTENTARLO\n");
+								break;
+							}
+							paciente[i]=opcion;
+							i++;	
+							
+				
+					}
+					else {
+						if(charVerif(opcion)) {
+							System.out.println("\nSE HA INGRESADO CARACTERES INVALIDOS, VUELVA A INTENTARLO\n");
+							break;
+						}
+						else {
+							paciente[i]=opcion;
+							i++;
+						}
+					}
+				}
+				}
+			}
+		System.out.println("\nCreacion de paciente exitosa\n");
+		screenMemory.pop();
+		return paciente;
+		
+	//	scan.close();	
+	}
+		
+	
+	public String[] creacionfuncionarioScreen() {
+		
+			String opcion;
+			String[] mensaje= {"nombre","apellido","edad","genero","tipo de Documento", "Documento", "tipo de sangre","perfil","horario"};
+			String[] funcionario=new String[9];
+			int i=0;
+			while(i<9) {
+				while(i<9) {
+					System.out.println("\t\t ingrese el "+mensaje[i]+ "\n\n");
+					opcion=this.scan.nextLine();
+					if(opcion.isEmpty()) {
+						System.out.println("\nSE HA INGRESADO CARACTERES INVALIDOS, VUELVA A INTENTARLO\n");
+					}
+					else {
+						if(i==2||i==5||i==8) {
+								try {
+									Integer.valueOf(opcion);
+								}
+								catch(Exception e) {
+									System.out.println("\nSE HA INGRESADO CARACTERES INVALIDOS, VUELVA A INTENTARLO\n");
+									break;
+								}
+								funcionario[i]=opcion;
+								i++;	
+								
+					
+						}
+						else {
+							if(charVerif(opcion)) {
+								System.out.println("\nSE HA INGRESADO CARACTERES INVALIDOS, VUELVA A INTENTARLO\n");
+								break;
+							}
+							else {
+								funcionario[i]=opcion;
+								i++;
+							}
+						}
+					}
+					}
+				}
+			System.out.println("\nCreacion de paciente exitosa\n");
+			screenMemory.pop();
+			return funcionario;
+			
+		//	scan.close();	
+		}
+	
+	
+	
+	
+	
+	
+	
 	/**
 	 * Verifica que en un String dado no hayan caracteres invalidos.
 	 * @param stringV El String a verificar.
@@ -229,9 +306,22 @@ public String[] creacionpacienteScreen() {
 		return null;
 	}
 
-	public String[] creacionfuncionarioScreen() {
-		// TODO Auto-generated method stub
-		return null;
+	public String nombre() {
+		String opcion = null;
+		
+		System.out.println("\t\t Ingres el nombre de quien busca \n\n");
+
+		boolean l = false;
+		while(l!=true) {
+			opcion = this.scan.nextLine();
+			if(opcion.isEmpty()||charVerif(opcion)) {
+				System.out.println("\nSE HA INGRESADO CARACTERES INVALIDOS, VUELVA A INTENTARLO\n");
+			}
+			else {
+			l=true;				
+			}
+		}
+		this.screenMemory.pop();
+		return opcion;
 	}
-	
 }
