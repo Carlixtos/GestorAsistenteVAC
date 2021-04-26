@@ -11,12 +11,7 @@ public class pacienteData {
 		this.pacientes=new LinkedListU<Paciente>();
 	}
 	
-	public void asd() {
-		
-	
-	}
-
-	public void agregarp(String[] pa) {
+	public void agregar(String[] pa) {
 		Paciente paciente=new Paciente(pa[0],pa[1], Integer.valueOf(pa[2]),pa[3], pa[4],Integer.valueOf(pa[5]), pa[6],pa[7],pa[8],Integer.valueOf(pa[9]));
 		this.pacientes.addFront(paciente);
 	}
@@ -30,7 +25,7 @@ public class pacienteData {
 		return false;
 	}
 
-	public void eliminarp(String elim) {
+	public void eliminar(String elim) {
 		for (int i = 0;i<this.pacientes.getLength();i++) {
 			if(this.pacientes.nodeConsult(i).getNombre().equals(elim)) {
 				this.pacientes.nodeDrop(this.pacientes.nodeConsult(i));
@@ -43,6 +38,7 @@ public class pacienteData {
 		for (int i = 0;i<this.pacientes.getLength();i++) {
 			System.out.print("\t\t"+pacientes.nodeConsult(i).getNombre()+"\t\t");
 		}
+		System.out.println(" ");
 	}
 	
 }

@@ -4,6 +4,7 @@ import gestorAsistenteVAC.util.*;
 import gestorAsistenteVAC.interfaz.*;
 import gestorAsistenteVAC.Test.LinkedListTest;
 import gestorAsistenteVAC.Test.StackTest;
+import gestorAsistenteVAC.Test.generadorDatos;
 import gestorAsistenteVAC.data.*;
 
 
@@ -26,24 +27,24 @@ public class Main {
 					break;
 				}
 				case 11:{
-					datos.paciente.agregarp(gestorIntf.creacionpacienteScreen());
+					datos.paciente.agregar(gestorIntf.creacionpacienteScreen());
 					break;
 				}
 				case 12:{
-					datos.funcionario.agregarf(gestorIntf.creacionfuncionarioScreen());
+					datos.funcionario.agregar(gestorIntf.creacionfuncionarioScreen());
 					break;
 				}
 				case 13:{
 					String elim = gestorIntf.nombre();
 					if(datos.paciente.existe(elim)) {
-					datos.paciente.eliminarp(elim);
+					datos.paciente.eliminar(elim);
 					}
 					break;
 				}
 				case 14:{
 					String elim = gestorIntf.nombre();
 					if(datos.funcionario.existe(elim)) {
-					datos.funcionario.eliminarf(elim);
+					datos.funcionario.eliminar(elim);
 					}					
 					break;
 				}
@@ -57,6 +58,36 @@ public class Main {
 					gestorIntf.popscreen();
 					break;
 				}
+				case 90:{
+					gestorIntf.test();
+					break;
+				}
+				case 91:{
+					generadorDatos test=new generadorDatos();
+					int l=gestorIntf.testnumero();
+					test.agregarPacientes(l, datos);
+					break;
+				}
+				case 92:{
+					generadorDatos test=new generadorDatos();
+					int l=gestorIntf.testnumero();
+					test.agregarFuncionarios(l, datos);
+					break;
+				}
+				case 93:{
+					generadorDatos test=new generadorDatos();
+					int l=gestorIntf.testnumero();
+					test.eliminarPacientes(l, datos);
+					break;
+				}
+				case 94:{
+					generadorDatos test=new generadorDatos();
+					int l=gestorIntf.testnumero();
+					test.eliminarFuncionarios(l, datos);
+					break;
+				}
+				
+				
 		}
 		
 		}

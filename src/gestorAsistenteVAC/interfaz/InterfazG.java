@@ -116,11 +116,12 @@ public class InterfazG {
 		
 		System.out.println("\t\tBIENVENIDO ADMIN\n\n");
 		System.out.println("¿Que desea hacer?: 1. Crear el perfil de un paciente   ");
-		System.out.println("\t\t 2. Crear el perfil de un funcionario   ");
-		System.out.println("\t\t 3. eliminar el perfil de un paciente   ");
-		System.out.println("\t\t 4. eliminar el perfil de un funcionario   ");
-		System.out.println("\t\t 5. ver los pacientes creados   ");
-		System.out.println("\t\t 6. ver los funcionarios creados    ");
+		System.out.println("\t\t   2. Crear el perfil de un funcionario   ");
+		System.out.println("\t\t   3. eliminar el perfil de un paciente   ");
+		System.out.println("\t\t   4. eliminar el perfil de un funcionario   ");
+		System.out.println("\t\t   5. ver los pacientes creados   ");
+		System.out.println("\t\t   6. ver los funcionarios creados    ");
+		System.out.println("\t\t   9. para ingresar al modo de prueba (generacion de datos aleatoreos)    ");
 		System.out.println("(INTRODUZCA \"0\" PARA SALIR)");
 		boolean l = false;
 		while(l!=true) {
@@ -161,6 +162,10 @@ public class InterfazG {
 					  screenMemory.push(16);
 					  l=true;
 					 break;
+				  case "9":
+					  screenMemory.push(90);
+					  l=true;
+					 break; 
 				  default:
 				System.out.println("\nSE HA INGRESADO CARACTERES INVALIDOS, VUELVA A INTENTARLO\n");
 				}
@@ -272,6 +277,76 @@ public String[] creacionpacienteScreen() {
 	
 	
 	
+	public void test() {
+			
+			String opcion;
+			
+			System.out.println("\t\tBIENVENIDO A LA SESION DE PRUEBAS\n\n");
+			System.out.println("¿Que desea hacer?: 1. Crear los perfiles de pacientes aleatoreos   ");
+			System.out.println("\t\t   2. Crear los perfiles de funcionarios aleatoreos  ");
+			System.out.println("\t\t   3. ver los pacientes creados   ");
+			System.out.println("\t\t   4. ver los funcionarios creados    ");
+			System.out.println("\t\t   5. Eliminar los perfiles de Pacientes   ");
+			System.out.println("\t\t   6. Eliminar los perfiles de funcionarios    ");
+			System.out.println("(INTRODUZCA \"0\" PARA SALIR)");
+			boolean l = false;
+			while(l!=true) {
+			opcion = this.scan.nextLine();
+			
+			if(opcion.equals("0")) {
+				screenMemory.pop();
+				l=true;
+			}
+			else {
+				if(opcion.isEmpty() || charVerif(opcion)) {
+					System.out.println("\nSE HA INGRESADO CARACTERES INVALIDOS, VUELVA A INTENTARLO\n");
+				}
+				else {
+					switch(opcion) {
+					  case "1":
+						  screenMemory.push(91);
+						  l=true;
+					    break;
+					    
+					  case "2":
+						  screenMemory.push(92);
+						  l=true;
+					    break;
+					  case "3":
+						  screenMemory.push(15);
+						  l=true;
+					    break;
+					  case "4":
+						  screenMemory.push(16);
+						  l=true;
+					    break;
+					  case "5":
+						  screenMemory.push(93);
+						  l=true;
+					    break;
+					  case "6":
+						  screenMemory.push(94);
+						  l=true;
+					    break;
+					  default:
+					System.out.println("\nSE HA INGRESADO CARACTERES INVALIDOS, VUELVA A INTENTARLO\n");
+					}
+					
+				}
+			}
+			
+			}
+			
+			
+		//	scan.close();
+		
+		}
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -293,7 +368,7 @@ public String[] creacionpacienteScreen() {
 	public Profile userVerif(Profile accesProf) {
 		Profile profile1 = new Profile("zambranol32", "nolbra23", "Administrador");
 		Profile profile2 = new Profile("crios92", "octavio69", "Administrador");
-		Profile profile3 = new Profile("fenel11", "nelfe90", "Administrador");
+		Profile profile3 = new Profile("f", "f1", "Administrador");
 		
 		Profile[] profiles = {profile1, profile2, profile3};
 		
@@ -324,4 +399,26 @@ public String[] creacionpacienteScreen() {
 		this.screenMemory.pop();
 		return opcion;
 	}
+
+	public int testnumero() {
+		String opcion = null;
+		
+		System.out.println("\t\t Ingrese el numero de datos que desea \n\n");
+
+		boolean l = false;
+		while(l!=true) {
+			opcion = this.scan.nextLine();
+			try {
+				Integer.valueOf(opcion);
+				l=true;
+			}
+			catch(Exception e) {
+				System.out.println("\nSE HA INGRESADO CARACTERES INVALIDOS, VUELVA A INTENTARLO\n");
+			}
+		}
+		this.screenMemory.pop();
+		return Integer.valueOf(opcion);
+	}
+
+	
 }
