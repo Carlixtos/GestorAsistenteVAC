@@ -22,10 +22,15 @@ public class Main {
 				}
 				case 10:{
 					gestorIntf.administradorScreen();
+
 					break;
 				}
 				case 11:{
-					gestorIntf.creacionpacienteScreen();
+					datos.paciente.agregarp(gestorIntf.creacionpacienteScreen());
+					break;
+				}
+				case 12:{
+					datos.funcionario.agregarf(gestorIntf.creacionfuncionarioScreen());
 					break;
 				}
 		}

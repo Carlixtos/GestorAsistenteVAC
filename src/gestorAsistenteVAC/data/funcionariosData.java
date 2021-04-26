@@ -10,4 +10,9 @@ public class funcionariosData {
 		public funcionariosData(){
 			this.funcionarios =new LinkedListU<Paciente>();
 		}
+
+		public void agregarf(String[] f) {
+			// TODO Auto-generated method stub
+			
+		}
 }

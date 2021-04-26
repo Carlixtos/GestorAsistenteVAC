@@ -12,10 +12,12 @@ import java.util.Scanner;
 public class InterfazG {
 	private StackU<Integer> screenMemory;
 	private Profile user;
+	Scanner scan;
 	
 	public InterfazG(){
 		screenMemory = new StackU<Integer>();
 		screenMemory.push(0);
+		this.scan=new Scanner(System.in);
 	}
 	
 	/**
@@ -40,17 +42,17 @@ public class InterfazG {
 	 */
 	public void administradorScreen() {
 		
-		Scanner scan = new Scanner(System.in);
 		String opcion;
 		
 		System.out.println("\t\tBIENVENIDO ADMIN\n\n");
 		System.out.println("¿Que desea hacer?: 1. Crear el perfil de un paciente   ");
-		System.out.println("\\t\2. Crear el perfil de un funcionario   ");
-		System.out.println("\\t\3. eliminar el perfil de un paciente   ");
-		System.out.println("\\t\4. eliminar el perfil de un funcionario   ");
-		System.out.println("(INTRODUZCA \"0\" PARA SALIR)\n");
+		System.out.println("\t\t 2. Crear el perfil de un funcionario   ");
+		System.out.println("\t\t 3. eliminar el perfil de un paciente   ");
+		System.out.println("\t\t 4. eliminar el perfil de un funcionario   ");
+		System.out.println("(INTRODUZCA \"0\" PARA SALIR)");
 		
-		opcion=scan.nextLine();
+		opcion = this.scan.nextLine();
+		
 		if(opcion.equals("0")) {
 			screenMemory.pop();
 		}
@@ -79,18 +81,56 @@ public class InterfazG {
 				
 			}
 		}
-		scan.close();
+		
+	//	scan.close();
 	
 	}
 	
-public void creacionpacienteScreen() {
+public String[] creacionpacienteScreen() {
 		
-		Scanner scan = new Scanner(System.in);
 		String opcion;
+		String[] mensaje= {"nombre","apellido","edad","genero","tipo de Documento", "Documento", "tipo de sangre","perfil","tipo de vacuna", "dosis"};
+		String[] paciente=new String[10];
+		int i=0;
+		while(i<10) {
+			while(i<10) {
+				System.out.println("\t\t ingrese el "+mensaje[i]+ "\n\n");
+				opcion=this.scan.nextLine();
+				if(opcion.isEmpty()) {
+					System.out.println("\nSE HA INGRESADO CARACTERES INVALIDOS, VUELVA A INTENTARLO\n");
+				}
+				else {
+					if(i==2||i==5||i==9) {
+							try {
+								Integer.valueOf(opcion);
+							}
+							catch(Exception e) {
+								System.out.println("\nSE HA INGRESADO CARACTERES INVALIDOS, VUELVA A INTENTARLO\n");
+								break;
+							}
+							paciente[i]=opcion;
+							i++;	
+							
+				
+					}
+					else {
+						if(charVerif(opcion)) {
+							System.out.println("\nSE HA INGRESADO CARACTERES INVALIDOS, VUELVA A INTENTARLO\n");
+							break;
+						}
+						else {
+							paciente[i]=opcion;
+							i++;
+						}
+					}
+				}
+				}
+			}
+		System.out.println("\nCreacion de paciente exitosa\n");
+		screenMemory.pop();
+		return paciente;
 		
-		System.out.println("\t\t Por fin inservible \n\n");
-
-		scan.close();	
+	//	scan.close();	
 	}
 	
 	
@@ -100,7 +140,6 @@ public void creacionpacienteScreen() {
 	 * La pantalla de acceso o pantalla inicial (0)
 	 */
 	public void accesScreen(){
-		Scanner scan = new Scanner(System.in);
 		
 		String userName;
 		String passw;
@@ -109,7 +148,7 @@ public void creacionpacienteScreen() {
 		System.out.println("PARA ACCEDER INTRODUZCA UN NOMBRE DE USUARIO VALIDO:");
 		System.out.println("(INTRODUZCA \"0\" PARA SALIR)\n");
 		
-		userName = scan.nextLine();
+		userName = this.scan.nextLine();
 		
 		if(userName.equals("0")) {
 			screenMemory.pop();
@@ -122,7 +161,7 @@ public void creacionpacienteScreen() {
 			
 			else {
 				System.out.println("\nINTRODUZCA LA CONTRASEÑA:\n");
-				passw = scan.nextLine();
+				passw = this.scan.nextLine();
 				
 				if(passw.isEmpty() || charVerif(passw)) {
 					System.out.println("\nSE HA INGRESADO CARACTERES INVALIDOS, VUELVA A INTENTARLO\n");
@@ -157,7 +196,7 @@ public void creacionpacienteScreen() {
 			}
 		}
 		
-		scan.close();
+	//	scan.close();
 	}
 	
 	/**
@@ -187,6 +226,11 @@ public void creacionpacienteScreen() {
 			}
 		}
 		
+		return null;
+	}
+
+	public String[] creacionfuncionarioScreen() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 	

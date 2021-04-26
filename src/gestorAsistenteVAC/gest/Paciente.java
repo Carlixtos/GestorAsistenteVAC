@@ -6,7 +6,7 @@ public class Paciente extends Perfiles{
 	
 	private int dosis;
 
-	Paciente(String nombre, String apellido, int edad, String genero, String tDocumento, int documento, String sangre,
+	public Paciente(String nombre, String apellido, int edad, String genero, String tDocumento, int documento, String sangre,
 			String perfil,String tipVacuna,int dosis) {
 		super(nombre, apellido, edad, genero, tDocumento, documento, sangre, perfil);
 		// TODO Auto-generated constructor stub
