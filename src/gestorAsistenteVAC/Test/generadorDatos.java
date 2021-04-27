@@ -5,6 +5,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import gestorAsistenteVAC.data.Data;
 import gestorAsistenteVAC.gest.Funcionario;
 import gestorAsistenteVAC.gest.Paciente;
+import gestorAsistenteVAC.util.ArrayDinamic;
 
 
 public class generadorDatos {
@@ -67,15 +68,17 @@ public class generadorDatos {
 	}
 	public String nombreAleatoreo() {
         
+		
         String[] banco = {"Zeus", "Hera", "Poseidón", "Ares", "Hermes", "Hefesto", "Afrodita", "Atenea", "Apolo" , "Artemisa"," Hestia"," Deméter", "Dioniso", "Hades", "Perséfone", "Hebe"," Asclepio", "Eros"," Pan ", "Heracles"};
       
         return banco[this.numeroAleatorioEnRango(0, banco.length)];
     }
 	public String generoAleatoreo() {
-        
-        String[] banco = {"hombre" ,"mujer"};
+		ArrayDinamic<String> banco =new ArrayDinamic();
+        banco.pushback("hombre");
+        banco.pushback("mujer");
       
-        return banco[this.numeroAleatorioEnRango(0, banco.length)];
+        return banco.remove(this.numeroAleatorioEnRango(0,2));
     }
 	public String sangreAleatoreo() {
         
