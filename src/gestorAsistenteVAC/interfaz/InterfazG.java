@@ -461,7 +461,7 @@ public String[] creacionpacienteScreen() {
 	}
 
 	public String[] agregarVacunas() {
-		String[] opcion = new String[1];
+		String[] opcion = new String[2];
 		
 		System.out.println("¿Que tipo de vacuna quiere agregar?  ");
 

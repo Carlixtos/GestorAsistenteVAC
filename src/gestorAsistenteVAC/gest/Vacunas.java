@@ -2,8 +2,6 @@ package gestorAsistenteVAC.gest;
 
 public class Vacunas {
 
-<<<<<<< HEAD
-=======
 	private String tipo;
 	private int dosis;
 	
@@ -27,5 +25,4 @@ public class Vacunas {
 	}
 	
 	
->>>>>>> 3e8bbdfc55b597a98e22ba21d0a12523152a9251
 }
