@@ -8,11 +8,14 @@ import gestorAsistenteVAC.Test.generadorDatos;
 import gestorAsistenteVAC.data.*;
 
 
+
 public class Main {
 
 	public static void main(String[] args) { // Codigo de prueba
 		InterfazG gestorIntf = new InterfazG();
 		Data datos= new Data();
+		long tiempoinicio,tiempofinal;
+		
 		
 
 		while(!gestorIntf.noScreens()) {
@@ -65,27 +68,58 @@ public class Main {
 				case 91:{
 					generadorDatos test=new generadorDatos();
 					int l=gestorIntf.testnumero();
+					tiempoinicio=System.currentTimeMillis();
 					test.agregarPacientes(l, datos);
+					tiempofinal=System.currentTimeMillis();
+					System.out.println(tiempofinal-tiempoinicio);
 					break;
 				}
 				case 92:{
 					generadorDatos test=new generadorDatos();
 					int l=gestorIntf.testnumero();
+					tiempoinicio=System.currentTimeMillis();
 					test.agregarFuncionarios(l, datos);
+					tiempofinal=System.currentTimeMillis();
+					System.out.println(tiempofinal-tiempoinicio);
 					break;
 				}
 				case 93:{
 					generadorDatos test=new generadorDatos();
 					int l=gestorIntf.testnumero();
+					tiempoinicio=System.currentTimeMillis();
 					test.eliminarPacientes(l, datos);
+					tiempofinal=System.currentTimeMillis();
+					System.out.println(tiempofinal-tiempoinicio);
 					break;
 				}
 				case 94:{
 					generadorDatos test=new generadorDatos();
 					int l=gestorIntf.testnumero();
+					tiempoinicio=System.currentTimeMillis();
 					test.eliminarFuncionarios(l, datos);
+					tiempofinal=System.currentTimeMillis();
+					System.out.println(tiempofinal-tiempoinicio);
 					break;
 				}
+				case 95:{
+					generadorDatos test=new generadorDatos();
+					int l=gestorIntf.testnumero();
+					tiempoinicio=System.currentTimeMillis();
+					test.remplazarPacientes(l, datos);
+					tiempofinal=System.currentTimeMillis();
+					System.out.println(tiempofinal-tiempoinicio);
+					break;
+				}
+				case 96:{
+					generadorDatos test=new generadorDatos();
+					int l=gestorIntf.testnumero();
+					tiempoinicio=System.currentTimeMillis();
+					test.remplazarFuncionarios(l, datos);
+					tiempofinal=System.currentTimeMillis();
+					System.out.println(tiempofinal-tiempoinicio);
+					break;
+				}
+				
 				
 				
 		}

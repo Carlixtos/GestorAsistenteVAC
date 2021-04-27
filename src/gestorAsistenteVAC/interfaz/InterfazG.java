@@ -288,6 +288,8 @@ public String[] creacionpacienteScreen() {
 			System.out.println("\t\t   4. ver los funcionarios creados    ");
 			System.out.println("\t\t   5. Eliminar los perfiles de Pacientes   ");
 			System.out.println("\t\t   6. Eliminar los perfiles de funcionarios    ");
+			System.out.println("\t\t   7. Remplazar los perfiles de Pacientes   ");
+			System.out.println("\t\t   8. Remplazar los perfiles de funcionarios    ");
 			System.out.println("(INTRODUZCA \"0\" PARA SALIR)");
 			boolean l = false;
 			while(l!=true) {
@@ -326,6 +328,14 @@ public String[] creacionpacienteScreen() {
 					    break;
 					  case "6":
 						  screenMemory.push(94);
+						  l=true;
+					    break;
+					  case "7":
+						  screenMemory.push(95);
+						  l=true;
+					    break;
+					  case "8":
+						  screenMemory.push(96);
 						  l=true;
 					    break;
 					  default:
