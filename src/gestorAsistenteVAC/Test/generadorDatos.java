@@ -3,6 +3,8 @@ package gestorAsistenteVAC.Test;
 import java.util.concurrent.ThreadLocalRandom;
 
 import gestorAsistenteVAC.data.Data;
+import gestorAsistenteVAC.gest.Funcionario;
+import gestorAsistenteVAC.gest.Paciente;
 
 
 public class generadorDatos {
@@ -116,7 +118,7 @@ public class generadorDatos {
         return ThreadLocalRandom.current().nextInt(minimo, maximo);
     }
 	public void eliminarPacientes(int l, Data datos) {
-		for (int i = l-1;i>=0;i--) {
+		for (int i = l-1;i>0;i--) {
 			datos.paciente.pacientes.nodeDrop(datos.paciente.pacientes.nodeConsult(i));
 		}
 	}
@@ -126,7 +128,24 @@ public class generadorDatos {
 			datos.funcionario.funcionarios.nodeDrop(datos.funcionario.funcionarios.nodeConsult(i));
 		}
 	}
-
+	public void remplazarPacientes(int l, Data datos) {
+		for (int i = l-1;i>=0;i--) {	
+			Paciente p= new Paciente("cronos", "jupiter", i, "Dios", "inmortal", i, "celestial", "Creador", "todas", i);
+			datos.paciente.pacientes.keyReplace(datos.paciente.pacientes.nodeConsult(i), p);
+		}
+		
+	}
+	public void remplazarFuncionarios(int l, Data datos) {
+		for (int i = l-1;i>=0;i--) {	
+			int[][] a = new int[1][1];
+			a[0][0]=i;
+			Funcionario p= new Funcionario("cronos", "jupiter", i, "Dios", "inmortal", i, "celestial", "Creador", a);
+			datos.funcionario.funcionarios.keyReplace(datos.funcionario.funcionarios.nodeConsult(i), p);
+		}
+		
+	}
+	
+	
 }
 	
 

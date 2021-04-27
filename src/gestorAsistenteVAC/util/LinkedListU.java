@@ -181,7 +181,9 @@ public class LinkedListU<T> {
 			if(nodeTemp != null) {
 				if(nodeTemp == head) {
 					head = nodeTemp.getNext();
+					if (nodeTemp.getNext()!=null) {
 					nodeTemp.getNext().setPrev(null);
+					}
 				}
 				
 				else if(nodeTemp == tail) {
@@ -210,6 +212,9 @@ public class LinkedListU<T> {
 		}
 		
 		NodeU<T> nodeTemp = head;
+		if(pos==0) {
+			return nodeTemp.getKey();
+		}
 		
 		for(int i = 0; i < pos; ++i) {
 			nodeTemp = nodeTemp.getNext();
