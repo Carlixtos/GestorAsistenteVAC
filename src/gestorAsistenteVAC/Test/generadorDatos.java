@@ -5,6 +5,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import gestorAsistenteVAC.data.Data;
 import gestorAsistenteVAC.gest.Funcionario;
 import gestorAsistenteVAC.gest.Paciente;
+import gestorAsistenteVAC.gest.Vacunas;
 import gestorAsistenteVAC.util.ArrayDinamic;
 
 
@@ -147,6 +148,18 @@ public class generadorDatos {
 		}
 		
 	}
+	public void agregarVacunas(int l, Data datos) {
+		for (int i =0;i<l;i++) {
+			String a = this.vacunaAleatoreo();
+			String[] v= {a,this.dosis(a)};
+			datos.vacunas.agregar(v);
+		}
+	}
+	public void eliminarVacunas(int l, Data datos) {
+			datos.vacunas.eliminar(l);
+	}
+	
+	
 	
 	
 }
