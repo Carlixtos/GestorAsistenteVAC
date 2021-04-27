@@ -121,7 +121,10 @@ public class InterfazG {
 		System.out.println("\t\t   4. eliminar el perfil de un funcionario   ");
 		System.out.println("\t\t   5. ver los pacientes creados   ");
 		System.out.println("\t\t   6. ver los funcionarios creados    ");
-		System.out.println("\t\t   9. para ingresar al modo de prueba (generacion de datos aleatoreos)    ");
+		System.out.println("\t\t   7. Agragar vacunas   ");
+		System.out.println("\t\t   8. Eliminar vacunas    ");
+		System.out.println("\t\t   9. ver vacunas    ");
+		System.out.println("\t\t   99. para ingresar al modo de prueba (generacion de datos aleatoreos)    ");
 		System.out.println("(INTRODUZCA \"0\" PARA SALIR)");
 		boolean l = false;
 		while(l!=true) {
@@ -162,7 +165,19 @@ public class InterfazG {
 					  screenMemory.push(16);
 					  l=true;
 					 break;
+				  case "7":
+					  screenMemory.push(17);
+					  l=true;
+					 break;
+				  case "8":
+					  screenMemory.push(18);
+					  l=true;
+					 break;
 				  case "9":
+					  screenMemory.push(19);
+					  l=true;
+					 break;
+				  case "99":
 					  screenMemory.push(90);
 					  l=true;
 					 break; 
@@ -290,6 +305,9 @@ public String[] creacionpacienteScreen() {
 			System.out.println("\t\t   6. Eliminar los perfiles de funcionarios    ");
 			System.out.println("\t\t   7. Remplazar los perfiles de Pacientes   ");
 			System.out.println("\t\t   8. Remplazar los perfiles de funcionarios    ");
+			System.out.println("\t\t   9. Agregar vacunas aleatoreamente   ");
+			System.out.println("\t\t   10.Eliminar vacunas aleatoreamente     ");
+			System.out.println("\t\t   11.ver vacunas      ");
 			System.out.println("(INTRODUZCA \"0\" PARA SALIR)");
 			boolean l = false;
 			while(l!=true) {
@@ -336,6 +354,18 @@ public String[] creacionpacienteScreen() {
 					    break;
 					  case "8":
 						  screenMemory.push(96);
+						  l=true;
+					    break;
+					  case "9":
+						  screenMemory.push(97);
+						  l=true;
+					    break;
+					  case "10":
+						  screenMemory.push(98);
+						  l=true;
+					    break;
+					  case "11":
+						  screenMemory.push(19);
 						  l=true;
 					    break;
 					  default:
@@ -428,6 +458,46 @@ public String[] creacionpacienteScreen() {
 		}
 		this.screenMemory.pop();
 		return Integer.valueOf(opcion);
+	}
+
+	public String[] agregarVacunas() {
+		String[] opcion = new String[1];
+		
+		System.out.println("¿Que tipo de vacuna quiere agregar?  ");
+
+		boolean l = false;
+		while(l!=true) {
+			opcion[0] = this.scan.nextLine();
+				if(opcion[0].isEmpty() || charVerif(opcion[0])) {
+					System.out.println("\nSE HA INGRESADO CARACTERES INVALIDOS, VUELVA A INTENTARLO\n");
+				}
+				else {
+					l=true;
+				}
+		}
+		l=false;
+		while(l!=true) {
+			System.out.println("¿Cuantas dosis requiere para inmunizacion?  ");
+			opcion[1] = this.scan.nextLine();
+				if(opcion[1].isEmpty() || charVerif(opcion[1])) {
+					System.out.println("\nSE HA INGRESADO CARACTERES INVALIDOS, VUELVA A INTENTARLO\n");
+				}
+				else {
+					try {
+						Integer.valueOf(opcion[1]);
+						l=true;
+					}
+					catch(Exception e) {
+						System.out.println("\nSE HA INGRESADO CARACTERES INVALIDOS, VUELVA A INTENTARLO\n");
+						break;
+					}
+					
+				}
+		}
+		this.screenMemory.pop();
+		return opcion;
+		
+		
 	}
 
 	

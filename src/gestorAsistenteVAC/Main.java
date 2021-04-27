@@ -61,6 +61,19 @@ public class Main {
 					gestorIntf.popscreen();
 					break;
 				}
+				case 17:{
+					datos.vacunas.agregar(gestorIntf.agregarVacunas());
+					break;
+				}
+				case 18:{
+					datos.vacunas.eliminar(gestorIntf.testnumero());	
+					break;
+				}
+				case 19:{
+					datos.vacunas.vertipo();	
+					gestorIntf.popscreen();
+					break;
+				}
 				case 90:{
 					gestorIntf.test();
 					break;
@@ -115,6 +128,24 @@ public class Main {
 					int l=gestorIntf.testnumero();
 					tiempoinicio=System.currentTimeMillis();
 					test.remplazarFuncionarios(l, datos);
+					tiempofinal=System.currentTimeMillis();
+					System.out.println(tiempofinal-tiempoinicio);
+					break;
+				}
+				case 97:{
+					generadorDatos test=new generadorDatos();
+					int l=gestorIntf.testnumero();
+					tiempoinicio=System.currentTimeMillis();
+					test.agregarVacunas(l,datos);
+					tiempofinal=System.currentTimeMillis();
+					System.out.println(tiempofinal-tiempoinicio);
+					break;
+				}
+				case 98:{
+					generadorDatos test=new generadorDatos();
+					int l=gestorIntf.testnumero();
+					tiempoinicio=System.currentTimeMillis();
+					test.eliminarVacunas(l, datos);
 					tiempofinal=System.currentTimeMillis();
 					System.out.println(tiempofinal-tiempoinicio);
 					break;
