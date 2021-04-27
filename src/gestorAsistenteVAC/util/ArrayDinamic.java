@@ -17,7 +17,7 @@ public class ArrayDinamic<T>{
 	 * Creacion de una array vacio.
 	 */
 	public ArrayDinamic(){
-		this.Array=(T[]) new Object[1];
+		this.Array= (T[]) new Object[1];
 		this.disponible=0;
 	}
 	
