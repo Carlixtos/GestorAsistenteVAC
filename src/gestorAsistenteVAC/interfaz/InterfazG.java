@@ -47,7 +47,7 @@ public class InterfazG {
 		String userName;
 		String passw;
 		
-		System.out.println("\t\tBIENVENIDO Al GESTOR ASISTENTE VAC\n\n");
+		System.out.println("\n\t\tBIENVENIDO Al GESTOR ASISTENTE VAC\n\n");
 		System.out.println("PARA ACCEDER INTRODUZCA UN NOMBRE DE USUARIO VALIDO:");
 		System.out.println("(INTRODUZCA \"0\" PARA SALIR)\n");
 		
@@ -121,10 +121,10 @@ public class InterfazG {
 		System.out.println("\t\t   4. eliminar el perfil de un funcionario   ");
 		System.out.println("\t\t   5. ver los pacientes creados   ");
 		System.out.println("\t\t   6. ver los funcionarios creados    ");
-		System.out.println("\t\t   7. Agragar vacunas   ");
-		System.out.println("\t\t   8. Eliminar vacunas    ");
+		System.out.println("\t\t   7. Agregar vacunas   ");
+		//System.out.println("\t\t   8. Eliminar vacunas    ");
 		System.out.println("\t\t   9. ver vacunas    ");
-		System.out.println("\t\t   99. para ingresar al modo de prueba (generacion de datos aleatoreos)    ");
+		System.out.println("\t\t   99. para ingresar al modo de prueba (generacion de datos aleatorios)    ");
 		System.out.println("(INTRODUZCA \"0\" PARA SALIR)");
 		boolean l = false;
 		while(l!=true) {
@@ -283,7 +283,7 @@ public String[] creacionpacienteScreen() {
 					}
 					}
 				}
-			System.out.println("\nCreacion de paciente exitosa\n");
+			System.out.println("\nCreacion de funcionario exitosa\n");
 			screenMemory.pop();
 			return funcionario;
 			
@@ -297,16 +297,16 @@ public String[] creacionpacienteScreen() {
 			String opcion;
 			
 			System.out.println("\t\tBIENVENIDO A LA SESION DE PRUEBAS\n\n");
-			System.out.println("¿Que desea hacer?: 1. Crear los perfiles de pacientes aleatoreos   ");
-			System.out.println("\t\t   2. Crear los perfiles de funcionarios aleatoreos  ");
+			System.out.println("¿Que desea hacer?: 1. Crear los perfiles de pacientes aleatorios   ");
+			System.out.println("\t\t   2. Crear los perfiles de funcionarios aleatorios  ");
 			System.out.println("\t\t   3. ver los pacientes creados   ");
 			System.out.println("\t\t   4. ver los funcionarios creados    ");
 			System.out.println("\t\t   5. Eliminar los perfiles de Pacientes   ");
 			System.out.println("\t\t   6. Eliminar los perfiles de funcionarios    ");
 			System.out.println("\t\t   7. Remplazar los perfiles de Pacientes   ");
 			System.out.println("\t\t   8. Remplazar los perfiles de funcionarios    ");
-			System.out.println("\t\t   9. Agregar vacunas aleatoreamente   ");
-			System.out.println("\t\t   10.Eliminar vacunas aleatoreamente     ");
+			System.out.println("\t\t   9. Agregar vacunas aleatoriamente   ");
+			System.out.println("\t\t   10.Eliminar vacunas aleatoriamente     ");
 			System.out.println("\t\t   11.ver vacunas      ");
 			System.out.println("(INTRODUZCA \"0\" PARA SALIR)");
 			boolean l = false;
@@ -424,7 +424,7 @@ public String[] creacionpacienteScreen() {
 	public String nombre() {
 		String opcion = null;
 		
-		System.out.println("\t\t Ingres el nombre de quien busca \n\n");
+		System.out.println("\t\t Ingrese el nombre de quien busca \n\n");
 
 		boolean l = false;
 		while(l!=true) {
