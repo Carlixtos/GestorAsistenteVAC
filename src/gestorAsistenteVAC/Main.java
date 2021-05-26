@@ -157,9 +157,21 @@ public class Main {
 		
 		}
 		
-		
-		
+	}
+
+	public void ingresoUsuario(String usuario, String contraseña) {
+		if(usuario.isEmpty() || contraseña.isEmpty()||charVerif(usuario)||charVerif(contraseña)) {
+			
+		}
 		
 	}
+
+	private boolean charVerif(String stringV) {
+		return (stringV.contains(";") || stringV.contains(",") || stringV.contains(".") || stringV.contains("\\"));
+
+	}
+	
+	
+	
 
 }
