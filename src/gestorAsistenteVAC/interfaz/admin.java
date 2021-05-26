@@ -23,11 +23,11 @@ public class admin extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(asistenteInterfaz asistenteInterfaz) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					admin frame = new admin();
+					admin frame = new admin(asistenteInterfaz);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,8 +38,9 @@ public class admin extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @param asistenteInterfaz 
 	 */
-	public admin() {
+	public admin(asistenteInterfaz asistenteInterfaz) {
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 510, 440);
@@ -49,16 +50,20 @@ public class admin extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnDatosPacientes = new JButton("Administracion de datos de pacientes.");
+		btnDatosPacientes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnDatosPacientes.setBorderPainted(false);
 		btnDatosPacientes.setBorder(new LineBorder(new Color(0, 0, 0)));
-		btnDatosPacientes.setBackground(new Color(2, 220, 180));
+		btnDatosPacientes.setBackground(new Color(2, 167, 220));
 		btnDatosPacientes.setForeground(Color.BLACK);
 		btnDatosPacientes.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 		btnDatosPacientes.setBounds(65, 83, 366, 68);
 		contentPane.add(btnDatosPacientes);
 		
 		JButton btnDatosFuncionarios = new JButton("Administracion de datos de funcinarios.");
-		btnDatosFuncionarios.setBackground(new Color(0, 255, 127));
+		btnDatosFuncionarios.setBackground(new Color(2, 167, 220));
 		btnDatosFuncionarios.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnDatosFuncionarios.setBorderPainted(false);
 		btnDatosFuncionarios.setFont(new Font("Times New Roman", Font.PLAIN, 18));
@@ -71,7 +76,7 @@ public class admin extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnAdminVacuna.setBackground(new Color(0, 255, 127));
+		btnAdminVacuna.setBackground(new Color(2, 167, 220));
 		btnAdminVacuna.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnAdminVacuna.setBorderPainted(false);
 		btnAdminVacuna.setBounds(65, 239, 366, 68);
@@ -79,13 +84,18 @@ public class admin extends JFrame {
 		
 		JButton btnGenerGrafica = new JButton("Generador de graficas.");
 		btnGenerGrafica.setFont(new Font("Times New Roman", Font.PLAIN, 18));
-		btnGenerGrafica.setBackground(new Color(0, 255, 127));
+		btnGenerGrafica.setBackground(new Color(2, 167, 220));
 		btnGenerGrafica.setBorderPainted(false);
 		btnGenerGrafica.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnGenerGrafica.setBounds(65, 317, 366, 68);
 		contentPane.add(btnGenerGrafica);
 		
 		JButton btnSalir = new JButton("Salir");
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
 		btnSalir.setVerifyInputWhenFocusTarget(false);
 		btnSalir.setSelected(true);
 		btnSalir.setRolloverEnabled(false);
@@ -102,13 +112,13 @@ public class admin extends JFrame {
 		btnSalir.setBounds(415, 10, 68, 33);
 		contentPane.add(btnSalir);
 		
-		JLabel lblNewLabel = new JLabel("Tue May 25 19:58:55 COT 2021");
-		lblNewLabel.setBounds(10, 13, 149, 33);
-		contentPane.add(lblNewLabel);
+		JLabel lblFecha = new JLabel("Tue May 25 19:58:55 COT 2021");
+		lblFecha.setBounds(10, 13, 149, 33);
+		contentPane.add(lblFecha);
 		
 		JLabel lblfondoAdmin = new JLabel("");
 		lblfondoAdmin.setIcon(new ImageIcon(admin.class.getResource("/gestorAsistenteVAC/imagenes/fondoAdmin.jpg")));
-		lblfondoAdmin.setBounds(10, 10, 557, 462);
+		lblfondoAdmin.setBounds(-12, -95, 807, 629);
 		contentPane.add(lblfondoAdmin);
 	}
 

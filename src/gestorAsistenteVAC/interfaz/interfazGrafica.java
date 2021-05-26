@@ -34,16 +34,19 @@ public class interfazGrafica extends JFrame {
 	private JLabel lblUsuario;
 	private JLabel lblContraseña;
 	private JButton btnEntrar;
-	private JLabel lblNewLabel;
-
+	private JLabel lblfecha;
+	private static asistenteInterfaz asisGrafica;
+	private JLabel lblusuarioInvalido;
+	private boolean errorusuario=true;
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(asistenteInterfaz grafica) {
+		asisGrafica=grafica;
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					interfazGrafica frame = new interfazGrafica();
+					interfazGrafica frame = new interfazGrafica(grafica);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -54,8 +57,10 @@ public class interfazGrafica extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @param asistenteInterfaz 
 	 */
-	public interfazGrafica() {
+	public interfazGrafica(asistenteInterfaz grafica) {
+		asisGrafica=grafica;
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 510, 440);
@@ -93,15 +98,30 @@ public class interfazGrafica extends JFrame {
 		btnEntrar.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnEntrar.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 17));
 		btnEntrar.addActionListener(new ActionListener() {
+		
 			public void actionPerformed(ActionEvent e) {
-				Main prueba=new Main();
-				prueba.ingresoUsuario(textField.getText(), String.valueOf(passwordField.getPassword()));
+				errorusuario=asisGrafica.ingresoUsuario(textField.getText(), String.valueOf(passwordField.getPassword()));
 				textField.setText("");
 				passwordField.setText("");
+				if(!errorusuario) {
+					lblusuarioInvalido.setVisible(true);
+				}
 			}
 		});
 		btnEntrar.setBounds(395, 388, 85, 40);
 		contentPane.add(btnEntrar);
+
+		
+		lblusuarioInvalido = new JLabel("usuario invalido");
+		lblusuarioInvalido.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblusuarioInvalido.setHorizontalAlignment(SwingConstants.CENTER);
+		lblusuarioInvalido.setAlignmentX(Component.CENTER_ALIGNMENT);
+		lblusuarioInvalido.setForeground(new Color(255, 0, 0));
+		lblusuarioInvalido.setBackground(new Color(255, 0, 0));
+		lblusuarioInvalido.setBounds(103, 253, 269, 29);
+		contentPane.add(lblusuarioInvalido);
+		lblusuarioInvalido.setVisible(false);
+		
 		
 		lblContraseña = new JLabel("Contrase\u00F1a");
 		lblContraseña.setHorizontalAlignment(SwingConstants.CENTER);
@@ -144,9 +164,9 @@ public class interfazGrafica extends JFrame {
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		lblNewLabel = new JLabel(new Date().toString());
-		lblNewLabel.setBounds(28, 23, 149, 33);
-		contentPane.add(lblNewLabel);
+		lblfecha = new JLabel(new Date().toString());
+		lblfecha.setBounds(28, 23, 149, 33);
+		contentPane.add(lblfecha);
 		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -157,5 +177,5 @@ public class interfazGrafica extends JFrame {
 		lblFondo.setIcon(new ImageIcon(interfazGrafica.class.getResource("/gestorAsistenteVAC/imagenes/fondo.jpg")));
 		lblFondo.setBounds(0, -40, 625, 524);
 		contentPane.add(lblFondo);
-	}
+	}	
 }
