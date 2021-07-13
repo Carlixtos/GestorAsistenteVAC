@@ -16,7 +16,7 @@ public class Main {
 		Data datos= new Data();
 		long tiempoinicio,tiempofinal;
 		asistenteInterfaz grafica=new asistenteInterfaz();
-		grafica.init();
+		grafica.init(datos);
 		grafica.run();
 		
 		

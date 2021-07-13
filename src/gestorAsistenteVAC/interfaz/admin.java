@@ -19,15 +19,16 @@ import java.awt.event.ActionEvent;
 public class admin extends JFrame {
 
 	private JPanel contentPane;
-
+	private static asistenteInterfaz asisGrafica;
 	/**
 	 * Launch the application.
 	 */
-	public static void main(asistenteInterfaz asistenteInterfaz) {
+	public static void main(asistenteInterfaz grafica) {
+		asisGrafica=grafica;
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					admin frame = new admin(asistenteInterfaz);
+					admin frame = new admin(grafica);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,7 +41,8 @@ public class admin extends JFrame {
 	 * Create the frame.
 	 * @param asistenteInterfaz 
 	 */
-	public admin(asistenteInterfaz asistenteInterfaz) {
+	public admin(asistenteInterfaz grafica) {
+		asisGrafica=grafica;
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 510, 440);
@@ -52,6 +54,8 @@ public class admin extends JFrame {
 		JButton btnDatosPacientes = new JButton("Administracion de datos de pacientes.");
 		btnDatosPacientes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				grafica.setScreen(11);
+				
 			}
 		});
 		btnDatosPacientes.setBorderPainted(false);
@@ -63,6 +67,11 @@ public class admin extends JFrame {
 		contentPane.add(btnDatosPacientes);
 		
 		JButton btnDatosFuncionarios = new JButton("Administracion de datos de funcinarios.");
+		btnDatosFuncionarios.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				grafica.setScreen(12);
+			}
+		});
 		btnDatosFuncionarios.setBackground(new Color(2, 167, 220));
 		btnDatosFuncionarios.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnDatosFuncionarios.setBorderPainted(false);
@@ -74,6 +83,7 @@ public class admin extends JFrame {
 		btnAdminVacuna.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 		btnAdminVacuna.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				grafica.setScreen(13);
 			}
 		});
 		btnAdminVacuna.setBackground(new Color(2, 167, 220));
