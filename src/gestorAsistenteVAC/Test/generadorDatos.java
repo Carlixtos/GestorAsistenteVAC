@@ -123,7 +123,7 @@ public class generadorDatos {
     }
 	public void eliminarPacientes(int l, Data datos) {
 		for (int i = l-1;i>0;i--) {
-			datos.paciente.pacientes.nodeDrop(datos.paciente.pacientes.nodeConsult(i));
+			//datos.paciente.pacientes.nodeDrop(datos.paciente.pacientes.nodeConsult(i));
 		}
 	}
 	public void eliminarFuncionarios(int l, Data datos) {
@@ -135,7 +135,7 @@ public class generadorDatos {
 	public void remplazarPacientes(int l, Data datos) {
 		for (int i = l-1;i>=0;i--) {	
 			Paciente p= new Paciente("cronos", "jupiter", i, "Dios", "inmortal", i, "celestial", "Creador", "todas", i);
-			datos.paciente.pacientes.keyReplace(datos.paciente.pacientes.nodeConsult(i), p);
+		//	datos.paciente.pacientes.keyReplace(datos.paciente.pacientes.nodeConsult(i), p);
 		}
 		
 	}

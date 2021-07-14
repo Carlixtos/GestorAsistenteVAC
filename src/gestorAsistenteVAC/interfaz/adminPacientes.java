@@ -27,7 +27,7 @@ import java.awt.event.MouseEvent;
 public class adminPacientes extends JFrame {
 	private JPanel contentPane;
 	private static asistenteInterfaz asisGrafica;
-	private JTable table;
+	private JTable tDatos;
 	private JTextField tNombre;
 	private JTextField tApellido;
 	private JTextField tDocumento;
@@ -35,26 +35,17 @@ public class adminPacientes extends JFrame {
 	private JTextField tEdad;
 	private JTextField tGenero;
 	private JTextField tSangre;
-	private JTextField tTvacuna;
-	private JTextField tDosis;
 	private JLabel lblNewLabel_4;
 	private JLabel lblNewLabel_5;
 	private JLabel lblNewLabel_6;
 	private JLabel lblNewLabel_7;
 	private JLabel lblNewLabel_8;
 	private JLabel lblNewLabel_9;
-	private JLabel lblNewLabel_10;
-	private JLabel lblNewLabel_11;
 	private JLabel lblNewLabel_12;
 	private JLabel lblNewLabel_13;
-	private JLabel lblNewLabel_14;
-	private JLabel lblNewLabel_15;
-	private JLabel lblNewLabel_16;
-	private JLabel lblNewLabel_17;
-	private JLabel lblNewLabel_18;
-	private JLabel lblNewLabel_19;
-	private JLabel lblNewLabel_20;
-	private JLabel lblNewLabel_21;
+	private JTable tVisible;
+	private JTextField tVacuna;
+	private JTextField tDosis;
 
 	/**
 	 * Launch the application.
@@ -81,7 +72,7 @@ public class adminPacientes extends JFrame {
 		asisGrafica=grafica;
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1000, 434);
+		setBounds(100, 100, 510, 440);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -91,91 +82,116 @@ public class adminPacientes extends JFrame {
 		btnModificar.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int seleccion=table.getSelectedRow();
-				table.setValueAt(tNombre.getText(),seleccion, 0);
-				table.setValueAt(tApellido.getText(),seleccion, 1);
-				table.setValueAt(tEdad.getText(),seleccion, 2);
-				table.setValueAt(tGenero.getText(),seleccion, 3);
-				table.setValueAt(tTdocumento.getText(),seleccion, 4);
-				table.setValueAt(tDocumento.getText(),seleccion, 5);
-				table.setValueAt(tSangre.getText(),seleccion, 6);
-				table.setValueAt("Paciente",seleccion, 7);
-				table.setValueAt(tTvacuna.getText(),seleccion, 8);
-				table.setValueAt(tDosis.getText(),seleccion, 9);
+				int seleccion=tVisible.getSelectedRow();
+				String nom = tDatos.getValueAt(seleccion, 5).toString();
+				
+				tVisible.setValueAt(tNombre.getText(),seleccion, 0);
+				tVisible.setValueAt(tDocumento.getText(),seleccion, 1);
+				
+				String[] nDatos=new String[10];
+				nDatos[0]=tNombre.getText();
+				nDatos[1]=tApellido.getText();
+				nDatos[2]=tEdad.getText();
+				nDatos[3]=tGenero.getText();
+				nDatos[4]=tTdocumento.getText();
+				nDatos[5]=tDocumento.getText();
+				nDatos[6]=tSangre.getText();
+				nDatos[7]="Pacientes";
+				nDatos[8]=tVacuna.getText();
+				nDatos[9]=tDosis.getText();
+
+				for(int i=0;i<10;i++) {
+					tDatos.setValueAt(nDatos[i],seleccion, i);
+				}
+				
+				asisGrafica.modificarPacientes(nom,nDatos);
+				actualizarTabla(tDatos,tVisible,asisGrafica.getDatosPacientes());
+				
 				limpiar();
-			//	actualizarTabla(table,asisGrafica.getDatos());
 			}
 		});
 		
 		JButton btnEliminar = new JButton("Eliminar");
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int seleccion=table.getSelectedRow();
-				((DefaultTableModel) table.getModel()).removeRow(seleccion);
+				int seleccion=tVisible.getSelectedRow();
+				asisGrafica.eliminarPacientes(tDatos.getValueAt(seleccion, 0).toString());
+				((DefaultTableModel) tDatos.getModel()).removeRow(seleccion);
+				((DefaultTableModel) tVisible.getModel()).removeRow(seleccion);
 				limpiar();
+				
+				//actualizarTabla(tDatos,tVisible,asisGrafica.getDatosPacientes());
+			}
+		});
+		
+		tVisible = new JTable();
+		tVisible.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null},
+				{null, null},
+			},
+			new String[] {
+				"New column", "New column"
+			}
+		));
+		tVisible.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			int seleccion=tVisible.getSelectedRow();
+			tNombre.setText(tDatos.getValueAt(seleccion, 0).toString());
+			tApellido.setText(tDatos.getValueAt(seleccion, 1).toString());
+			tEdad.setText(tDatos.getValueAt(seleccion, 2).toString());
+			tGenero.setText(tDatos.getValueAt(seleccion, 3).toString());
+			tTdocumento.setText(tDatos.getValueAt(seleccion, 4).toString());
+			tDocumento.setText(tDatos.getValueAt(seleccion, 5).toString());
+			tSangre.setText(tDatos.getValueAt(seleccion, 6).toString());
+			tVacuna.setText(tDatos.getValueAt(seleccion, 8).toString());
+			tDosis.setText(tDatos.getValueAt(seleccion, 9).toString());
+			//actualizarTabla(tDatos,tVisible,asisGrafica.getDatosPacientes());
+				
+			}
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				
+			}
+			@Override
+			public void mousePressed(MouseEvent e) {
 				
 			}
 		});
 		
-		lblNewLabel_21 = new JLabel("Perfil");
-		lblNewLabel_21.setFont(new Font("Times New Roman", Font.BOLD, 10));
-		lblNewLabel_21.setBounds(800, 58, 86, 20);
-		contentPane.add(lblNewLabel_21);
+		JLabel lblNewLabel_11 = new JLabel("Dosis");
+		lblNewLabel_11.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		lblNewLabel_11.setBounds(22, 381, 86, 20);
+		contentPane.add(lblNewLabel_11);
 		
-		lblNewLabel_17 = new JLabel("Tipo de Sangre");
-		lblNewLabel_17.setFont(new Font("Times New Roman", Font.BOLD, 10));
-		lblNewLabel_17.setBounds(714, 58, 72, 20);
-		contentPane.add(lblNewLabel_17);
+		tVacuna = new JTextField();
+		tVacuna.setColumns(10);
+		tVacuna.setBounds(129, 351, 120, 20);
+		contentPane.add(tVacuna);
 		
-		lblNewLabel_18 = new JLabel("Vacuna");
-		lblNewLabel_18.setFont(new Font("Times New Roman", Font.BOLD, 10));
-		lblNewLabel_18.setBounds(863, 58, 86, 20);
-		contentPane.add(lblNewLabel_18);
+		tDosis = new JTextField();
+		tDosis.setColumns(10);
+		tDosis.setBounds(129, 378, 120, 20);
+		contentPane.add(tDosis);
 		
-		lblNewLabel_19 = new JLabel("Dosis");
-		lblNewLabel_19.setFont(new Font("Times New Roman", Font.BOLD, 10));
-		lblNewLabel_19.setBounds(935, 58, 86, 20);
-		contentPane.add(lblNewLabel_19);
+		JLabel lblNewLabel_10_1 = new JLabel("Vacuna");
+		lblNewLabel_10_1.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		lblNewLabel_10_1.setBounds(22, 351, 86, 20);
+		contentPane.add(lblNewLabel_10_1);
+
+		tVisible.setBounds(284, 83, 216, 330);
+		contentPane.add(tVisible);
 		
-		lblNewLabel_20 = new JLabel("Tipo de documento");
-		lblNewLabel_20.setFont(new Font("Times New Roman", Font.BOLD, 10));
-		lblNewLabel_20.setBounds(559, 58, 86, 20);
-		contentPane.add(lblNewLabel_20);
-		
-		lblNewLabel_16 = new JLabel("Documento");
-		lblNewLabel_16.setFont(new Font("Times New Roman", Font.BOLD, 11));
-		lblNewLabel_16.setBounds(650, 57, 72, 20);
-		contentPane.add(lblNewLabel_16);
-		
-		lblNewLabel_15 = new JLabel("Genero");
-		lblNewLabel_15.setFont(new Font("Times New Roman", Font.BOLD, 10));
-		lblNewLabel_15.setBounds(500, 58, 86, 20);
-		contentPane.add(lblNewLabel_15);
-		
-		lblNewLabel_14 = new JLabel("Edad");
-		lblNewLabel_14.setFont(new Font("Times New Roman", Font.BOLD, 10));
-		lblNewLabel_14.setBounds(442, 58, 86, 20);
-		contentPane.add(lblNewLabel_14);
-		
-		lblNewLabel_13 = new JLabel("Apellido");
+		lblNewLabel_13 = new JLabel("Cedula");
 		lblNewLabel_13.setFont(new Font("Times New Roman", Font.BOLD, 10));
-		lblNewLabel_13.setBounds(363, 58, 86, 20);
+		lblNewLabel_13.setBounds(400, 58, 86, 20);
 		contentPane.add(lblNewLabel_13);
 		
 		lblNewLabel_12 = new JLabel("Nombre");
 		lblNewLabel_12.setFont(new Font("Times New Roman", Font.BOLD, 10));
-		lblNewLabel_12.setBounds(294, 58, 86, 20);
+		lblNewLabel_12.setBounds(304, 58, 86, 20);
 		contentPane.add(lblNewLabel_12);
-		
-		lblNewLabel_11 = new JLabel("Dosis");
-		lblNewLabel_11.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblNewLabel_11.setBounds(22, 379, 86, 20);
-		contentPane.add(lblNewLabel_11);
-		
-		lblNewLabel_10 = new JLabel("Vacuna");
-		lblNewLabel_10.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblNewLabel_10.setBounds(22, 352, 86, 20);
-		contentPane.add(lblNewLabel_10);
 		
 		lblNewLabel_9 = new JLabel("Tipo de Sangre");
 		lblNewLabel_9.setFont(new Font("Times New Roman", Font.PLAIN, 16));
@@ -212,16 +228,6 @@ public class adminPacientes extends JFrame {
 		lblNewLabel_3.setBounds(22, 160, 86, 20);
 		contentPane.add(lblNewLabel_3);
 		
-		tDosis = new JTextField();
-		tDosis.setColumns(10);
-		tDosis.setBounds(129, 376, 120, 20);
-		contentPane.add(tDosis);
-		
-		tTvacuna = new JTextField();
-		tTvacuna.setColumns(10);
-		tTvacuna.setBounds(129, 349, 120, 20);
-		contentPane.add(tTvacuna);
-		
 		tSangre = new JTextField();
 		tSangre.setColumns(10);
 		tSangre.setBounds(129, 322, 120, 20);
@@ -257,35 +263,20 @@ public class adminPacientes extends JFrame {
 		contentPane.add(tNombre);
 		tNombre.setColumns(10);
 		
-		table = new JTable(null,new String[] {
+		tDatos = new JTable(null,new String[] {
 				"Nombre", "Cedula"
 			});
-		table.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				int seleccion=table.getSelectedRow();
-				tNombre.setText(table.getValueAt(seleccion, 0).toString());
-				tApellido.setText(table.getValueAt(seleccion, 1).toString());
-				tEdad.setText(table.getValueAt(seleccion, 2).toString());
-				tGenero.setText(table.getValueAt(seleccion, 3).toString());
-				tTdocumento.setText(table.getValueAt(seleccion, 4).toString());
-				tDocumento.setText(table.getValueAt(seleccion, 5).toString());
-				tSangre.setText(table.getValueAt(seleccion, 6).toString());
-				tTvacuna.setText(table.getValueAt(seleccion, 8).toString());
-				tDosis.setText(table.getValueAt(seleccion, 9).toString());
-			}
-		});
-		table.setModel(new DefaultTableModel(
+		tDatos.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
+				{null, null},
+				{null, null},
 			},
 			new String[] {
-				"New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "Nombre", "Cedula"
+				"Nombre", "Cedula"
 			}
 		));
-		table.setBounds(284, 83, 706, 330);
-		contentPane.add(table);
+		tDatos.setBounds(284, 83, 216, 330);
+		//contentPane.add(tDatos);
 
 		
 		
@@ -320,10 +311,11 @@ public class adminPacientes extends JFrame {
 				paciente[5]=tDocumento.getText();
 				paciente[6]=tSangre.getText();
 				paciente[7]="Paciente";
-				paciente[8]=tTvacuna.getText();
+				paciente[8]=tVacuna.getText();
 				paciente[9]=tDosis.getText();
+
 				asisGrafica.agregarPaciente(paciente);
-				actualizarTabla(table,asisGrafica.getDatosPacientes());
+				actualizarTabla(tDatos,tVisible,asisGrafica.getDatosPacientes());
 				limpiar();
 			}
 		});
@@ -344,7 +336,7 @@ public class adminPacientes extends JFrame {
 		JLabel lblNewLabel = new JLabel("Pacientes");
 		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(408, 11, 226, 33);
+		lblNewLabel.setBounds(294, 26, 226, 33);
 		contentPane.add(lblNewLabel);
 		
 		JButton btnSalir = new JButton("Regresar");
@@ -376,7 +368,7 @@ public class adminPacientes extends JFrame {
 		
 		JLabel lblfondoAdmin = new JLabel("");
 		lblfondoAdmin.setIcon(new ImageIcon(admin.class.getResource("/gestorAsistenteVAC/imagenes/fondoAdmin.jpg")));
-		lblfondoAdmin.setBounds(-12, -88, 1012, 527);
+		lblfondoAdmin.setBounds(0, -51, 522, 543);
 		contentPane.add(lblfondoAdmin);
 	}
 	void limpiar() {
@@ -387,12 +379,24 @@ public class adminPacientes extends JFrame {
 		tTdocumento.setText("");
 		tDocumento.setText("");
 		tSangre.setText("");
-		tTvacuna.setText("");
+		tVacuna.setText("");
 		tDosis.setText("");
 		
 	}
-	void actualizarTabla(JTable tabla, String[][] datos) {
-		 tabla.setModel(new javax.swing.table.DefaultTableModel(datos,new String []{"nombre","apellido","edad","genero","tipo de Documento", "Documento", "tipo de sangre","perfil","tipo de vacuna", "dosis"}
+	void actualizarTabla(JTable tabla, JTable tVisible, String[][] datos) {
+		 tabla.setModel(new javax.swing.table.DefaultTableModel(datos,new String []{"nombre","apellido","edad","genero","tipo de Documento", "Documento", "tipo de sangre","perfil","tipo de vacuna","dosis"}
 			        ));
+		 String[][] datosV=new String[datos.length][2];
+		 int i=0;
+		while(i<datos.length) {
+		 datosV[i][0]=datos[i][0];
+		 datosV[i][1]=datos[i][5];
+		 i++;
+		 }
+		 tVisible.setModel(new javax.swing.table.DefaultTableModel(datosV,new String []{"nombre", "Documento"}
+			        ));
+	}
+	public JTable getTVisible() {
+		return tVisible;
 	}
 }

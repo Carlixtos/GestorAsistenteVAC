@@ -52,27 +52,29 @@ public class adminVacunas extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel_3 = new JLabel("23");
+		//JLabel lblNewLabel_3 = new JLabel(String.valueOf(asisGrafica.getVacuanas().getDosis()));
+		JLabel lblNewLabel_3 = new JLabel("   30   ");
 		lblNewLabel_3.setFont(new Font("Times New Roman", Font.ITALIC, 20));
 		lblNewLabel_3.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3.setBounds(161, 322, 195, 42);
 		contentPane.add(lblNewLabel_3);
 		
-		JLabel lblNewLabel_1 = new JLabel("74");
+		JLabel lblNewLabel_1 = new JLabel("  28  ");
 		lblNewLabel_1.setFont(new Font("Times New Roman", Font.ITALIC, 20));
 		lblNewLabel_1.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setBounds(305, 188, 195, 42);
 		contentPane.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel = new JLabel("59");
+		JLabel lblNewLabel = new JLabel("  28  ");
 		lblNewLabel.setFont(new Font("Times New Roman", Font.ITALIC, 20));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblNewLabel.setBounds(10, 188, 195, 42);
 		contentPane.add(lblNewLabel);
 		
+		//JLabel lblNewLabel_2_2 = new JLabel(asisGrafica.getVacuanas().getTipo());
 		JLabel lblNewLabel_2_2 = new JLabel("Janssen");
 		lblNewLabel_2_2.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblNewLabel_2_2.setHorizontalAlignment(SwingConstants.CENTER);

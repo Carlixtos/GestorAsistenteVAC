@@ -50,8 +50,10 @@ public class funcionariosData {
 	
 	
 	public void vernombres() {
+		NodeU<Funcionario> aux = this.funcionarios.getHead();
 		for (int i = 0;i<this.funcionarios.getLength();i++) {
-			System.out.print("\t\t"+funcionarios.nodeConsult(i).getNombre()+"\t\t");
+			System.out.print("\t\t"+aux.getKey().getNombre()+"\t\t");
+			aux=aux.getNext();
 		}
 		System.out.println(" ");
 	}

@@ -4,6 +4,9 @@ import gestorAsistenteVAC.data.Data;
 import gestorAsistenteVAC.data.Profile;
 import gestorAsistenteVAC.gest.Funcionario;
 import gestorAsistenteVAC.gest.Paciente;
+import gestorAsistenteVAC.gest.Vacunas;
+import gestorAsistenteVAC.util.ArrayDinamic;
+import gestorAsistenteVAC.util.NodeA;
 import gestorAsistenteVAC.util.NodeU;
 import gestorAsistenteVAC.util.StackU;
 
@@ -146,26 +149,45 @@ public class asistenteInterfaz {
 		
 	}
 	public String[][] getDatosPacientes() {
-		NodeU<Paciente> n = datos.paciente.pacientes.getHead();
-		String[][] tabla = new String[datos.paciente.pacientes.getLength()][10];
-		int i=0;
-		while(i<datos.paciente.pacientes.getLength()) {
-		tabla[i][0]=n.getKey().getNombre();
-		tabla[i][1]=n.getKey().getApellido();
-		tabla[i][2]=String.valueOf(n.getKey().getEdad());
-		tabla[i][3]=n.getKey().getGenero();
-		tabla[i][4]=n.getKey().getTipoDocumento();
-		tabla[i][5]=String.valueOf(n.getKey().getDocumento());
-		tabla[i][6]=n.getKey().getSangre();
-		tabla[i][7]=n.getKey().getPerfil();
-		tabla[i][8]=n.getKey().getTipoVacuna();
-		tabla[i][9]=String.valueOf(n.getKey().getDosis());
 		
-		n=n.getNext();
-		i++;
-		};
+		/*inOrderPrintAux(root.getLeft());
+		System.out.print(root.getKey()+" ");
+		inOrderPrintAux(root.getRight());*/
+		String[][] tabla = new String[datos.paciente.pacientes.aproxLength(datos.paciente.pacientes.getRoot())][10];
+		int n=0;
+		auxGetdatosPacientes(datos.paciente.pacientes.getRoot(),tabla,n);
 		return tabla;	
 	}
+	private int auxGetdatosPacientes(NodeA<Paciente> root, String[][] tabla,int n) {
+		
+    	if(root.getLeft()!=null){
+    		//n++;
+    		n=auxGetdatosPacientes(root.getLeft(),tabla,n);
+    		}
+    	if(root.getRight()!=null){
+    		//n++;
+    		n=auxGetdatosPacientes(root.getRight(),tabla,n);
+    		}
+    	n=guardarDatosPacientes(root.getValue(),tabla,n);
+    	return n;
+		
+	}	
+	private int guardarDatosPacientes(Paciente paciente, String[][] tabla,int n) {
+		tabla[n][0]=paciente.getNombre();
+		tabla[n][1]=paciente.getApellido();
+		tabla[n][2]=String.valueOf(paciente.getEdad());
+		tabla[n][3]=paciente.getGenero();
+		tabla[n][4]=paciente.getTipoDocumento();
+		tabla[n][5]=String.valueOf(paciente.getDocumento());
+		tabla[n][6]=paciente.getSangre();
+		tabla[n][7]=paciente.getPerfil();
+		tabla[n][8]=paciente.getTipoVacuna();
+		tabla[n][9]=String.valueOf(paciente.getDosis());
+		n++;
+		return n;
+	}
+	
+	
 	public String[][] getDatosFuncionario() {
 		NodeU<Funcionario> n = datos.funcionario.funcionarios.getHead();
 		String[][] tabla = new String[datos.funcionario.funcionarios.getLength()][9];
@@ -203,6 +225,21 @@ public class asistenteInterfaz {
 			datos.funcionario.remplazar(nom,nDatos);
 		}
 		
+	}
+	public void modificarPacientes(String nom, String[] nDatos) {
+		if(datos.paciente.existe(nom)) {
+			datos.paciente.remplazar(nom,nDatos);
+		}
+	}
+	public void eliminarPacientes(String elim) {
+		if(datos.paciente.existe(elim)) {
+			datos.paciente.eliminar(elim);
+			}
+		
+	}
+	public Vacunas getVacuanas() {
+		
+		return datos.vacunas.vacunas.getHead().getKey();
 	}
 	
 	
