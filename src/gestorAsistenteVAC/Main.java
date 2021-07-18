@@ -15,9 +15,12 @@ public class Main {
 		InterfazG gestorIntf = new InterfazG();
 		Data datos= new Data();
 		long tiempoinicio,tiempofinal;
+		asistenteInterfaz grafica=new asistenteInterfaz();
+		grafica.init(datos);
+		grafica.run();
 		
 		
-
+/*
 		while(!gestorIntf.noScreens()) {
 			switch(gestorIntf.getScreen()) {
 				case 0:{
@@ -155,10 +158,7 @@ public class Main {
 				
 		}
 		
-		}
-		
-		
-		
+		}*/
 		
 	}
 

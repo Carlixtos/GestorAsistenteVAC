@@ -1,44 +1,44 @@
 package gestorAsistenteVAC.data;
 
 import gestorAsistenteVAC.gest.Paciente;
-import gestorAsistenteVAC.util.LinkedListU;
+import gestorAsistenteVAC.util.AVL;
+import gestorAsistenteVAC.util.NodeA;
+
 
 public class pacienteData {
 	
-	public LinkedListU<Paciente> pacientes;
+	public AVL<Paciente> pacientes;
 	
 	public pacienteData(){
-		this.pacientes=new LinkedListU<Paciente>();
+		this.pacientes=new AVL<Paciente>();
 	}
 	
 	public void agregar(String[] pa) {
 		Paciente paciente=new Paciente(pa[0],pa[1], Integer.valueOf(pa[2]),pa[3], pa[4],Integer.valueOf(pa[5]), pa[6],pa[7],pa[8],Integer.valueOf(pa[9]));
-		this.pacientes.addFront(paciente);
+		this.pacientes.insert(Integer.valueOf(pa[5]),paciente);
 	}
 
-	public boolean existe(String nombre) {
-		for (int i = 0;i<this.pacientes.getLength();i++) {
-			if(this.pacientes.nodeConsult(i).getNombre().equals(nombre)) {;
-				return true;
-			}
-		}
+	public boolean existe(String key) {		
+		try {
+		this.pacientes.find(Integer.valueOf(key));
+		return true;
+		}catch(NullPointerException e) {
 		return false;
+		}
 	}
 
-	public void eliminar(String elim) {
-		for (int i = 0;i<this.pacientes.getLength();i++) {
-			if(this.pacientes.nodeConsult(i).getNombre().equals(elim)) {
-				this.pacientes.nodeDrop(this.pacientes.nodeConsult(i));
-				break;
-			}
-		}	
+	public void eliminar(String key) {
+		this.pacientes.delete(Integer.valueOf(key));
 	}
 
 	public void vernombres() {
-		for (int i = 0;i<this.pacientes.getLength();i++) {
-			System.out.print("\t\t"+pacientes.nodeConsult(i).getNombre()+"\t\t");
-		}
-		System.out.println(" ");
+		//this.pacientes.inOrderPrint();
+		this.pacientes.printTree(this.pacientes.getRoot(), "  ", false);
+	}
+
+	public void remplazar(String key, String[] pa) {
+		this.pacientes.delete(Integer.valueOf(key));
+		this.agregar(pa);
 	}
 	
 }

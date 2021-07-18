@@ -182,7 +182,10 @@ public class LinkedListU<T> {
 				if(nodeTemp == head) {
 					head = nodeTemp.getNext();
 					if (nodeTemp.getNext()!=null) {
-					nodeTemp.getNext().setPrev(null);
+						nodeTemp.getNext().setPrev(null);
+					}
+					else {
+						head = nodeTemp.getNext();
 					}
 				}
 				
