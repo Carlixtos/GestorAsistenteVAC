@@ -2,9 +2,7 @@ package gestorAsistenteVAC;
 
 import gestorAsistenteVAC.util.*;
 import gestorAsistenteVAC.interfaz.*;
-import gestorAsistenteVAC.Test.LinkedListTest;
-import gestorAsistenteVAC.Test.StackTest;
-import gestorAsistenteVAC.Test.generadorDatos;
+import gestorAsistenteVAC.Test.*;
 import gestorAsistenteVAC.data.*;
 
 
@@ -18,6 +16,14 @@ public class Main {
 		asistenteInterfaz grafica=new asistenteInterfaz();
 		grafica.init(datos);
 		grafica.run();
+		
+		
+		//AVLTest.velTest();
+		ComparacionRendimientoE2 comparador=new ComparacionRendimientoE2();
+		comparador.agregarTest(datos, 10000);
+		comparador.existeTest(datos);
+		
+		
 		
 		
 /*

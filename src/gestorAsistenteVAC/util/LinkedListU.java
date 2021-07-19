@@ -77,12 +77,12 @@ public class LinkedListU<T> {
 	 */
 	public void addFront(T key) {
 		NodeU<T> node = new NodeU<T>(key);
+		NodeU<T> nodetp;
 		
 		if(isEmpty()) {
 			head = node;
 			tail = head;
 		}
-		
 		else {
 			node.setNext(head);
 			head.setPrev(node);

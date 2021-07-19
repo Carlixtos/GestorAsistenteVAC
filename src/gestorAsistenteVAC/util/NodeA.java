@@ -3,6 +3,7 @@ package gestorAsistenteVAC.util;
 public class NodeA<T> {
 	private T value;
     private int key;
+    private int height;
 	private NodeA<T> right;
 	private NodeA<T> left;
 	private NodeA<T> parent;
@@ -17,6 +18,7 @@ public class NodeA<T> {
 		right=null;
 		left=null;
 		parent=null;
+		height=0;
 	}
 	
 	/**
@@ -25,6 +27,14 @@ public class NodeA<T> {
 	 */
 	public void setKey(int key) {
 		this.key = key;
+	}
+	
+	public void setHeight(int height) {
+		this.height=height;
+	}
+	
+	public int getHeight() {
+		return height;
 	}
 	
 	public void setRight(NodeA<T> right) {

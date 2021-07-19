@@ -6,19 +6,19 @@ public class AVL<T> extends BST<T>{
         super();
     }
 
-    AVL(int key,T value){
+    public AVL(int key,T value){
         super(key,value);
     }
 
     //Calcula la altura del arbol
-    public int height(){
-        return heightAux(this.root);
+    public int height(NodeA node){
+        if (node==null)return -1;
+        return node.getHeight();
     }
     
     //Calcula la altura de un nodo
-    protected int heightAux(NodeA<T> node){
-        if(node==null)return -1;
-        else{return Math.max(heightAux(node.getLeft()),heightAux(node.getRight()))+1;}
+    public void heightUpdate(NodeA<T> node){
+        node.setHeight(Math.max(height(node.getLeft()),height(node.getRight()))+1);
     }
 
     protected void leftRotate(NodeA<T> node){
@@ -37,7 +37,10 @@ public class AVL<T> extends BST<T>{
         if(node.getRight()!=null)node.getRight().setParent(node);
 
         nodeRight.setLeft(node);
-        node.setParent(nodeRight);  
+        node.setParent(nodeRight);
+        
+        heightUpdate(node);
+        heightUpdate(nodeRight);
     }
 
     protected void rightRotate(NodeA<T> node){
@@ -57,14 +60,17 @@ public class AVL<T> extends BST<T>{
 
         nodeLeft.setRight(node);
         node.setParent(nodeLeft);
+        
+        heightUpdate(node);
+        heightUpdate(nodeLeft);
     }
 
     protected NodeA<T> rebalance(NodeA<T> node){
-        int hLeft=heightAux(node.getLeft());
-        int hRight=heightAux(node.getRight());
+        int hLeft=height(node.getLeft());
+        int hRight=height(node.getRight());
 
         if(hLeft>=2+hRight){
-            if(heightAux(node.getLeft().getLeft())>=heightAux(node.getLeft().getRight())){
+            if(node.getLeft().getLeft().getHeight()>=node.getLeft().getRight().getHeight()){
                 rightRotate(node);
             }
             else{
@@ -74,7 +80,7 @@ public class AVL<T> extends BST<T>{
             return node.getParent();
         }
         else if(hRight>=2+hLeft){
-            if(heightAux(node.getRight().getRight())>=heightAux(node.getRight().getLeft())){
+            if(node.getRight().getRight().getHeight()>=node.getRight().getLeft().getHeight()){
                 leftRotate(node);
             }
             else{
