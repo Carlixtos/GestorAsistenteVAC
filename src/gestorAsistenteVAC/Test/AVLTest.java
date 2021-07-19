@@ -7,7 +7,7 @@ public class AVLTest {
 	
 	public static void velTest() {
 		generadorDatos gen=new generadorDatos();
-		AVL<String> tmp=new AVL<String>(13,"A");
+		AVL<String> tmp=new AVL<String>();
 		
 		
 		long t1;
@@ -15,13 +15,26 @@ public class AVLTest {
 		
 		t1=System.currentTimeMillis();
 		
-		for(int i=0;i<10000;++i) {
-			tmp.insert(gen.numeroAleatorioEnRango(0,20000), "GON");
-		}
+		
+		tmp.insert(7, null);
+		tmp.insert(6, null);
+		tmp.insert(5, null);
+
+		tmp.insert(1, null);
+		tmp.insert(2, null);
+		
+		tmp.insert(3, null);
+		tmp.insert(4, null);
+		
+		System.out.println(tmp.getRoot().getKey());
+		System.out.println(tmp.getRoot().getLeft().getKey());
+		System.out.println(tmp.getRoot().getLeft().getRight().getKey());
 		
 		t2=System.currentTimeMillis();
 		
 		System.out.println(Long.toString(t2-t1));
+		tmp.inOrderPrint();
+		System.out.println("\n"+tmp.getRoot().getHeight());
 		
 	} 
 

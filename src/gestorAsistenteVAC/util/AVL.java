@@ -66,11 +66,12 @@ public class AVL<T> extends BST<T>{
     }
 
     protected NodeA<T> rebalance(NodeA<T> node){
+    	heightUpdate(node);
         int hLeft=height(node.getLeft());
         int hRight=height(node.getRight());
 
         if(hLeft>=2+hRight){
-            if(node.getLeft().getLeft().getHeight()>=node.getLeft().getRight().getHeight()){
+            if(height(node.getLeft().getLeft())>=height(node.getLeft().getRight())){
                 rightRotate(node);
             }
             else{
@@ -80,7 +81,7 @@ public class AVL<T> extends BST<T>{
             return node.getParent();
         }
         else if(hRight>=2+hLeft){
-            if(node.getRight().getRight().getHeight()>=node.getRight().getLeft().getHeight()){
+            if(height(node.getRight().getRight())>=height(node.getRight().getLeft())){
                 leftRotate(node);
             }
             else{
