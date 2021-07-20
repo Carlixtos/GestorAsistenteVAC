@@ -158,7 +158,7 @@ public class Pruebasiteradas extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 				int tiempo =asisGrafica.TpacientesAgregar(Integer.valueOf(tnumPacientes.getText()));
-				lAvisoPacientes.setText("<html>Pacientes creados con exito<p>Tiempo requerido: <html>"+tiempo+" milisegundos.");
+				lAvisoPacientes.setText("<html>Pacientes creados con exito<p>Tiempo requerido: <html>"+tiempo+" milisegundos. ");
 				}
 				catch(NullPointerException e1) {
 					System.out.println(" Campo vacio || dato invalido ");
