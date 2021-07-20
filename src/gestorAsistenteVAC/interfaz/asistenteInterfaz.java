@@ -1,5 +1,6 @@
 package gestorAsistenteVAC.interfaz;
 
+import gestorAsistenteVAC.Test.generadorDatos;
 import gestorAsistenteVAC.data.Data;
 import gestorAsistenteVAC.data.Profile;
 import gestorAsistenteVAC.gest.Funcionario;
@@ -18,7 +19,12 @@ public class asistenteInterfaz {
 	private adminPacientes aPaci;
 	private adminFuncionarios aFun;
 	private adminVacunas aVac;
+	private Pruebasmenu tMenu;
+	private Pruebasiteradas tIterado;
+	private PruebasDatos tDatos;
 	private Data datos;
+	private generadorDatos gen;
+	
 	
 	public asistenteInterfaz(){
 		this.screenMemory = new StackU<Integer>();
@@ -31,7 +37,10 @@ public class asistenteInterfaz {
 		aPaci=new adminPacientes(this);
 		aFun=new adminFuncionarios(this);
 		aVac=new adminVacunas(this);
-		
+		tIterado= new Pruebasiteradas(this);
+		tDatos=new PruebasDatos(this);
+		tMenu= new Pruebasmenu(this);
+		gen= new generadorDatos();
 	}
 	
 	
@@ -48,14 +57,28 @@ public class asistenteInterfaz {
 				}
 				case 11:{
 					aPaci.setVisible(true);
+					aPaci.actualizar();
 					break;
 				}
 				case 12:{
 					aFun.setVisible(true);
+					aFun.actualizar();
 					break;
 				}
 				case 13:{
 					aVac.setVisible(true);
+					break;
+				}
+				case 4:{
+					tMenu.setVisible(true);
+					break;
+				}
+				case 41:{
+					tIterado.setVisible(true);
+					break;
+				}
+				case 42:{
+					tDatos.setVisible(true);
 					break;
 				}
 			}
@@ -67,7 +90,9 @@ public class asistenteInterfaz {
 		aPaci.setVisible(false);
 		aFun.setVisible(false);
 		aVac.setVisible(false);
-		
+		tIterado.setVisible(false);
+		tMenu.setVisible(false);
+		tDatos.setVisible(false);
 		
 	}
 	
@@ -241,8 +266,72 @@ public class asistenteInterfaz {
 		
 		return datos.vacunas.vacunas.getHead().getKey();
 	}
+	public int TfuncionariosAgregar(int num) {
+
+		long tiempoinicio = System.currentTimeMillis();
+		this.gen.agregarFuncionarios(num, this.datos);
+		long tiempofinal = System.currentTimeMillis();
+		int tiempoTotal=(int) (tiempofinal-tiempoinicio);
+		System.out.println(tiempoTotal);
+		return tiempoTotal;
+	}
+	public int TpacientesAgregar(int num) {
+		long tiempoinicio = System.currentTimeMillis();
+		this.gen.agregarPacientes(num, this.datos);
+		long tiempofinal = System.currentTimeMillis();
+		int tiempoTotal=(int) (tiempofinal-tiempoinicio);
+		System.out.println(tiempoTotal);
+		return tiempoTotal;
+		
+	}
+	public int TpacientesEliminar(int num) {
+		long tiempoinicio = System.currentTimeMillis();
+		this.gen.eliminarPacientes(num, this.datos);
+		long tiempofinal = System.currentTimeMillis();
+		int tiempoTotal=(int) (tiempofinal-tiempoinicio);
+		System.out.println(tiempoTotal);
+		return tiempoTotal;
+	}
+	public int TfuncionariosEliminar(int num) {
+		long tiempoinicio = System.currentTimeMillis();
+		this.gen.eliminarFuncionarios(num, this.datos);
+		long tiempofinal = System.currentTimeMillis();
+		int tiempoTotal=(int) (tiempofinal-tiempoinicio);
+		System.out.println(tiempoTotal);
+		return tiempoTotal;
+	}
+	public Paciente buscarPaciente(int num) {
+		try {
+		return datos.paciente.pacientes.find(num).getValue();
+		}
+		catch(NullPointerException e){
+			return null;
+		}
+		
+		
+	}
+	public Funcionario buscarFuncionario(int num) {
+		return datos.funcionario.searchCedula(num);
+	}
+	public int TpacientesBuscar(int num) {
+		long tiempoinicio = System.currentTimeMillis();
+		this.buscarPaciente(num);
+		long tiempofinal = System.currentTimeMillis();
+		int tiempoTotal=(int) (tiempofinal-tiempoinicio);
+		System.out.println(tiempoTotal);
+		return tiempoTotal;
+	}
+	public int TfuncionariosBuscar(int num) {
+		long tiempoinicio = System.currentTimeMillis();
+		this.buscarFuncionario(num);
+		long tiempofinal = System.currentTimeMillis();
+		int tiempoTotal=(int) (tiempofinal-tiempoinicio);
+		System.out.println(tiempoTotal);
+		return tiempoTotal;
+	}
 	
 	
+
 	
 	
 }

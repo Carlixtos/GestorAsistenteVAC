@@ -79,7 +79,7 @@ public class generadorDatos {
         banco.pushback("hombre");
         banco.pushback("mujer");
       
-        return banco.remove(this.numeroAleatorioEnRango(0,2));
+        return banco.remove(this.numeroAleatorioEnRango(0,1));
     }
 	public String sangreAleatoreo() {
         
@@ -123,7 +123,7 @@ public class generadorDatos {
     }
 	public void eliminarPacientes(int l, Data datos) {
 		for (int i = l-1;i>0;i--) {
-			//datos.paciente.pacientes.nodeDrop(datos.paciente.pacientes.nodeConsult(i));
+			datos.paciente.pacientes.delete(datos.paciente.pacientes.getRoot().getKey());
 		}
 	}
 	public void eliminarFuncionarios(int l, Data datos) {

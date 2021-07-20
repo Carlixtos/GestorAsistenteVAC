@@ -17,6 +17,10 @@ import javax.swing.SwingConstants;
 import java.awt.ScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import gestorAsistenteVAC.gest.Funcionario;
+import gestorAsistenteVAC.gest.Paciente;
+
 import java.awt.Point;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
@@ -43,9 +47,12 @@ public class adminFuncionarios extends JFrame {
 	private JLabel lblNewLabel_8;
 	private JLabel lblNewLabel_9;
 	private JLabel lblNewLabel_10;
+	private JTable tVisible;
+	private JLabel lblNewLabel_11;
+	private JTextField textBuscar;
+	private JButton btnBuscar;
 	private JLabel lblNewLabel_12;
 	private JLabel lblNewLabel_13;
-	private JTable tVisible;
 
 	/**
 	 * Launch the application.
@@ -158,19 +165,60 @@ public class adminFuncionarios extends JFrame {
 				
 			}
 		});
-
-		tVisible.setBounds(284, 83, 216, 330);
-		contentPane.add(tVisible);
 		
-		lblNewLabel_13 = new JLabel("Cedula");
-		lblNewLabel_13.setFont(new Font("Times New Roman", Font.BOLD, 10));
-		lblNewLabel_13.setBounds(400, 58, 86, 20);
-		contentPane.add(lblNewLabel_13);
+		lblNewLabel_11 = new JLabel("<html> Inserte el numero de la cedula que quiere buscar <html>");
+		lblNewLabel_11.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_11.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		lblNewLabel_11.setBounds(298, 54, 186, 41);
+		contentPane.add(lblNewLabel_11);
+		
+		btnBuscar = new JButton("Buscar");
+		btnBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Funcionario auxF = asisGrafica.buscarFuncionario(Integer.valueOf(textBuscar.getText()));
+					tNombre.setText(auxF.getNombre());
+					tApellido.setText(auxF.getApellido());
+					tEdad.setText(String.valueOf(auxF.getEdad()));
+					tGenero.setText(auxF.getGenero());
+					tTdocumento.setText(auxF.getTipoDocumento());
+					tDocumento.setText(String.valueOf(auxF.getDocumento()));
+					tSangre.setText(auxF.getSangre());
+					tHorario.setText(String.valueOf(auxF.getHorario()[0]));
+					
+					}
+					catch(NullPointerException e1) {
+						System.out.println(" Campo vacio || dato invalido ");
+					}
+				
+			}
+		});
+		btnBuscar.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		btnBuscar.setBorderPainted(false);
+		btnBuscar.setBorder(new LineBorder(new Color(0, 0, 0)));
+		btnBuscar.setBackground(new Color(2, 167, 220));
+		btnBuscar.setBounds(428, 106, 72, 23);
+		contentPane.add(btnBuscar);
 		
 		lblNewLabel_12 = new JLabel("Nombre");
-		lblNewLabel_12.setFont(new Font("Times New Roman", Font.BOLD, 10));
-		lblNewLabel_12.setBounds(304, 58, 86, 20);
+		lblNewLabel_12.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_12.setFont(new Font("Times New Roman", Font.BOLD, 18));
+		lblNewLabel_12.setBounds(298, 143, 86, 20);
 		contentPane.add(lblNewLabel_12);
+		
+		textBuscar = new JTextField();
+		textBuscar.setColumns(10);
+		textBuscar.setBounds(298, 106, 120, 20);
+		contentPane.add(textBuscar);
+		
+		lblNewLabel_13 = new JLabel("Cedula");
+		lblNewLabel_13.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_13.setFont(new Font("Times New Roman", Font.BOLD, 18));
+		lblNewLabel_13.setBounds(398, 143, 86, 20);
+		contentPane.add(lblNewLabel_13);
+
+		tVisible.setBounds(284, 172, 216, 241);
+		contentPane.add(tVisible);
 		
 		lblNewLabel_10 = new JLabel("Horario");
 		lblNewLabel_10.setFont(new Font("Times New Roman", Font.PLAIN, 16));
@@ -322,9 +370,9 @@ public class adminFuncionarios extends JFrame {
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel = new JLabel("Funcionarios");
-		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 40));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(294, 26, 226, 33);
+		lblNewLabel.setBounds(155, 11, 226, 41);
 		contentPane.add(lblNewLabel);
 		
 		JButton btnSalir = new JButton("Regresar");
@@ -385,5 +433,10 @@ public class adminFuncionarios extends JFrame {
 	}
 	public JTable getTVisible() {
 		return tVisible;
+	}
+
+	public void actualizar() {
+		actualizarTabla(tDatos,tVisible,asisGrafica.getDatosFuncionario());
+		
 	}
 }

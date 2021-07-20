@@ -18,7 +18,7 @@ public class Main {
 		grafica.run();
 		
 		
-		AVLTest.velTest();
+		//AVLTest.velTest();
 		//ComparacionRendimientoE2 comparador=new ComparacionRendimientoE2();
 		//comparador.agregarTest(datos, 10000);
 		//comparador.existeTest(datos);
