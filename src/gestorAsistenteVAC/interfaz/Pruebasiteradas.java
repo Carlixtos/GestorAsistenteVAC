@@ -62,12 +62,13 @@ public class Pruebasiteradas extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-				
-		JLabel lblNewLabel_3_1 = new JLabel("<html> Inserte el numero de funcionarios que quiere agregar o eliminar.<html>");
+		
+						
+		JLabel lblNewLabel_3_1 = new JLabel("<html> Inserte el numero de funcionarios que quiere agregar, eliminar o buscar.<html>");
 		lblNewLabel_3_1.setToolTipText("");
 		lblNewLabel_3_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3_1.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblNewLabel_3_1.setBounds(250, 108, 220, 65);
+		lblNewLabel_3_1.setBounds(250, 108, 250, 65);
 		contentPane.add(lblNewLabel_3_1);
 		
 		JLabel lAvisoFuncionarios = new JLabel("  ");
@@ -86,11 +87,11 @@ public class Pruebasiteradas extends JFrame {
 		lAvisoPacientes.setBounds(20, 211, 240, 92);
 		contentPane.add(lAvisoPacientes);
 		
-		JLabel lblNewLabel_3 = new JLabel("<html> Inserte el numero de pacientes que quiere agregar o eliminar.<html>");
+		JLabel lblNewLabel_3 = new JLabel("<html> Inserte el numero de pacientes que quiere agregar, eliminar o buscar.<html>");
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3.setToolTipText("");
 		lblNewLabel_3.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblNewLabel_3.setBounds(20, 108, 220, 65);
+		lblNewLabel_3.setBounds(20, 108, 240, 65);
 		contentPane.add(lblNewLabel_3);
 		
 		tnumPacientes = new JTextField();
@@ -150,7 +151,7 @@ public class Pruebasiteradas extends JFrame {
 		btnEliminar.setBackground(new Color(2, 167, 220));
 		btnEliminar.setForeground(Color.BLACK);
 		btnEliminar.setFont(new Font("Times New Roman", Font.PLAIN, 18));
-		btnEliminar.setBounds(428, 384, 72, 23);
+		btnEliminar.setBounds(341, 384, 72, 23);
 		contentPane.add(btnEliminar);
 		
 		JButton btnAgregar = new JButton("Agregar");
@@ -180,8 +181,41 @@ public class Pruebasiteradas extends JFrame {
 		btnAgregar.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnAgregar.setBorderPainted(false);
 		btnAgregar.setFont(new Font("Times New Roman", Font.PLAIN, 18));
-		btnAgregar.setBounds(346, 384, 72, 23);
+		btnAgregar.setBounds(259, 384, 72, 23);
 		contentPane.add(btnAgregar);
+		
+		
+		JButton btnFind = new JButton("Buscar");
+		btnFind.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					int tiempo =asisGrafica.TestpacientesBuscar(Integer.valueOf(tnumPacientes.getText()));
+					lAvisoPacientes.setText("<html>Pacientes encontrados con exito<p>Tiempo requerido: <html>"+tiempo+" milisegundos.");
+					}
+					catch(NullPointerException e1) {
+						System.out.println(" Campo vacio || dato invalido ");
+						lAvisoPacientes.setText(" Campo vacio || dato invalido ");
+					}
+					try {
+						int tiempo1 = asisGrafica.TestfuncionariosBuscar(Integer.valueOf(tnumFuncionarios.getText()));
+						lAvisoFuncionarios.setText("<html>Funcionarios encontrados con exito<p>Tiempo requerido: <html>"+tiempo1+" milisegundos.");
+					}
+					catch(NullPointerException e1) {
+						System.out.println(" Campo vacio || dato invalido ");
+						lAvisoFuncionarios.setText(" Campo vacio || dato invalido ");
+					}
+				limpiar();
+				
+			}
+		});
+		btnFind.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		btnFind.setBorderPainted(false);
+		btnFind.setBorder(new LineBorder(new Color(0, 0, 0)));
+		btnFind.setBackground(new Color(2, 167, 220));
+		btnFind.setBounds(428, 384, 72, 23);
+		contentPane.add(btnFind);
+		
 		
 		JLabel lblNewLabel = new JLabel("Funcionarios");
 		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 20));
