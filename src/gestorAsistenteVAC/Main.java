@@ -19,9 +19,15 @@ public class Main {
 		
 		
 		//AVLTest.velTest();
+//<<<<<<< HEAD
 		ComparacionRendimientoE2 comparador=new ComparacionRendimientoE2();
 		comparador.agregarTest(datos, 1000000);
 		comparador.existeTest(datos);
+//=======
+		//ComparacionRendimientoE2 comparador=new ComparacionRendimientoE2();
+		//comparador.agregarTest(datos, 10000);
+		//comparador.existeTest(datos);
+//>>>>>>> 4fc05465610949d0abdc532bb68d11e7ecfb9b7d
 		
 		
 		

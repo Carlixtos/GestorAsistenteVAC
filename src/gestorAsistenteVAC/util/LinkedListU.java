@@ -185,7 +185,7 @@ public class LinkedListU<T> {
 						nodeTemp.getNext().setPrev(null);
 					}
 					else {
-						head = nodeTemp.getNext();
+						tail = nodeTemp.getNext();
 					}
 				}
 				

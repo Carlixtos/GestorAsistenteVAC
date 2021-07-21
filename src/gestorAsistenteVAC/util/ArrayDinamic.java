@@ -88,9 +88,10 @@ public class ArrayDinamic<T>{
 	 * @param dato
 	 */
 	public void pushback(T key) {
+		T[]	nArray=(T[]) new Object[this.capacity()*2];
 		if(this.capacity()==this.size()) {
-			T[]	nArray=(T[]) new Object[this.capacity()*2];
-			for (int i =0;i<this.size()-1;i++) {
+			
+			for (int i =0;i<this.size();i++) {
 				nArray[i]=this.Array[i];
 			}
 			this.Array=nArray;

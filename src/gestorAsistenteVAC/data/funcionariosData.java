@@ -76,5 +76,18 @@ public class funcionariosData {
 		
 	}
 
+
+
+	public Funcionario searchCedula(int num) {
+		NodeU<Funcionario> aux = this.funcionarios.getHead();
+		for (int i = 0;i<this.funcionarios.getLength();i++) {
+			if(aux.getKey().getDocumento()==(num)) {
+				return aux.getKey();
+			}
+			aux=aux.getNext();
+		}
+		return null;
+	}
+
 		
 }
