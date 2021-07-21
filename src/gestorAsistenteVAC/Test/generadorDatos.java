@@ -158,6 +158,18 @@ public class generadorDatos {
 	public void eliminarVacunas(int l, Data datos) {
 			datos.vacunas.eliminar(l);
 	}
+	public void buscarFuncionarios(int num, Data datos) {
+		for (int i=0;i<num;i++) {
+			datos.funcionario.searchCedula(num);
+		}
+		
+	}
+	public void buscarPacientes(int num, Data datos) {
+		for (int i=0;i<num;i++) {
+			datos.paciente.pacientes.find(i);
+		}
+		
+	}
 	
 	
 	

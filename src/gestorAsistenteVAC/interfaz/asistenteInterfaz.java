@@ -329,6 +329,22 @@ public class asistenteInterfaz {
 		System.out.println(tiempoTotal);
 		return tiempoTotal;
 	}
+	public int TestpacientesBuscar(int num) {
+		long tiempoinicio = System.currentTimeMillis();
+		this.gen.buscarPacientes(num,this.datos);
+		long tiempofinal = System.currentTimeMillis();
+		int tiempoTotal=(int) (tiempofinal-tiempoinicio);
+		System.out.println(tiempoTotal);
+		return tiempoTotal;
+	}
+	public int TestfuncionariosBuscar(int num) {
+		long tiempoinicio = System.currentTimeMillis();
+		this.gen.buscarFuncionarios(num,this.datos);
+		long tiempofinal = System.currentTimeMillis();
+		int tiempoTotal=(int) (tiempofinal-tiempoinicio);
+		System.out.println(tiempoTotal);
+		return tiempoTotal;
+	}
 	
 	
 
