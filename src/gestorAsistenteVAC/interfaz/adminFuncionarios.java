@@ -26,6 +26,7 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JScrollPane;
 
 
 public class adminFuncionarios extends JFrame {
@@ -51,8 +52,6 @@ public class adminFuncionarios extends JFrame {
 	private JLabel lblNewLabel_11;
 	private JTextField textBuscar;
 	private JButton btnBuscar;
-	private JLabel lblNewLabel_12;
-	private JLabel lblNewLabel_13;
 
 	/**
 	 * Launch the application.
@@ -131,16 +130,23 @@ public class adminFuncionarios extends JFrame {
 			}
 		});
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBorder(null);
+		scrollPane.setBounds(284, 139, 216, 274);
+		contentPane.add(scrollPane);
+		
 		tVisible = new JTable();
+		scrollPane.setViewportView(tVisible);
 		tVisible.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null},
-				{null, null},
+			new String[][] {
+				{"hola ", " dfad"},
+				{"bye", "vfd"},
 			},
 			new String[] {
-				"New column", "New column"
+				"Nombre", "Cedula "
 			}
 		));
+		
 		tVisible.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -200,25 +206,10 @@ public class adminFuncionarios extends JFrame {
 		btnBuscar.setBounds(428, 106, 72, 23);
 		contentPane.add(btnBuscar);
 		
-		lblNewLabel_12 = new JLabel("Nombre");
-		lblNewLabel_12.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_12.setFont(new Font("Times New Roman", Font.BOLD, 18));
-		lblNewLabel_12.setBounds(298, 143, 86, 20);
-		contentPane.add(lblNewLabel_12);
-		
 		textBuscar = new JTextField();
 		textBuscar.setColumns(10);
 		textBuscar.setBounds(298, 106, 120, 20);
 		contentPane.add(textBuscar);
-		
-		lblNewLabel_13 = new JLabel("Cedula");
-		lblNewLabel_13.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_13.setFont(new Font("Times New Roman", Font.BOLD, 18));
-		lblNewLabel_13.setBounds(398, 143, 86, 20);
-		contentPane.add(lblNewLabel_13);
-
-		tVisible.setBounds(284, 172, 216, 241);
-		contentPane.add(tVisible);
 		
 		lblNewLabel_10 = new JLabel("Horario");
 		lblNewLabel_10.setFont(new Font("Times New Roman", Font.PLAIN, 16));
@@ -428,7 +419,7 @@ public class adminFuncionarios extends JFrame {
 		 datosV[i][1]=datos[i][5];
 		 i++;
 		 }
-		 tVisible.setModel(new javax.swing.table.DefaultTableModel(datosV,new String []{"nombre", "Documento"}
+		 tVisible.setModel(new javax.swing.table.DefaultTableModel(datosV,new String []{"Nombre", "Documento"}
 			        ));
 	}
 	public JTable getTVisible() {
