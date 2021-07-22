@@ -20,9 +20,9 @@ public class Main {
 		
 		//AVLTest.velTest();
 //<<<<<<< HEAD
-		ComparacionRendimientoE2 comparador=new ComparacionRendimientoE2();
+	/*	ComparacionRendimientoE2 comparador=new ComparacionRendimientoE2();
 		comparador.agregarTest(datos, 1000000);
-		comparador.existeTest(datos);
+		comparador.existeTest(datos);*/
 //=======
 		//ComparacionRendimientoE2 comparador=new ComparacionRendimientoE2();
 		//comparador.agregarTest(datos, 10000);

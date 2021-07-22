@@ -120,7 +120,7 @@ public class adminPacientes extends JFrame {
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int seleccion=tVisible.getSelectedRow();
-				asisGrafica.eliminarPacientes(tDatos.getValueAt(seleccion, 0).toString());
+				asisGrafica.eliminarPacientes(tDatos.getValueAt(seleccion, 5).toString());
 				((DefaultTableModel) tDatos.getModel()).removeRow(seleccion);
 				((DefaultTableModel) tVisible.getModel()).removeRow(seleccion);
 				limpiar();
