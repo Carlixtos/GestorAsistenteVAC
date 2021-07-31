@@ -18,6 +18,8 @@ public class Main {
 		grafica.run();
 		
 		
+		
+		
 		//AVLTest.velTest();
 //<<<<<<< HEAD
 	/*	ComparacionRendimientoE2 comparador=new ComparacionRendimientoE2();

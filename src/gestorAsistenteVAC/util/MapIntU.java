@@ -79,6 +79,7 @@ public class MapIntU<V extends KeysU> {
 		while(head!=null) {
 			if(head.getKey().getIntKey()==key) {
 				list.nodeDrop(head.getKey());
+				--this.keysNum;
 				return;
 			}
 		}

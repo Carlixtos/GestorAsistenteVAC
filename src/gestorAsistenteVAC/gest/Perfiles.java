@@ -1,6 +1,8 @@
 package gestorAsistenteVAC.gest;
 
-public class Perfiles{
+import gestorAsistenteVAC.util.KeysU;
+
+public class Perfiles implements KeysU{
 	
 	private String genero,nombre,apellido,sangre,tipoDocumento,perfil;
 	
@@ -18,6 +20,9 @@ public class Perfiles{
 	}
 	
 	
+	public int getIntKey() {
+		return documento;
+	}
 	
 	public String getTipoDocumento() {
 		return tipoDocumento;
