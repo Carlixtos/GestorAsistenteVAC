@@ -25,6 +25,7 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JScrollPane;
 
 
 public class adminPacientes extends JFrame {
@@ -44,13 +45,12 @@ public class adminPacientes extends JFrame {
 	private JLabel lblNewLabel_7;
 	private JLabel lblNewLabel_8;
 	private JLabel lblNewLabel_9;
-	private JLabel lblNewLabel_12;
-	private JLabel lblNewLabel_13;
 	private JTable tVisible;
 	private JTextField tVacuna;
 	private JTextField tDosis;
 	private JLabel lblNewLabel_10;
 	private JTextField textBuscar;
+	private JScrollPane scrollPane;
 
 	/**
 	 * Launch the application.
@@ -120,7 +120,7 @@ public class adminPacientes extends JFrame {
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int seleccion=tVisible.getSelectedRow();
-				asisGrafica.eliminarPacientes(tDatos.getValueAt(seleccion, 0).toString());
+				asisGrafica.eliminarPacientes(tDatos.getValueAt(seleccion, 5).toString());
 				((DefaultTableModel) tDatos.getModel()).removeRow(seleccion);
 				((DefaultTableModel) tVisible.getModel()).removeRow(seleccion);
 				limpiar();
@@ -129,12 +129,40 @@ public class adminPacientes extends JFrame {
 			}
 		});
 		
+		JButton btnBuscar = new JButton("Buscar");
+		btnBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+				Paciente auxP = asisGrafica.buscarPaciente(Integer.valueOf(textBuscar.getText()));
+				tNombre.setText(auxP.getNombre());
+				tApellido.setText(auxP.getApellido());
+				tEdad.setText(String.valueOf(auxP.getEdad()));
+				tGenero.setText(auxP.getGenero());
+				tTdocumento.setText(auxP.getTipoDocumento());
+				tDocumento.setText(String.valueOf(auxP.getDocumento()));
+				tSangre.setText(auxP.getSangre());
+				tVacuna.setText(auxP.getTipoVacuna());
+				tDosis.setText(String.valueOf(auxP.getDosis()));
+				
+				}
+				catch(NullPointerException e1) {
+					System.out.println(" Campo vacio || dato invalido ");
+				}
+				
+			}
+		});
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(284, 139, 216, 274);
+		contentPane.add(scrollPane);
+		
 		tVisible = new JTable();
+		scrollPane.setViewportView(tVisible);
 		tVisible.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null},
-				{null, null},
-			},
+				new String[][] {
+					{"  ", "  "},
+					{" ", " "},
+				},
 			new String[] {
 				"Nombre ", "Cedula"
 			}
@@ -161,29 +189,6 @@ public class adminPacientes extends JFrame {
 			}
 			@Override
 			public void mousePressed(MouseEvent e) {
-				
-			}
-		});
-		
-		JButton btnBuscar = new JButton("Buscar");
-		btnBuscar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-				Paciente auxP = asisGrafica.buscarPaciente(Integer.valueOf(textBuscar.getText()));
-				tNombre.setText(auxP.getNombre());
-				tApellido.setText(auxP.getApellido());
-				tEdad.setText(String.valueOf(auxP.getEdad()));
-				tGenero.setText(auxP.getGenero());
-				tTdocumento.setText(auxP.getTipoDocumento());
-				tDocumento.setText(String.valueOf(auxP.getDocumento()));
-				tSangre.setText(auxP.getSangre());
-				tVacuna.setText(auxP.getTipoVacuna());
-				tDosis.setText(String.valueOf(auxP.getDosis()));
-				
-				}
-				catch(NullPointerException e1) {
-					System.out.println(" Campo vacio || dato invalido ");
-				}
 				
 			}
 		});
@@ -224,21 +229,6 @@ public class adminPacientes extends JFrame {
 		lblNewLabel_10_1.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		lblNewLabel_10_1.setBounds(22, 351, 86, 20);
 		contentPane.add(lblNewLabel_10_1);
-
-		tVisible.setBounds(284, 173, 216, 240);
-		contentPane.add(tVisible);
-		
-		lblNewLabel_13 = new JLabel("Cedula");
-		lblNewLabel_13.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_13.setFont(new Font("Times New Roman", Font.BOLD, 18));
-		lblNewLabel_13.setBounds(401, 143, 86, 20);
-		contentPane.add(lblNewLabel_13);
-		
-		lblNewLabel_12 = new JLabel("Nombre");
-		lblNewLabel_12.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_12.setFont(new Font("Times New Roman", Font.BOLD, 18));
-		lblNewLabel_12.setBounds(301, 143, 86, 20);
-		contentPane.add(lblNewLabel_12);
 		
 		lblNewLabel_9 = new JLabel("Tipo de Sangre");
 		lblNewLabel_9.setFont(new Font("Times New Roman", Font.PLAIN, 16));
@@ -440,7 +430,7 @@ public class adminPacientes extends JFrame {
 		 datosV[i][1]=datos[i][5];
 		 i++;
 		 }
-		 tVisible.setModel(new javax.swing.table.DefaultTableModel(datosV,new String []{"nombre", "Documento"}
+		 tVisible.setModel(new javax.swing.table.DefaultTableModel(datosV,new String []{"Nombre", "Documento"}
 			        ));
 	}
 	public JTable getTVisible() {
