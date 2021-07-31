@@ -1,6 +1,6 @@
 package gestorAsistenteVAC.gest;
 
-public class Perfiles {
+public class Perfiles{
 	
 	private String genero,nombre,apellido,sangre,tipoDocumento,perfil;
 	
