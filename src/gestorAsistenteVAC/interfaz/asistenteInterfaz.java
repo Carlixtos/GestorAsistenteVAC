@@ -197,6 +197,43 @@ public class asistenteInterfaz {
     	return n;
 		
 	}	
+	
+	
+	public String[][] getDatosFuncionario() {
+		String[][] tabla = new String[datos.funcionario.funcionarios.aproxLength(datos.funcionario.funcionarios.getRoot())][9];
+		int n=0;
+		auxGetdatosFuncionarios(datos.funcionario.funcionarios.getRoot(),tabla,n);
+		return tabla;	
+	}
+	private int auxGetdatosFuncionarios(NodeA<Funcionario> root, String[][] tabla,int n) {
+		
+    	if(root.getLeft()!=null){
+    		//n++;
+    		n=auxGetdatosFuncionarios(root.getLeft(),tabla,n);
+    		}
+    	if(root.getRight()!=null){
+    		//n++;
+    		n=auxGetdatosFuncionarios(root.getRight(),tabla,n);
+    		}
+    	n=guardarDatosFuncionarios(root.getValue(),tabla,n);
+    	return n;
+		
+	}	
+	
+	
+	private int guardarDatosFuncionarios(Funcionario funcionario, String[][] tabla, int n) {
+		tabla[n][0]=funcionario.getNombre();
+		tabla[n][1]=funcionario.getApellido();
+		tabla[n][2]=String.valueOf(funcionario.getEdad());
+		tabla[n][3]=funcionario.getGenero();
+		tabla[n][4]=funcionario.getTipoDocumento();
+		tabla[n][5]=String.valueOf(funcionario.getDocumento());
+		tabla[n][6]=funcionario.getSangre();
+		tabla[n][7]=funcionario.getPerfil();
+		tabla[n][8]=String.valueOf(funcionario.getHorario()[0][0]);
+		n++;
+		return n;
+	}
 	private int guardarDatosPacientes(Paciente paciente, String[][] tabla,int n) {
 		tabla[n][0]=paciente.getNombre();
 		tabla[n][1]=paciente.getApellido();
@@ -210,28 +247,6 @@ public class asistenteInterfaz {
 		tabla[n][9]=String.valueOf(paciente.getDosis());
 		n++;
 		return n;
-	}
-	
-	
-	public String[][] getDatosFuncionario() {
-		NodeU<Funcionario> n = datos.funcionario.funcionarios.getHead();
-		String[][] tabla = new String[datos.funcionario.funcionarios.getLength()][9];
-		int i=0;
-		while(i<datos.funcionario.funcionarios.getLength()) {
-		tabla[i][0]=n.getKey().getNombre();
-		tabla[i][1]=n.getKey().getApellido();
-		tabla[i][2]=String.valueOf(n.getKey().getEdad());
-		tabla[i][3]=n.getKey().getGenero();
-		tabla[i][4]=n.getKey().getTipoDocumento();
-		tabla[i][5]=String.valueOf(n.getKey().getDocumento());
-		tabla[i][6]=n.getKey().getSangre();
-		tabla[i][7]=n.getKey().getPerfil();
-		tabla[i][8]=String.valueOf(n.getKey().getHorario()[0][0]);
-		
-		n=n.getNext();
-		i++;
-		};
-		return tabla;	
 	}
 	
 	
@@ -262,10 +277,8 @@ public class asistenteInterfaz {
 			}
 		
 	}
-	public Vacunas getVacuanas() {
-		
-		return datos.vacunas.vacunas.getHead().getKey();
-	}
+	
+	
 	public int TfuncionariosAgregar(int num) {
 
 		long tiempoinicio = System.currentTimeMillis();
@@ -311,7 +324,7 @@ public class asistenteInterfaz {
 		
 	}
 	public Funcionario buscarFuncionario(int num) {
-		return datos.funcionario.searchCedula(num);
+		return datos.funcionario.funcionarios.find(num).getValue();
 	}
 	public int TpacientesBuscar(int num) {
 		long tiempoinicio = System.currentTimeMillis();
@@ -345,9 +358,13 @@ public class asistenteInterfaz {
 		System.out.println(tiempoTotal);
 		return tiempoTotal;
 	}
-	
-	
-
+	public void agregarVacunas(String tipo, int valueOf) {
+		this.datos.vacunas.agregar(tipo, valueOf);
+		
+	}
+	public int getCantVac(String tipo) {
+		return this.datos.vacunas.getCantidad(tipo);
+	}
 	
 	
 }

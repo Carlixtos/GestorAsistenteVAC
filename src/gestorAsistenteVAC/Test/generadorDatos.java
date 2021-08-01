@@ -56,6 +56,61 @@ public class generadorDatos {
 		}
 		
 	}
+	
+	public void eliminarPacientes(int l, Data datos) {
+		for (int i = l-1;i>0;i--) {
+			datos.paciente.pacientes.delete(datos.paciente.pacientes.getRoot().getKey());
+		}
+	}
+	public void eliminarFuncionarios(int l, Data datos) {
+		for (int i = l-1;i>=0;i--) {	
+			datos.funcionario.funcionarios.delete(datos.funcionario.funcionarios.getRoot().getKey());
+		}
+	}
+	public void remplazarPacientes(int l, Data datos) {
+		for (int i = l-1;i>=0;i--) {	
+			Paciente p= new Paciente("cronos", "jupiter", i, "Dios", "inmortal", i, "celestial", "Creador", "todas", i);
+		//	datos.paciente.pacientes.keyReplace(datos.paciente.pacientes.nodeConsult(i), p);
+		}
+		
+	}
+	public void remplazarFuncionarios(int l, Data datos) {
+		for (int i = l-1;i>=0;i--) {	
+			int[][] a = new int[1][1];
+			a[0][0]=i;
+			Funcionario p= new Funcionario("cronos", "jupiter", i, "Dios", "inmortal", i, "celestial", "Creador", a);
+			//datos.funcionario.funcionarios.keyReplace(datos.funcionario.funcionarios.nodeConsult(i), p);
+		}
+		
+	}
+	public void agregarVacunas(int l, Data datos) {
+		for (int i =0;i<l;i++) {
+			String a = this.vacunaAleatoreo();
+			datos.vacunas.agregar(a,1);
+		}
+	}
+	public void eliminarVacunas(int l, Data datos) {
+		for (int i =0;i<l;i++) {
+			datos.vacunas.eliminar(1);
+		}
+	}
+	public void buscarFuncionarios(int num, Data datos) {
+		for (int i=0;i<num;i++) {
+			datos.funcionario.funcionarios.find(num);
+		}
+		
+	}
+	public void buscarPacientes(int num, Data datos) {
+		for (int i=0;i<num;i++) {
+			datos.paciente.pacientes.find(i);
+		}
+		
+	}
+	
+	
+	
+	
+	//datos aleatoreos
 	private String documento(int l) {
 		String documento;
 		if(l<18) {
@@ -121,55 +176,6 @@ public class generadorDatos {
   
         return ThreadLocalRandom.current().nextInt(minimo, maximo);
     }
-	public void eliminarPacientes(int l, Data datos) {
-		for (int i = l-1;i>0;i--) {
-			datos.paciente.pacientes.delete(datos.paciente.pacientes.getRoot().getKey());
-		}
-	}
-	public void eliminarFuncionarios(int l, Data datos) {
-		for (int i = l-1;i>=0;i--) {
-			
-			datos.funcionario.funcionarios.nodeDrop(datos.funcionario.funcionarios.nodeConsult(i));
-		}
-	}
-	public void remplazarPacientes(int l, Data datos) {
-		for (int i = l-1;i>=0;i--) {	
-			Paciente p= new Paciente("cronos", "jupiter", i, "Dios", "inmortal", i, "celestial", "Creador", "todas", i);
-		//	datos.paciente.pacientes.keyReplace(datos.paciente.pacientes.nodeConsult(i), p);
-		}
-		
-	}
-	public void remplazarFuncionarios(int l, Data datos) {
-		for (int i = l-1;i>=0;i--) {	
-			int[][] a = new int[1][1];
-			a[0][0]=i;
-			Funcionario p= new Funcionario("cronos", "jupiter", i, "Dios", "inmortal", i, "celestial", "Creador", a);
-			datos.funcionario.funcionarios.keyReplace(datos.funcionario.funcionarios.nodeConsult(i), p);
-		}
-		
-	}
-	public void agregarVacunas(int l, Data datos) {
-		for (int i =0;i<l;i++) {
-			String a = this.vacunaAleatoreo();
-			String[] v= {a,this.dosis(a)};
-			datos.vacunas.agregar(v);
-		}
-	}
-	public void eliminarVacunas(int l, Data datos) {
-			datos.vacunas.eliminar(l);
-	}
-	public void buscarFuncionarios(int num, Data datos) {
-		for (int i=0;i<num;i++) {
-			datos.funcionario.searchCedula(num);
-		}
-		
-	}
-	public void buscarPacientes(int num, Data datos) {
-		for (int i=0;i<num;i++) {
-			datos.paciente.pacientes.find(i);
-		}
-		
-	}
 	
 	
 	

@@ -139,8 +139,8 @@ public class adminFuncionarios extends JFrame {
 		scrollPane.setViewportView(tVisible);
 		tVisible.setModel(new DefaultTableModel(
 			new String[][] {
-				{"hola ", " dfad"},
-				{"bye", "vfd"},
+				{" ", "  "},
+				{" ", " "},
 			},
 			new String[] {
 				"Nombre", "Cedula "
