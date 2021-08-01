@@ -18,7 +18,7 @@ public class MapIntU<V extends KeysU> {
 	}
 	
 	public int hashCodeU(int key) {
-		return ((66666*key+1026798)%10000019)%table.length; 
+		return ((34*key+66)%10000019)%table.length; 
 	}
 	
 	private void rehash() {
@@ -31,10 +31,13 @@ public class MapIntU<V extends KeysU> {
 		
 		for(int i=0;i<oldLength;++i) {
 			tmpL=(LinkedListU<V>)oldTable[i];
+			if(tmpL==null)continue;
 			tmpN=tmpL.getHead();
 			
 			while(tmpN!=null) {
 				set(tmpN.getKey().getIntKey(),tmpN.getKey());
+				--this.keysNum;
+				tmpN=tmpN.getNext();
 			}
 			
 		}
@@ -49,6 +52,7 @@ public class MapIntU<V extends KeysU> {
 			if(head.getKey().getIntKey()==key) {
 				return head.getKey();
 			}
+			head=head.getNext();
 		}
 		
 		return null;
@@ -70,6 +74,7 @@ public class MapIntU<V extends KeysU> {
 				head.setKey(value);
 				return;
 			}
+			head=head.getNext();
 		}
 		list.addFront(value);
 		++this.keysNum;
@@ -90,6 +95,7 @@ public class MapIntU<V extends KeysU> {
 				--this.keysNum;
 				return;
 			}
+			head=head.getNext();
 		}
 	}
 	
@@ -102,6 +108,7 @@ public class MapIntU<V extends KeysU> {
 			if(head.getKey().getIntKey()==key) {
 				return true;
 			}
+			head=head.getNext();
 		}
 		
 		return false;
