@@ -1,10 +1,10 @@
 package gestorAsistenteVAC.util;
 
 public class MapIntU<V extends KeysU> {
-	private Object[] table;
-	private int keysNum;
+	public Object[] table;
+	public int keysNum;
 	
-	MapIntU(int tSize){
+	public MapIntU(int tSize){
 		this.table=new Object[tSize];
 		this.keysNum=0;
 	}
@@ -17,7 +17,7 @@ public class MapIntU<V extends KeysU> {
 		return table.length;
 	}
 	
-	private int hashCodeU(int key) {
+	public int hashCodeU(int key) {
 		return ((66666*key+1026798)%10000019)%table.length; 
 	}
 	
@@ -56,7 +56,14 @@ public class MapIntU<V extends KeysU> {
 	
 	public void set(int key,V value) {
 		@SuppressWarnings("unchecked")
-		final LinkedListU<V> list=(LinkedListU<V>) table[hashCodeU(key)];
+		LinkedListU<V> list=(LinkedListU<V>) table[hashCodeU(key)];
+		if(list==null) {
+			table[hashCodeU(key)]=new LinkedListU<V>();
+			list=(LinkedListU<V>) table[hashCodeU(key)];
+			list.addFront(value);
+			++this.keysNum;
+			return;
+		}
 		NodeU<V> head=list.getHead();
 		while(head!=null) {
 			if(head.getKey().getIntKey()==key) {
@@ -75,6 +82,7 @@ public class MapIntU<V extends KeysU> {
 	public void delete(int key) {
 		@SuppressWarnings("unchecked")
 		final LinkedListU<V> list=(LinkedListU<V>) table[hashCodeU(key)];
+		if(list==null)return;
 		NodeU<V> head=list.getHead();
 		while(head!=null) {
 			if(head.getKey().getIntKey()==key) {
@@ -88,6 +96,7 @@ public class MapIntU<V extends KeysU> {
 	public boolean exists(int key) {
 		@SuppressWarnings("unchecked")
 		final LinkedListU<V> list=(LinkedListU<V>) table[hashCodeU(key)];
+		if(list==null)return false;
 		NodeU<V> head=list.getHead();
 		while(head!=null) {
 			if(head.getKey().getIntKey()==key) {
