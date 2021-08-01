@@ -14,16 +14,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import java.awt.ScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import gestorAsistenteVAC.gest.Funcionario;
-import gestorAsistenteVAC.gest.Paciente;
-
-import java.awt.Point;
 import javax.swing.JTextField;
-import javax.swing.JTextPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JScrollPane;
