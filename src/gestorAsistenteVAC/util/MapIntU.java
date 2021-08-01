@@ -1,8 +1,16 @@
 package gestorAsistenteVAC.util;
 
+/**
+ * Clase generica que implementa una tabla hash que permite el mapeo entre una llave entera y cualquier objeto
+ * si y solo si el objeto implementa la interfaz KeysU y retorna con el metodo de la interfaz la misma llave entera
+ * con la que se realiza el mapeo. Pensada para almacenar los pacientes donde la llave es el numero de identificación.
+ * @author Dafty-Punky-boy
+ *
+ * @param <V> Cualquier objeto (o tipo) con el que se desee hacer el mapeo. Debe implementar si o si la interfaz KeysU.
+ */
 public class MapIntU<V extends KeysU> {
-	public Object[] table;
-	public int keysNum;
+	private Object[] table;
+	private int keysNum;
 	
 	public MapIntU(int tSize){
 		this.table=new Object[tSize];
@@ -17,8 +25,8 @@ public class MapIntU<V extends KeysU> {
 		return table.length;
 	}
 	
-	public int hashCodeU(int key) {
-		return ((34*key+66)%10000019)%table.length; 
+	private int hashCodeU(int key) {
+		return ((344*30082349+66)%10000019)%table.length; 
 	}
 	
 	private void rehash() {
