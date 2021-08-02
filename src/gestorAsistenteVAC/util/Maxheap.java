@@ -7,23 +7,23 @@ public class Maxheap <T>{
 		int size;
 		int maxSize;
 		
-		Maxheap(){
+		public Maxheap(){
 		this.priori= new ArrayDinamic<Integer>();
 		this.guardar=new ArrayDinamic<T>();
 		size=this.priori.size();
 		maxSize=this.priori.capacity();
 	}
-		int Parent(int i) {
+		public int Parent(int i) {
 			return (int) (Math.floor((i-1)/2));
 		}
-		int LeftChild(int i) {
+		public int LeftChild(int i) {
 			return (2*i+1);
 		}
-		int RightChild(int i) {
+		public int RightChild(int i) {
 			return (2*i+2);
 		}
 		
-		void SiftUp(int i) {
+		private void SiftUp(int i) {
 			while (i>0 && (int)(this.priori.get(Parent(i)))<(int)(this.priori.get(i))) {
 				int c = (int) (this.priori.get(Parent(i)));
 				this.priori.set(Parent(i),this.priori.get(i));
@@ -35,7 +35,7 @@ public class Maxheap <T>{
 			}
 		}
 		
-		void SiftDown(int i) {
+		private void SiftDown(int i) {
 			int maxIndex = i;
 			int l=LeftChild(i);
 			if (l <= this.size &&(int) this.priori.get(l)> (int)this.priori.get(maxIndex)) {
@@ -56,7 +56,7 @@ public class Maxheap <T>{
 			}
 		}
 		
-		void Insert(int p, T key) {
+		public void Insert(int p, T key) {
 
 			this.size=this.size+1;
 			this.priori.set(this.size,p);
@@ -65,7 +65,7 @@ public class Maxheap <T>{
 		}
 		
 		
-		T ExtractMax() {
+		public T ExtractMax() {
 			T result = (T) this.guardar.get(0);
 			this.priori.set(0,this.priori.get(this.size));
 			this.guardar.set(0, this.guardar.get(this.size));
@@ -75,13 +75,13 @@ public class Maxheap <T>{
 			
 		}
 		
-		T Remove(int i) {
+		public T Remove(int i) {
 			this.priori.set(i, (int) Double.POSITIVE_INFINITY);
 			SiftUp(i);
 			return ExtractMax();
 		}
 		
-		void ChangePriority(int i,int p, T key) {
+		public void ChangePriority(int i,int p, T key) {
 			int oldp =(int) this.priori.get(i);
 			this.priori.set(i,p);
 			//T oldkey =(T) this.guardar.get(i);
