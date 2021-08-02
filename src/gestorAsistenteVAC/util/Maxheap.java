@@ -2,8 +2,8 @@ package gestorAsistenteVAC.util;
 
 public class Maxheap <T>{
 
-		ArrayDinamic<Integer> priori;
-		ArrayDinamic<T> guardar ;
+		private ArrayDinamic<Integer> priori;
+		private ArrayDinamic<T> guardar ;
 		int size;
 		int maxSize;
 		
