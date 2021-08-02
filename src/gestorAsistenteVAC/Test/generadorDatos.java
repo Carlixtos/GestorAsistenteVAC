@@ -24,7 +24,7 @@ public class generadorDatos {
 							String.valueOf(l),										//edad
 							this.generoAleatoreo(),									//genero
 							this.documento(l),										//tipo documento
-							String.valueOf(this.numeroAleatorioEnRango(1000,9990)),	//documento
+							String.valueOf(1006797081/*this.numeroAleatorioEnRango(1000,9990)*/),	//documento
 							this.sangreAleatoreo(),									//tipo de sangre
 							this.perfilAleatoreo(),									//perfil     								
 							vacuna,													//tipo de vacuna
@@ -59,7 +59,7 @@ public class generadorDatos {
 	
 	public void eliminarPacientes(int l, Data datos) {
 		for (int i = l-1;i>0;i--) {
-			datos.paciente.pacientes.delete(datos.paciente.pacientes.getRoot().getKey());
+			//datos.paciente.pacientes.delete(datos.paciente.pacientes.getRoot().getKey());
 		}
 	}
 	public void eliminarFuncionarios(int l, Data datos) {
@@ -102,7 +102,7 @@ public class generadorDatos {
 	}
 	public void buscarPacientes(int num, Data datos) {
 		for (int i=0;i<num;i++) {
-			datos.paciente.pacientes.find(i);
+			//datos.paciente.pacientes.find(i);
 		}
 		
 	}

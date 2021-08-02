@@ -58,17 +58,18 @@ public class Maxheap <T>{
 		
 		public void Insert(int p, T key) {
 
-			this.size=this.size+1;
+			//this.size=this.size+1;
 			this.priori.set(this.size,p);
 			this.guardar.set(this.size,key);
 			SiftUp(this.size);
+			this.size=this.size+1;
 		}
 		
 		
 		public T ExtractMax() {
 			T result = (T) this.guardar.get(0);
-			this.priori.set(0,this.priori.get(this.size));
-			this.guardar.set(0, this.guardar.get(this.size));
+			this.priori.set(0,this.priori.get(this.size-1));
+			this.guardar.set(0, this.guardar.get(this.size-1));
 			this.size--;
 			SiftDown(0);
 			return result;
