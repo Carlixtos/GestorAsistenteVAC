@@ -19,23 +19,26 @@ public class generadorDatos {
 		
 			int l=this.numeroAleatorioEnRango(0,130);
 			String vacuna=this.vacunaAleatoreo();
-			String[] a= {	this.nombreAleatoreo(),									//nombre
-							this.nombreAleatoreo(),									//apellido
-							String.valueOf(l),										//edad
-							this.generoAleatoreo(),									//genero
-							this.documento(l),										//tipo documento
-							String.valueOf(1006797081/*this.numeroAleatorioEnRango(1000,9990)*/),	//documento
-							this.sangreAleatoreo(),									//tipo de sangre
-							this.perfilAleatoreo(),									//perfil     								
-							vacuna,													//tipo de vacuna
-							this.dosis(vacuna)										//dosis	                     
+			String[] a= {	this.nombreAleatoreo(),										//nombre
+							this.nombreAleatoreo(),										//apellido
+							String.valueOf(l),											//edad
+							this.generoAleatoreo(),										//genero
+							this.documento(l),											//tipo documento
+							String.valueOf(this.numeroAleatorioEnRango(100000,999000)),	//documento
+							this.sangreAleatoreo(),										//tipo de sangre
+							this.perfilAleatoreo(),										//perfil
+							this.enfeAleatoreo(),										//tiene alguna enfermedad
+							vacuna,														//tipo de vacuna
+							this.dosis(vacuna)											//dosis	                     
 		            
 			};
-			d.paciente.agregar(a);
+			
+			d.paciente.agregar(a,d.funcionario.funcionarioDisponible());
 			
 		}
 		
 	}
+
 	public void agregarFuncionarios(int n,Data d){
 		for (int i=0;i<n;i++) {
 		
@@ -69,16 +72,15 @@ public class generadorDatos {
 	}
 	public void remplazarPacientes(int l, Data datos) {
 		for (int i = l-1;i>=0;i--) {	
-			Paciente p= new Paciente("cronos", "jupiter", i, "Dios", "inmortal", i, "celestial", "Creador", "todas", i);
+			String[] f = datos.funcionario.funcionarioDisponible();
+			Paciente p= new Paciente("cronos", "jupiter", i, "Dios", "inmortal", i, "celestial", (i%2==0), "Creador", "todas", i,Integer.valueOf(f[0]),f[1]);
 		//	datos.paciente.pacientes.keyReplace(datos.paciente.pacientes.nodeConsult(i), p);
 		}
 		
 	}
 	public void remplazarFuncionarios(int l, Data datos) {
 		for (int i = l-1;i>=0;i--) {	
-			int[][] a = new int[1][1];
-			a[0][0]=i;
-			Funcionario p= new Funcionario("cronos", "jupiter", i, "Dios", "inmortal", i, "celestial", "Creador", a);
+			Funcionario p= new Funcionario("cronos", "jupiter", i, "Dios", "inmortal", i, "celestial", "Creador");
 			//datos.funcionario.funcionarios.keyReplace(datos.funcionario.funcionarios.nodeConsult(i), p);
 		}
 		
@@ -111,6 +113,13 @@ public class generadorDatos {
 	
 	
 	//datos aleatoreos
+	
+	private String enfeAleatoreo() {
+		String[] banco = {"true", "false"};
+	      
+        return banco[this.numeroAleatorioEnRango(0, banco.length)];
+	}
+	
 	private String documento(int l) {
 		String documento;
 		if(l<18) {

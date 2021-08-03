@@ -3,6 +3,7 @@ import gest.Funcionario;
 import gest.Paciente;
 import util.AVL;
 import util.LinkedListU;
+import util.NodeA;
 import util.NodeU;
 
 
@@ -17,9 +18,7 @@ public class funcionariosData {
 		
 		
 	public void agregar(String[] f) {
-		int[][] a = new int[1][1];
-		a[0][0]=Integer.valueOf(f[8]);
-		Funcionario funcionario=new Funcionario(f[0],f[1], Integer.valueOf(f[2]),f[3], f[4],Integer.valueOf(f[5]), f[6],f[7],a);
+		Funcionario funcionario=new Funcionario(f[0],f[1], Integer.valueOf(f[2]),f[3], f[4],Integer.valueOf(f[5]), f[6],f[7]);
 		this.funcionarios.insert(Integer.valueOf(f[5]),funcionario);
 	}
 
@@ -50,6 +49,16 @@ public class funcionariosData {
 		this.funcionarios.delete(Integer.valueOf(nom));
 		this.agregar(f);
 		
+	}
+
+
+
+	public String[] funcionarioDisponible() {
+		String fun[] = new String[2];
+		NodeA<Funcionario> aux = this.funcionarios.getRoot();
+		fun[0]=String.valueOf(aux.getValue().diaDisponible());
+		fun[1]=String.valueOf(aux.getValue().getDocumento());
+		return fun;
 	}
 
 }

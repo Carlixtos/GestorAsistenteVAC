@@ -43,9 +43,14 @@ public class pacienteData {
 		else if(paciente.getEdad()<=30 && 12<=paciente.getEdad()) {
 			priori+=1;
 		}
-	
+		if(paciente.isEnfermedad()) {
+			if(paciente.isEnfermedad() && paciente.getEdad()<=65) { 
+				priori+=2;
+			}
+			else priori+=1;
+		}
 		/* IMPLEMENTAR INTERFAZ GRAFICA
-		   CODIGO TEMPORAL PARA PRUEBAS*/
+		   CODIGO TEMPORAL PARA PRUEBAS
 		Scanner sc=new Scanner(System.in);
 		
 		System.out.println("¿El paciente sufre de alguna enfermedad cardio-respiratoria?");
@@ -61,12 +66,14 @@ public class pacienteData {
 			System.out.println();
 		}
 		
-		sc.close();
+		sc.close();*/
 		return priori;
 	}
 	
-	public void agregar(String[] pa) {
-		Paciente paciente=new Paciente(pa[0],pa[1], Integer.valueOf(pa[2]),pa[3], pa[4],Integer.valueOf(pa[5]), pa[6],pa[7],pa[8],Integer.valueOf(pa[9]));
+	public void agregar(String[] pa,String[] fu) {
+		int fecha=Integer.valueOf(fu[0]);
+		String aplic=fu[1];
+		Paciente paciente=new Paciente(pa[0],pa[1], Integer.valueOf(pa[2]),pa[3], pa[4],Integer.valueOf(pa[5]), pa[6],Boolean.parseBoolean(pa[7]), pa[8],pa[9],Integer.valueOf(pa[10]),fecha,aplic);          
 		this.pPerfiles.set(paciente.getIntKey(), paciente);
 		this.pPrioridad.Insert(prioridadAuto(paciente),paciente.getIntKey());
 	}
@@ -77,7 +84,7 @@ public class pacienteData {
 
 	public void eliminar(String key) {
 		this.pPerfiles.delete(Integer.valueOf(key));
-		//this.pPrioridad.Remove() ELIMINAR NUMERO DE IDENTIFICACIÓN DE LA MAX HEAP??
+		this.pPrioridad.Remove(Integer.valueOf(key));
 	}
 	
 	public Paciente getPerfil(String key) {
@@ -91,13 +98,10 @@ public class pacienteData {
 		return paciente;
 	}
 
-	/*public void vernombres() { CREO QUE NO ES APLICABLE CON LA NUEVA IMPLEMENTACIÓN
-		//this.pacientes.inOrderPrint();
-		this.pacientes.printTree(this.pacientes.getRoot(), "  ", false);
-	}*/
-
-	public void remplazar(String key, String[] pa) { // Se espera que la key de parametro sea igual a la key del perfil a remplazar
-		Paciente paciente=new Paciente(pa[0],pa[1], Integer.valueOf(pa[2]),pa[3], pa[4],Integer.valueOf(pa[5]), pa[6],pa[7],pa[8],Integer.valueOf(pa[9]));
+	public void remplazar(String key, String[] pa,String[] fu) { // Se espera que la key de parametro sea igual a la key del perfil a remplazar
+		int fecha=Integer.valueOf(fu[0]);
+		String aplic=fu[1];
+		Paciente paciente=new Paciente(pa[0],pa[1], Integer.valueOf(pa[2]),pa[3], pa[4],Integer.valueOf(pa[5]), pa[6],Boolean.parseBoolean(pa[7]), pa[8],pa[9],Integer.valueOf(pa[10]),fecha,aplic);          
 		this.pPerfiles.set(Integer.valueOf(key),paciente);
 	}
 }

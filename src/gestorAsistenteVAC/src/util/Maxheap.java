@@ -58,7 +58,6 @@ public class Maxheap <T>{
 		
 		public void Insert(int p, T key) {
 
-			//this.size=this.size+1;
 			this.priori.set(this.size,p);
 			this.guardar.set(this.size,key);
 			SiftUp(this.size);

@@ -170,7 +170,7 @@ public class asistenteInterfaz {
 		
 	}
 	public void agregarPaciente(String[] paciente) {
-		datos.paciente.agregar(paciente);
+		datos.paciente.agregar(paciente,datos.funcionario.funcionarioDisponible());
 		
 	}
 	public String[][] getDatosPacientes() {
@@ -269,7 +269,7 @@ public class asistenteInterfaz {
 	}
 	public void modificarPacientes(String nom, String[] nDatos) {
 		if(datos.paciente.existe(nom)) {
-			datos.paciente.remplazar(nom,nDatos);
+			datos.paciente.remplazar(nom,nDatos,datos.funcionario.funcionarioDisponible());
 		}
 	}
 	public void eliminarPacientes(String elim) {
