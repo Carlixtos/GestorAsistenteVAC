@@ -172,7 +172,7 @@ public class interfazGrafica extends JFrame {
 		lblFondo.setBorder(null);
 		lblFondo.setForeground(new Color(175, 238, 238));
 		lblFondo.setBackground(new Color(0, 255, 255));
-		lblFondo.setIcon(new ImageIcon(interfazGrafica.class.getResource("/gestorAsistenteVAC/imagenes/fondo.jpg")));
+		lblFondo.setIcon(new ImageIcon(interfazGrafica.class.getResource("/imagenes/fondo.jpg")));
 		lblFondo.setBounds(0, -40, 625, 524);
 		contentPane.add(lblFondo);
 	}	

@@ -11,14 +11,14 @@ import gest.Paciente;
 public class Main {
 
 	public static void main(String[] args) { // Codigo de prueba
-		/*InterfazG gestorIntf = new InterfazG();
+		InterfazG gestorIntf = new InterfazG();
 		Data datos= new Data();
 		long tiempoinicio,tiempofinal;
 		asistenteInterfaz grafica=new asistenteInterfaz();
 		grafica.init(datos);
-		grafica.run();*/
+		grafica.run();
 		
-		/* PRUEBA QUE PACIENTES FUNCIONA CON HASH Y MAX HEAP */
+		/* PRUEBA QUE PACIENTES FUNCIONA CON HASH Y MAX HEAP *//*
 		Data dataGest=new Data();
 		generadorDatos dataGen=new generadorDatos();
 		Paciente paciente;

@@ -234,7 +234,7 @@ public class adminVacunas extends JFrame {
 		contentPane.add(lblFecha);
 		
 		JLabel lblfondoAdmin = new JLabel("");
-		lblfondoAdmin.setIcon(new ImageIcon(admin.class.getResource("/gestorAsistenteVAC/imagenes/fondoAdmin.jpg")));
+		lblfondoAdmin.setIcon(new ImageIcon(admin.class.getResource("/imagenes/fondoAdmin.jpg")));
 		lblfondoAdmin.setBounds(-12, -95, 807, 629);
 		contentPane.add(lblfondoAdmin);
 	}

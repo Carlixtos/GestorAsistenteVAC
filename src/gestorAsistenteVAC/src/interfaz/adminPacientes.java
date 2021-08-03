@@ -404,7 +404,7 @@ public class adminPacientes extends JFrame {
 		contentPane.add(lblFecha);
 		
 		JLabel lblfondoAdmin = new JLabel("");
-		lblfondoAdmin.setIcon(new ImageIcon(admin.class.getResource("/gestorAsistenteVAC/imagenes/fondoAdmin.jpg")));
+		lblfondoAdmin.setIcon(new ImageIcon(admin.class.getResource("/imagenes/fondoAdmin.jpg")));
 		lblfondoAdmin.setBounds(0, -51, 522, 543);
 		contentPane.add(lblfondoAdmin);
 	}
