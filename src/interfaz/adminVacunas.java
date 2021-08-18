@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -26,6 +27,10 @@ public class adminVacunas extends JFrame {
 	private JTextField textP;
 	private JTextField textJ;
 	private JTextField textM;
+	private JLabel lblCJanssen;
+	private JLabel lblCModerna;
+	private JLabel lblCPfizer;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -68,21 +73,21 @@ public class adminVacunas extends JFrame {
 		contentPane.add(textJ);
 		
 		//JLabel lblNewLabel_3 = new JLabel(String.valueOf(asisGrafica.getVacuanas().getDosis()));
-		JLabel lblCJanssen = new JLabel(String.valueOf(asisGrafica.getCantVac("janssen")));
+		lblCJanssen = new JLabel(String.valueOf(asisGrafica.getCantVac("janssen")));
 		lblCJanssen.setFont(new Font("Times New Roman", Font.ITALIC, 20));
 		lblCJanssen.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblCJanssen.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCJanssen.setBounds(180, 188, 157, 42);
 		contentPane.add(lblCJanssen);
 			
-		JLabel lblCModerna = new JLabel(String.valueOf(asisGrafica.getCantVac("moderna")));
+		lblCModerna = new JLabel(String.valueOf(asisGrafica.getCantVac("moderna")));
 		lblCModerna.setFont(new Font("Times New Roman", Font.ITALIC, 20));
 		lblCModerna.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblCModerna.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCModerna.setBounds(347, 188, 153, 42);
 		contentPane.add(lblCModerna);
 				
-		JLabel lblCPfizer = new JLabel(String.valueOf(asisGrafica.getCantVac("pfizer")));
+		lblCPfizer = new JLabel(String.valueOf(asisGrafica.getCantVac("pfizer")));
 		lblCPfizer.setFont(new Font("Times New Roman", Font.ITALIC, 20));
 		lblCPfizer.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCPfizer.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -237,5 +242,12 @@ public class adminVacunas extends JFrame {
 		lblfondoAdmin.setIcon(new ImageIcon(admin.class.getResource("/imagenes/fondoAdmin.jpg")));
 		lblfondoAdmin.setBounds(-12, -95, 807, 629);
 		contentPane.add(lblfondoAdmin);
+	}
+
+	public void actualizar() {
+		lblCJanssen.setText(String.valueOf(asisGrafica.getCantVac("janssen")));
+		lblCPfizer.setText(String.valueOf(asisGrafica.getCantVac("pfizer")));
+		lblCModerna.setText(String.valueOf(asisGrafica.getCantVac("moderna")));
+		
 	}
 }

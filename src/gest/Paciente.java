@@ -12,13 +12,16 @@ public class Paciente extends Perfiles{
 	
 	private String aplicador;
 
+	private int hora;
+
 	public Paciente(String nombre, String apellido, int edad, String genero, String tDocumento, int documento, String sangre,
-			boolean enfermedades,String perfil,String tipVacuna,int dosis,int FechaCita,String Aplicador ) {
+			String perfil,boolean enfermedades,String tipVacuna,int dosis,int hora,int FechaCita,String Aplicador ) {
 		super(nombre, apellido, edad, genero, tDocumento, documento, sangre, perfil);
 
 		this.tipoVacuna=tipVacuna;
 		this.dosis=dosis;
 		this.aplicador=Aplicador;
+		this.setHora(hora);
 		this.FechaCita=FechaCita;
 		this.setEnfermedad(enfermedades);
 		
@@ -63,6 +66,14 @@ public class Paciente extends Perfiles{
 
 	public void setEnfermedad(boolean enfermedad) {
 		this.enfermedad = enfermedad;
+	}
+
+	public int getHora() {
+		return hora;
+	}
+
+	public void setHora(int hora) {
+		this.hora = hora;
 	}
 
 }

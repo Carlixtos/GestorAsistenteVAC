@@ -10,13 +10,21 @@ import gest.Paciente;
 
 public class Main {
 
-	public static void main(String[] args) { // Codigo de prueba
+	public static void main(String[] args) { 
+		
+		// Codigo de prueba
+		
 		InterfazG gestorIntf = new InterfazG();
 		Data datos= new Data();
 		long tiempoinicio,tiempofinal;
 		asistenteInterfaz grafica=new asistenteInterfaz();
 		grafica.init(datos);
 		grafica.run();
+		
+		/*
+		Max_minheaptest test = new Max_minheaptest();
+		test.t1();
+		*/
 		
 		/* PRUEBA QUE PACIENTES FUNCIONA CON HASH Y MAX HEAP *//*
 		Data dataGest=new Data();

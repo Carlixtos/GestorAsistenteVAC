@@ -42,13 +42,16 @@ public class Funcionario extends Perfiles{
 		indice +=(this.dias);
 		return (indice+20210901);
 	}
-	public int horaDisponible(int num) {
-		if (num>=20210901) {
+	public int horaDisponible() {
+		
+		while(this.dias>=0) {
 			for(int i =0;i<50;i++) {
-				if(horario[num-20210901][i]!=1) {
+				if(horario[this.dias][i]!=1) {
+					horario[this.dias][i]=1;
 					return	i;			
 				}
 			}
+			this.dias++;
 		}
 		return (Integer) null;
 	}

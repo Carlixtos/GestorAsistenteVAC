@@ -1,17 +1,17 @@
 package util;
 
+import gest.Paciente;
+
 public class Maxheap <T>{
 
 		private ArrayDinamic<Integer> priori;
 		private ArrayDinamic<T> guardar ;
 		int size;
-		int maxSize;
 		
 		public Maxheap(){
 		this.priori= new ArrayDinamic<Integer>();
 		this.guardar=new ArrayDinamic<T>();
 		size=this.priori.size();
-		maxSize=this.priori.capacity();
 	}
 		public int Parent(int i) {
 			return (int) (Math.floor((i-1)/2));
@@ -57,9 +57,14 @@ public class Maxheap <T>{
 		}
 		
 		public void Insert(int p, T key) {
-
-			this.priori.set(this.size,p);
-			this.guardar.set(this.size,key);
+			if(this.priori.size()==this.size) {
+				this.priori.pushback(p);
+				this.guardar.pushback(key);
+			}
+			else {
+				this.priori.set(this.size,p);
+				this.guardar.set(this.size,key);
+			}
 			SiftUp(this.size);
 			this.size=this.size+1;
 		}
@@ -67,21 +72,58 @@ public class Maxheap <T>{
 		
 		public T ExtractMax() {
 			T result = (T) this.guardar.get(0);
+			if(this.size!=1) {
 			this.priori.set(0,this.priori.get(this.size-1));
 			this.guardar.set(0, this.guardar.get(this.size-1));
 			this.size--;
-			SiftDown(0);
+			this.SiftDown(0);
+			}
+			else {
+				this.priori= new ArrayDinamic<Integer>();
+				this.guardar=new ArrayDinamic<T>();
+				this.size--;
+			}
 			return result;
 			
 		}
 		
-		public T Remove(int i) {
+		public int SearchIn (T key) {
+			int n=-1;
+			for (int i =0;i<this.size;i++) {
+				if(this.guardar.get(i).equals(key)) {
+					n=i;
+					break;
+				}
+			}
+			return n;
+		}
+		
+		public T Remove(T key) {
+			int n = SearchIn(key);
+			try {
+				return this.Removeaux(n);
+				}
+			catch(NullPointerException e) {
+				return null;
+			}
+		}
+		
+		public T Removeaux(int i) {
 			this.priori.set(i, (int) Double.POSITIVE_INFINITY);
 			SiftUp(i);
 			return ExtractMax();
 		}
 		
-		public void ChangePriority(int i,int p, T key) {
+		public void ChangePriority(int p,T key) {
+			int n = SearchIn(key);
+			try {
+				this.ChangePriorityaux(n,p,key);
+				}
+			catch(NullPointerException e) {
+				System.out.print(" Objeto inexistente");
+			}
+		}		
+		public void ChangePriorityaux(int i,int p, T key) {
 			int oldp =(int) this.priori.get(i);
 			this.priori.set(i,p);
 			//T oldkey =(T) this.guardar.get(i);
@@ -94,4 +136,13 @@ public class Maxheap <T>{
 			}
 			
 			}
+		public int getSize() {
+			return this.size;
+		}
+		public T getKey(int num) {
+			return this.guardar.get(num);
+		}
+		public T getMax() {
+			return this.guardar.get(0);
+		}
 	}

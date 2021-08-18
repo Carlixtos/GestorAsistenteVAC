@@ -9,8 +9,8 @@ import java.util.Scanner; // Borrar despues de implementar con interfaz
 public class pacienteData {
 	
 	//public AVL<Paciente> pacientes;
-	private MapIntU<Paciente> pPerfiles; //Almacena los perfiles en una tabla hash donde la llave es el numero del documento de identidad
-	private Maxheap<Integer> pPrioridad; //Ordena los documentos de identidad en orden de prioridad
+	public MapIntU<Paciente> pPerfiles; //Almacena los perfiles en una tabla hash donde la llave es el numero del documento de identidad
+	public Maxheap<Integer> pPrioridad; //Ordena los documentos de identidad en orden de prioridad
 	
 	public pacienteData(){
 		this.pPerfiles=new MapIntU<Paciente>(50);
@@ -70,10 +70,12 @@ public class pacienteData {
 		return priori;
 	}
 	
-	public void agregar(String[] pa,String[] fu) {
-		int fecha=Integer.valueOf(fu[0]);
-		String aplic=fu[1];
-		Paciente paciente=new Paciente(pa[0],pa[1], Integer.valueOf(pa[2]),pa[3], pa[4],Integer.valueOf(pa[5]), pa[6],Boolean.parseBoolean(pa[7]), pa[8],pa[9],Integer.valueOf(pa[10]),fecha,aplic);          
+	public void agregar(String[] pa,String[] fu,String[] va) {
+		int hora=Integer.valueOf(fu[0]);
+		int fecha =Integer.valueOf(fu[1]);
+		String aplic=fu[2];
+		
+		Paciente paciente=new Paciente(pa[0],pa[1], Integer.valueOf(pa[2]),pa[3], pa[4],Integer.valueOf(pa[5]), pa[6],pa[7], Boolean.parseBoolean(pa[8]),va[0],Integer.valueOf(va[1]),hora,fecha,aplic);          
 		this.pPerfiles.set(paciente.getIntKey(), paciente);
 		this.pPrioridad.Insert(prioridadAuto(paciente),paciente.getIntKey());
 	}
@@ -99,9 +101,18 @@ public class pacienteData {
 	}
 
 	public void remplazar(String key, String[] pa,String[] fu) { // Se espera que la key de parametro sea igual a la key del perfil a remplazar
-		int fecha=Integer.valueOf(fu[0]);
+		int hora=Integer.valueOf(fu[0]);
+		int fecha =Integer.valueOf(fu[1]);
 		String aplic=fu[1];
-		Paciente paciente=new Paciente(pa[0],pa[1], Integer.valueOf(pa[2]),pa[3], pa[4],Integer.valueOf(pa[5]), pa[6],Boolean.parseBoolean(pa[7]), pa[8],pa[9],Integer.valueOf(pa[10]),fecha,aplic);          
+		Paciente paciente=new Paciente(pa[0],pa[1], Integer.valueOf(pa[2]),pa[3], pa[4],Integer.valueOf(pa[5]), pa[6],pa[7],Boolean.parseBoolean(pa[8]),pa[9],Integer.valueOf(pa[10]),hora,fecha,aplic);          
 		this.pPerfiles.set(Integer.valueOf(key),paciente);
 	}
+	public int getCantidad(){
+		return this.pPrioridad.getSize();
+	}
+
+	public Paciente getMax() {
+		return this.pPerfiles.get(this.pPrioridad.getMax());
+	}
+	
 }

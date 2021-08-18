@@ -29,7 +29,7 @@ public class vacunaData {
 		
 	}
 
-	public String eliminar(int t) {
+	public String[] eliminar(int t) {
 		Vacunas aux = this.vacunas.dequeue();
 
 		for (int i =0;i<3;i++) {
@@ -42,8 +42,15 @@ public class vacunaData {
 				}
 			}
 		
-		aux.eliminar(t);
-		return aux.getTipo();
+		String[] n={aux.getTipo(), String.valueOf(aux.getDosis())};
+		if(aux.getCantidad()<=0) {
+			n[0]=" No hay vacunas disponibles";
+			n[1]="0";
+		}else {
+			aux.eliminar(t);
+		}
+		this.vacunas.enqueue(aux);
+		return n;
 
 	}
 

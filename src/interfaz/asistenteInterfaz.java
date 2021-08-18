@@ -67,6 +67,7 @@ public class asistenteInterfaz {
 				}
 				case 13:{
 					aVac.setVisible(true);
+					aVac.actualizar();
 					break;
 				}
 				case 4:{
@@ -170,41 +171,33 @@ public class asistenteInterfaz {
 		
 	}
 	public void agregarPaciente(String[] paciente) {
-		datos.paciente.agregar(paciente,datos.funcionario.funcionarioDisponible());
+		datos.paciente.agregar(paciente,datos.funcionario.funcionarioDisponible(),datos.vacunas.eliminar(1));
 		
 	}
-	public String[][] getDatosPacientes() {
-		return null;
-		
+	public String[][] getDatosPacientes() {		
 		/*inOrderPrintAux(root.getLeft());
 		System.out.print(root.getKey()+" ");
 		inOrderPrintAux(root.getRight());*/
-	/*	String[][] tabla = new String[datos.paciente.pacientes.aproxLength(datos.paciente.pacientes.getRoot())][10];
-		int n=0;
-		auxGetdatosPacientes(datos.paciente.pacientes.getRoot(),tabla,n);
-		return tabla;	*/
-	}
-	private int auxGetdatosPacientes(NodeA<Paciente> root, String[][] tabla,int n) {
-		
-    	if(root.getLeft()!=null){
-    		//n++;
-    		n=auxGetdatosPacientes(root.getLeft(),tabla,n);
-    		}
-    	if(root.getRight()!=null){
-    		//n++;
-    		n=auxGetdatosPacientes(root.getRight(),tabla,n);
-    		}
-    	n=guardarDatosPacientes(root.getValue(),tabla,n);
-    	return n;
-		
+		String[][] tabla = new String[datos.paciente.getCantidad()][14];
+		for (int i=0;i<datos.paciente.getCantidad();i++){
+			Paciente pac = datos.paciente.pPerfiles.get(datos.paciente.pPrioridad.getKey(i));
+			guardarDatosPacientes(pac,tabla,i);
+		}
+		return tabla;	
 	}	
-	
-	
-	public String[][] getDatosFuncionario() {
-		String[][] tabla = new String[datos.funcionario.funcionarios.aproxLength(datos.funcionario.funcionarios.getRoot())][9];
+	public String[][] getDatosFuncionario() { 
+		String[][] tabla;
+		if(datos.funcionario.funcionarios.getRoot()!=null) {
+		tabla = new String[datos.funcionario.funcionarios.aproxLength(datos.funcionario.funcionarios.getRoot())][9];
 		int n=0;
 		auxGetdatosFuncionarios(datos.funcionario.funcionarios.getRoot(),tabla,n);
-		return tabla;	
+			}
+		else {
+		tabla=new String[0][9];
+		}
+		
+		return tabla;
+		
 	}
 	private int auxGetdatosFuncionarios(NodeA<Funcionario> root, String[][] tabla,int n) {
 		
@@ -231,7 +224,6 @@ public class asistenteInterfaz {
 		tabla[n][5]=String.valueOf(funcionario.getDocumento());
 		tabla[n][6]=funcionario.getSangre();
 		tabla[n][7]=funcionario.getPerfil();
-		tabla[n][8]=String.valueOf(funcionario.getHorario()[0][0]);
 		n++;
 		return n;
 	}
@@ -244,8 +236,13 @@ public class asistenteInterfaz {
 		tabla[n][5]=String.valueOf(paciente.getDocumento());
 		tabla[n][6]=paciente.getSangre();
 		tabla[n][7]=paciente.getPerfil();
-		tabla[n][8]=paciente.getTipoVacuna();
-		tabla[n][9]=String.valueOf(paciente.getDosis());
+		tabla[n][8]=String.valueOf(paciente.isEnfermedad());
+		tabla[n][9]=paciente.getTipoVacuna();
+		tabla[n][10]=String.valueOf(paciente.getDosis());
+		tabla[n][11]=String.valueOf(paciente.getHora());
+		tabla[n][12]=String.valueOf(paciente.getFechaCita());
+		tabla[n][13]=paciente.getAplicador();
+		
 		n++;
 		return n;
 	}
@@ -366,6 +363,22 @@ public class asistenteInterfaz {
 	}
 	public int getCantVac(String tipo) {
 		return this.datos.vacunas.getCantidad(tipo);
+	}
+	public int TvacunasAgregar(Integer num) {
+		long tiempoinicio = System.currentTimeMillis();
+		this.gen.agregarVacunas(num, this.datos);;
+		long tiempofinal = System.currentTimeMillis();
+		int tiempoTotal=(int) (tiempofinal-tiempoinicio);
+		System.out.println(tiempoTotal);
+		return tiempoTotal;
+	}
+	public int TvacunasEliminar(Integer num) {
+		long tiempoinicio = System.currentTimeMillis();
+		this.gen.eliminarVacunas(num, this.datos);;
+		long tiempofinal = System.currentTimeMillis();
+		int tiempoTotal=(int) (tiempofinal-tiempoinicio);
+		System.out.println(tiempoTotal);
+		return tiempoTotal;
 	}
 	
 	

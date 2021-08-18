@@ -31,6 +31,7 @@ public class Pruebasiteradas extends JFrame {
 	private JTextField tnumFuncionarios;
 	private JTextField tnumPacientes;
 	private JLabel lAvisoPacientes;
+	private JTextField tnumVacunas;
 
 	/**
 	 * Launch the application.
@@ -63,46 +64,70 @@ public class Pruebasiteradas extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JLabel lblNewLabel_1 = new JLabel("Vacunas");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		lblNewLabel_1.setBounds(345, 65, 160, 33);
+		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_3_1_1 = new JLabel("<html> Inserte el numero de vacunas que quiere agregar, eliminar o buscar.<html>");
+		lblNewLabel_3_1_1.setToolTipText("");
+		lblNewLabel_3_1_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3_1_1.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		lblNewLabel_3_1_1.setBounds(345, 105, 160, 80);
+		contentPane.add(lblNewLabel_3_1_1);
+		
+		JLabel lAvisoVacunas = new JLabel("  ");
+		lAvisoVacunas.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		lAvisoVacunas.setBounds(345, 215, 160, 120);
+		contentPane.add(lAvisoVacunas);
+		
+		tnumVacunas = new JTextField();
+		tnumVacunas.setText("0");
+		tnumVacunas.setColumns(10);
+		tnumVacunas.setBounds(345, 190, 160, 20);
+		contentPane.add(tnumVacunas);
+		
 						
 		JLabel lblNewLabel_3_1 = new JLabel("<html> Inserte el numero de funcionarios que quiere agregar, eliminar o buscar.<html>");
 		lblNewLabel_3_1.setToolTipText("");
 		lblNewLabel_3_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3_1.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblNewLabel_3_1.setBounds(250, 108, 250, 65);
+		lblNewLabel_3_1.setBounds(175, 105, 160, 80);
 		contentPane.add(lblNewLabel_3_1);
 		
 		JLabel lAvisoFuncionarios = new JLabel("  ");
 		lAvisoFuncionarios.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lAvisoFuncionarios.setBounds(250, 211, 231, 92);
+		lAvisoFuncionarios.setBounds(175, 215, 160, 120);
 		contentPane.add(lAvisoFuncionarios);
 		
 		JLabel lblPacientes = new JLabel("Pacientes");
 		lblPacientes.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPacientes.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		lblPacientes.setBounds(-13, 65, 226, 33);
+		lblPacientes.setBounds(5, 65, 160, 33);
 		contentPane.add(lblPacientes);
 		
 		lAvisoPacientes = new JLabel("  ");
 		lAvisoPacientes.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lAvisoPacientes.setBounds(20, 211, 240, 92);
+		lAvisoPacientes.setBounds(5, 215, 160, 120);
 		contentPane.add(lAvisoPacientes);
 		
 		JLabel lblNewLabel_3 = new JLabel("<html> Inserte el numero de pacientes que quiere agregar, eliminar o buscar.<html>");
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3.setToolTipText("");
 		lblNewLabel_3.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblNewLabel_3.setBounds(20, 108, 240, 65);
+		lblNewLabel_3.setBounds(5, 105, 160, 80);
 		contentPane.add(lblNewLabel_3);
 		
 		tnumPacientes = new JTextField();
 		tnumPacientes.setText("0");
 		tnumPacientes.setColumns(10);
-		tnumPacientes.setBounds(20, 181, 166, 20);
+		tnumPacientes.setBounds(5, 190, 160, 20);
 		contentPane.add(tnumPacientes);
 		
 		tnumFuncionarios = new JTextField();
 		tnumFuncionarios.setText("0");
-		tnumFuncionarios.setBounds(250, 181, 166, 20);
+		tnumFuncionarios.setBounds(175, 190, 160, 20);
 		contentPane.add(tnumFuncionarios);
 		tnumFuncionarios.setColumns(10);
 		
@@ -141,6 +166,14 @@ public class Pruebasiteradas extends JFrame {
 						System.out.println(" Campo vacio || dato invalido ");
 						lAvisoFuncionarios.setText(" Campo vacio || dato invalido ");
 					}
+					try {
+						int tiempo1 = asisGrafica.TvacunasEliminar(Integer.valueOf(tnumVacunas.getText()));
+						lAvisoVacunas.setText("<html>Vacunas eliminadas con exito<p>Tiempo requerido: <html>"+tiempo1+" milisegundos.");
+					}
+					catch(NullPointerException e1) {
+						System.out.println(" Campo vacio || dato invalido ");
+						lAvisoVacunas.setText(" Campo vacio || dato invalido ");
+					}
 				limpiar();
 	
 			}
@@ -158,12 +191,12 @@ public class Pruebasiteradas extends JFrame {
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-				int tiempo =asisGrafica.TpacientesAgregar(Integer.valueOf(tnumPacientes.getText()));
-				lAvisoPacientes.setText("<html>Pacientes creados con exito<p>Tiempo requerido: <html>"+tiempo+" milisegundos. ");
-				}
+					int tiempo =asisGrafica.TvacunasAgregar(Integer.valueOf(tnumVacunas.getText()));
+					lAvisoVacunas.setText("<html>Vacunas creadas con exito<p>Tiempo requerido: <html>"+tiempo+" milisegundos. ");
+					}
 				catch(NullPointerException e1) {
-					System.out.println(" Campo vacio || dato invalido ");
-					lAvisoPacientes.setText(" Campo vacio || dato invalido ");
+						System.out.println(" Campo vacio || dato invalido ");
+						lAvisoVacunas.setText(" Campo vacio || dato invalido ");
 				}
 				try {
 					int tiempo1 = asisGrafica.TfuncionariosAgregar(Integer.valueOf(tnumFuncionarios.getText()));
@@ -172,6 +205,14 @@ public class Pruebasiteradas extends JFrame {
 				catch(NullPointerException e1) {
 					System.out.println(" Campo vacio || dato invalido ");
 					lAvisoFuncionarios.setText(" Campo vacio || dato invalido ");
+				}
+				try {
+					int tiempo =asisGrafica.TpacientesAgregar(Integer.valueOf(tnumPacientes.getText()));
+					lAvisoPacientes.setText("<html>Pacientes creados con exito<p>Tiempo requerido: <html>"+tiempo+" milisegundos. ");
+					}
+				catch(NullPointerException e1) {
+						System.out.println(" Campo vacio || dato invalido ");
+						lAvisoPacientes.setText(" Campo vacio || dato invalido ");
 				}
 				limpiar();
 				
@@ -205,6 +246,7 @@ public class Pruebasiteradas extends JFrame {
 						System.out.println(" Campo vacio || dato invalido ");
 						lAvisoFuncionarios.setText(" Campo vacio || dato invalido ");
 					}
+						lAvisoVacunas.setText("  ");
 				limpiar();
 				
 			}
@@ -220,7 +262,7 @@ public class Pruebasiteradas extends JFrame {
 		JLabel lblNewLabel = new JLabel("Funcionarios");
 		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(259, 65, 226, 33);
+		lblNewLabel.setBounds(175, 65, 160, 33);
 		contentPane.add(lblNewLabel);
 		
 		JButton btnSalir = new JButton("Regresar");
@@ -258,6 +300,7 @@ public class Pruebasiteradas extends JFrame {
 	void limpiar() {
 		tnumFuncionarios.setText("0");
 		tnumPacientes.setText("0");
+		tnumVacunas.setText("0");
 		
 	}
 }

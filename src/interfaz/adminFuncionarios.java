@@ -35,14 +35,12 @@ public class adminFuncionarios extends JFrame {
 	private JTextField tEdad;
 	private JTextField tGenero;
 	private JTextField tSangre;
-	private JTextField tHorario;
 	private JLabel lblNewLabel_4;
 	private JLabel lblNewLabel_5;
 	private JLabel lblNewLabel_6;
 	private JLabel lblNewLabel_7;
 	private JLabel lblNewLabel_8;
 	private JLabel lblNewLabel_9;
-	private JLabel lblNewLabel_10;
 	private JTable tVisible;
 	private JLabel lblNewLabel_11;
 	private JTextField textBuscar;
@@ -89,7 +87,7 @@ public class adminFuncionarios extends JFrame {
 				tVisible.setValueAt(tNombre.getText(),seleccion, 0);
 				tVisible.setValueAt(tDocumento.getText(),seleccion, 1);
 				
-				String[] nDatos=new String[9];
+				String[] nDatos=new String[8];
 				nDatos[0]=tNombre.getText();
 				nDatos[1]=tApellido.getText();
 				nDatos[2]=tEdad.getText();
@@ -98,10 +96,9 @@ public class adminFuncionarios extends JFrame {
 				nDatos[5]=tDocumento.getText();
 				nDatos[6]=tSangre.getText();
 				nDatos[7]="Funcionario";
-				nDatos[8]=tHorario.getText();
 
 
-				for(int i=0;i<9;i++) {
+				for(int i=0;i<8;i++) {
 					tDatos.setValueAt(nDatos[i],seleccion, i);
 				}
 				
@@ -116,7 +113,7 @@ public class adminFuncionarios extends JFrame {
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int seleccion=tVisible.getSelectedRow();
-				asisGrafica.eliminarFuncionarios(tDatos.getValueAt(seleccion, 0).toString());
+				asisGrafica.eliminarFuncionarios(tDatos.getValueAt(seleccion, 5).toString());
 				((DefaultTableModel) tDatos.getModel()).removeRow(seleccion);
 				((DefaultTableModel) tVisible.getModel()).removeRow(seleccion);
 				limpiar();
@@ -153,7 +150,6 @@ public class adminFuncionarios extends JFrame {
 			tTdocumento.setText(tDatos.getValueAt(seleccion, 4).toString());
 			tDocumento.setText(tDatos.getValueAt(seleccion, 5).toString());
 			tSangre.setText(tDatos.getValueAt(seleccion, 6).toString());
-			tHorario.setText(tDatos.getValueAt(seleccion, 8).toString());
 			//actualizarTabla(tDatos,tVisible,asisGrafica.getDatosFuncionario());
 				
 			}
@@ -185,7 +181,6 @@ public class adminFuncionarios extends JFrame {
 					tTdocumento.setText(auxF.getTipoDocumento());
 					tDocumento.setText(String.valueOf(auxF.getDocumento()));
 					tSangre.setText(auxF.getSangre());
-					tHorario.setText(String.valueOf(auxF.getHorario()[0]));
 					
 					}
 					catch(NullPointerException e1) {
@@ -206,39 +201,34 @@ public class adminFuncionarios extends JFrame {
 		textBuscar.setBounds(298, 106, 120, 20);
 		contentPane.add(textBuscar);
 		
-		lblNewLabel_10 = new JLabel("Horario");
-		lblNewLabel_10.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblNewLabel_10.setBounds(22, 352, 86, 20);
-		contentPane.add(lblNewLabel_10);
-		
 		lblNewLabel_9 = new JLabel("Tipo de Sangre");
 		lblNewLabel_9.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblNewLabel_9.setBounds(22, 322, 103, 20);
+		lblNewLabel_9.setBounds(22, 370, 103, 20);
 		contentPane.add(lblNewLabel_9);
 		
 		lblNewLabel_8 = new JLabel("Documento");
 		lblNewLabel_8.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblNewLabel_8.setBounds(22, 298, 86, 20);
+		lblNewLabel_8.setBounds(22, 335, 86, 20);
 		contentPane.add(lblNewLabel_8);
 		
 		lblNewLabel_6 = new JLabel("Genero");
 		lblNewLabel_6.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblNewLabel_6.setBounds(22, 241, 86, 20);
+		lblNewLabel_6.setBounds(22, 265, 86, 20);
 		contentPane.add(lblNewLabel_6);
 		
 		lblNewLabel_7 = new JLabel("Tipo de documento");
 		lblNewLabel_7.setFont(new Font("Times New Roman", Font.PLAIN, 13));
-		lblNewLabel_7.setBounds(22, 268, 145, 20);
+		lblNewLabel_7.setBounds(22, 300, 145, 20);
 		contentPane.add(lblNewLabel_7);
 		
 		lblNewLabel_5 = new JLabel("Edad");
 		lblNewLabel_5.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblNewLabel_5.setBounds(22, 217, 86, 20);
+		lblNewLabel_5.setBounds(22, 230, 86, 20);
 		contentPane.add(lblNewLabel_5);
 		
 		lblNewLabel_4 = new JLabel("Apellido");
 		lblNewLabel_4.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblNewLabel_4.setBounds(22, 190, 86, 20);
+		lblNewLabel_4.setBounds(22, 195, 86, 20);
 		contentPane.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_3 = new JLabel("Nombre");
@@ -246,39 +236,34 @@ public class adminFuncionarios extends JFrame {
 		lblNewLabel_3.setBounds(22, 160, 86, 20);
 		contentPane.add(lblNewLabel_3);
 		
-		tHorario = new JTextField();
-		tHorario.setColumns(10);
-		tHorario.setBounds(129, 349, 120, 20);
-		contentPane.add(tHorario);
-		
 		tSangre = new JTextField();
 		tSangre.setColumns(10);
-		tSangre.setBounds(129, 322, 120, 20);
+		tSangre.setBounds(129, 370, 120, 20);
 		contentPane.add(tSangre);
 		
 		tDocumento = new JTextField();
 		tDocumento.setColumns(10);
-		tDocumento.setBounds(129, 295, 120, 20);
+		tDocumento.setBounds(129, 335, 120, 20);
 		contentPane.add(tDocumento);
 		
 		tTdocumento = new JTextField();
 		tTdocumento.setColumns(10);
-		tTdocumento.setBounds(129, 268, 120, 20);
+		tTdocumento.setBounds(129, 300, 120, 20);
 		contentPane.add(tTdocumento);
 		
 		tGenero = new JTextField();
 		tGenero.setColumns(10);
-		tGenero.setBounds(129, 241, 120, 20);
+		tGenero.setBounds(129, 265, 120, 20);
 		contentPane.add(tGenero);
 		
 		tEdad = new JTextField();
 		tEdad.setColumns(10);
-		tEdad.setBounds(129, 214, 120, 20);
+		tEdad.setBounds(129, 230, 120, 20);
 		contentPane.add(tEdad);
 		
 		tApellido = new JTextField();
 		tApellido.setColumns(10);
-		tApellido.setBounds(129, 187, 120, 20);
+		tApellido.setBounds(129, 195, 120, 20);
 		contentPane.add(tApellido);
 		
 		tNombre = new JTextField();
@@ -325,7 +310,7 @@ public class adminFuncionarios extends JFrame {
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				String[] funcionario = new String [10];
+				String[] funcionario = new String [8];
 				funcionario[0]=tNombre.getText();
 				funcionario[1]=tApellido.getText();
 				funcionario[2]=tEdad.getText();
@@ -334,7 +319,6 @@ public class adminFuncionarios extends JFrame {
 				funcionario[5]=tDocumento.getText();
 				funcionario[6]=tSangre.getText();
 				funcionario[7]="Funcionario";
-				funcionario[8]=tHorario.getText();
 
 				asisGrafica.agregarFuncionario(funcionario);
 				actualizarTabla(tDatos,tVisible,asisGrafica.getDatosFuncionario());
@@ -401,7 +385,6 @@ public class adminFuncionarios extends JFrame {
 		tTdocumento.setText("");
 		tDocumento.setText("");
 		tSangre.setText("");
-		tHorario.setText("");
 		
 	}
 	void actualizarTabla(JTable tabla, JTable tVisible, String[][] datos) {

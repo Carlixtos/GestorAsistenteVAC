@@ -18,7 +18,6 @@ public class generadorDatos {
 		for (int i=0;i<n;i++) {
 		
 			int l=this.numeroAleatorioEnRango(0,130);
-			String vacuna=this.vacunaAleatoreo();
 			String[] a= {	this.nombreAleatoreo(),										//nombre
 							this.nombreAleatoreo(),										//apellido
 							String.valueOf(l),											//edad
@@ -27,13 +26,10 @@ public class generadorDatos {
 							String.valueOf(this.numeroAleatorioEnRango(100000,999000)),	//documento
 							this.sangreAleatoreo(),										//tipo de sangre
 							this.perfilAleatoreo(),										//perfil
-							this.enfeAleatoreo(),										//tiene alguna enfermedad
-							vacuna,														//tipo de vacuna
-							this.dosis(vacuna)											//dosis	                     
-		            
+							this.enfeAleatoreo()										//tiene alguna enfermedad
 			};
 			
-			d.paciente.agregar(a,d.funcionario.funcionarioDisponible());
+			d.paciente.agregar(a,d.funcionario.funcionarioDisponible(),d.vacunas.eliminar(1));
 			
 		}
 		
@@ -61,19 +57,24 @@ public class generadorDatos {
 	}
 	
 	public void eliminarPacientes(int l, Data datos) {
-		for (int i = l-1;i>0;i--) {
-			//datos.paciente.pacientes.delete(datos.paciente.pacientes.getRoot().getKey());
+		for (int i = l-1;i>=0;i--) {
+			if(datos.paciente.getCantidad()>0) {
+			datos.paciente.eliminar(String.valueOf(datos.paciente.getMax().getDocumento()));
+			}
+			
 		}
 	}
 	public void eliminarFuncionarios(int l, Data datos) {
 		for (int i = l-1;i>=0;i--) {	
-			datos.funcionario.funcionarios.delete(datos.funcionario.funcionarios.getRoot().getKey());
+			if(datos.funcionario.getCantidad()>0) {
+			datos.funcionario.eliminar(String.valueOf(datos.funcionario.getMin().getDocumento()));
+			}
 		}
 	}
 	public void remplazarPacientes(int l, Data datos) {
 		for (int i = l-1;i>=0;i--) {	
 			String[] f = datos.funcionario.funcionarioDisponible();
-			Paciente p= new Paciente("cronos", "jupiter", i, "Dios", "inmortal", i, "celestial", (i%2==0), "Creador", "todas", i,Integer.valueOf(f[0]),f[1]);
+			Paciente p= new Paciente("cronos", "jupiter", i, "Dios", "inmortal", i, "celestial", "Paciente",(i%2==0), "todas", i,Integer.valueOf(f[0]),Integer.valueOf(f[1]),f[2]);
 		//	datos.paciente.pacientes.keyReplace(datos.paciente.pacientes.nodeConsult(i), p);
 		}
 		
@@ -159,8 +160,10 @@ public class generadorDatos {
     }
 	public String vacunaAleatoreo() {
         
-        String[] banco = {"Pzifer" ,"Moderna","Janssen"};
+        String[] banco = {"pfizer" ,"moderna","janssen",};
+        
       
+       
         return banco[this.numeroAleatorioEnRango(0, banco.length)];
     }
     private String dosis(String l) {

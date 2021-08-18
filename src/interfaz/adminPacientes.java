@@ -26,6 +26,10 @@ import javax.swing.JTextPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JScrollPane;
+import javax.swing.JList;
+import java.awt.Choice;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 
 public class adminPacientes extends JFrame {
@@ -46,8 +50,6 @@ public class adminPacientes extends JFrame {
 	private JLabel lblNewLabel_8;
 	private JLabel lblNewLabel_9;
 	private JTable tVisible;
-	private JTextField tVacuna;
-	private JTextField tDosis;
 	private JLabel lblNewLabel_10;
 	private JTextField textBuscar;
 	private JScrollPane scrollPane;
@@ -83,6 +85,11 @@ public class adminPacientes extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JComboBox cEnfermedades = new JComboBox();
+		cEnfermedades.setModel(new DefaultComboBoxModel(new String[] {"false", "true"}));
+		cEnfermedades.setBounds(129, 370, 120, 23);
+		contentPane.add(cEnfermedades);
+		
 		JButton btnModificar = new JButton("Modificar");
 		btnModificar.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 		btnModificar.addActionListener(new ActionListener() {
@@ -102,8 +109,7 @@ public class adminPacientes extends JFrame {
 				nDatos[5]=tDocumento.getText();
 				nDatos[6]=tSangre.getText();
 				nDatos[7]="Pacientes";
-				nDatos[8]=tVacuna.getText();
-				nDatos[9]=tDosis.getText();
+				nDatos[8]=cEnfermedades.getSelectedItem().toString();
 
 				for(int i=0;i<10;i++) {
 					tDatos.setValueAt(nDatos[i],seleccion, i);
@@ -125,7 +131,7 @@ public class adminPacientes extends JFrame {
 				((DefaultTableModel) tVisible.getModel()).removeRow(seleccion);
 				limpiar();
 				
-				//actualizarTabla(tDatos,tVisible,asisGrafica.getDatosPacientes());
+				actualizarTabla(tDatos,tVisible,asisGrafica.getDatosPacientes());
 			}
 		});
 		
@@ -141,8 +147,15 @@ public class adminPacientes extends JFrame {
 				tTdocumento.setText(auxP.getTipoDocumento());
 				tDocumento.setText(String.valueOf(auxP.getDocumento()));
 				tSangre.setText(auxP.getSangre());
-				tVacuna.setText(auxP.getTipoVacuna());
-				tDosis.setText(String.valueOf(auxP.getDosis()));
+				String en;
+				if(auxP.isEnfermedad()){
+					en="Si";
+							}
+				else {
+					en="No";
+				}
+			
+				cEnfermedades.setSelectedItem(en);
 				
 				}
 				catch(NullPointerException e1) {
@@ -160,15 +173,14 @@ public class adminPacientes extends JFrame {
 		scrollPane.setViewportView(tVisible);
 		tVisible.setModel(new DefaultTableModel(
 				new String[][] {
-					{"  ", "  "},
-					{" ", " "},
+					{"  ", "  ","  "},
+					{" ", " ","  "},
 				},
 			new String[] {
-				"Nombre ", "Cedula"
+				"Nombre ", "Cedula","Fecha","Vacuna"
 			}
 		));
 		tVisible.addMouseListener(new MouseAdapter() {
-			@Override
 			public void mouseClicked(MouseEvent e) {
 			int seleccion=tVisible.getSelectedRow();
 			tNombre.setText(tDatos.getValueAt(seleccion, 0).toString());
@@ -178,17 +190,9 @@ public class adminPacientes extends JFrame {
 			tTdocumento.setText(tDatos.getValueAt(seleccion, 4).toString());
 			tDocumento.setText(tDatos.getValueAt(seleccion, 5).toString());
 			tSangre.setText(tDatos.getValueAt(seleccion, 6).toString());
-			tVacuna.setText(tDatos.getValueAt(seleccion, 8).toString());
-			tDosis.setText(tDatos.getValueAt(seleccion, 9).toString());
+			cEnfermedades.setSelectedItem(tDatos.getValueAt(seleccion, 12).toString());
+
 			//actualizarTabla(tDatos,tVisible,asisGrafica.getDatosPacientes());
-				
-			}
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				
-			}
-			@Override
-			public void mousePressed(MouseEvent e) {
 				
 			}
 		});
@@ -210,49 +214,34 @@ public class adminPacientes extends JFrame {
 		textBuscar.setBounds(301, 106, 120, 20);
 		contentPane.add(textBuscar);
 		
-		JLabel lblNewLabel_11 = new JLabel("Dosis");
+		JLabel lblNewLabel_11 = new JLabel("Enfermedades ");
 		lblNewLabel_11.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblNewLabel_11.setBounds(22, 381, 86, 20);
+		lblNewLabel_11.setBounds(22, 370, 97, 20);
 		contentPane.add(lblNewLabel_11);
-		
-		tVacuna = new JTextField();
-		tVacuna.setColumns(10);
-		tVacuna.setBounds(129, 351, 120, 20);
-		contentPane.add(tVacuna);
-		
-		tDosis = new JTextField();
-		tDosis.setColumns(10);
-		tDosis.setBounds(129, 378, 120, 20);
-		contentPane.add(tDosis);
-		
-		JLabel lblNewLabel_10_1 = new JLabel("Vacuna");
-		lblNewLabel_10_1.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblNewLabel_10_1.setBounds(22, 351, 86, 20);
-		contentPane.add(lblNewLabel_10_1);
 		
 		lblNewLabel_9 = new JLabel("Tipo de Sangre");
 		lblNewLabel_9.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblNewLabel_9.setBounds(22, 322, 103, 20);
+		lblNewLabel_9.setBounds(22, 340, 103, 20);
 		contentPane.add(lblNewLabel_9);
 		
 		lblNewLabel_8 = new JLabel("Documento");
 		lblNewLabel_8.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblNewLabel_8.setBounds(22, 298, 86, 20);
+		lblNewLabel_8.setBounds(22, 310, 86, 20);
 		contentPane.add(lblNewLabel_8);
 		
 		lblNewLabel_6 = new JLabel("Genero");
 		lblNewLabel_6.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblNewLabel_6.setBounds(22, 241, 86, 20);
+		lblNewLabel_6.setBounds(22, 250, 86, 20);
 		contentPane.add(lblNewLabel_6);
 		
 		lblNewLabel_7 = new JLabel("Tipo de documento");
 		lblNewLabel_7.setFont(new Font("Times New Roman", Font.PLAIN, 13));
-		lblNewLabel_7.setBounds(22, 268, 145, 20);
+		lblNewLabel_7.setBounds(22, 280, 108, 20);
 		contentPane.add(lblNewLabel_7);
 		
 		lblNewLabel_5 = new JLabel("Edad");
 		lblNewLabel_5.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblNewLabel_5.setBounds(22, 217, 86, 20);
+		lblNewLabel_5.setBounds(22, 220, 86, 20);
 		contentPane.add(lblNewLabel_5);
 		
 		lblNewLabel_4 = new JLabel("Apellido");
@@ -267,32 +256,32 @@ public class adminPacientes extends JFrame {
 		
 		tSangre = new JTextField();
 		tSangre.setColumns(10);
-		tSangre.setBounds(129, 322, 120, 20);
+		tSangre.setBounds(129, 340, 120, 20);
 		contentPane.add(tSangre);
 		
 		tDocumento = new JTextField();
 		tDocumento.setColumns(10);
-		tDocumento.setBounds(129, 295, 120, 20);
+		tDocumento.setBounds(129, 310, 120, 20);
 		contentPane.add(tDocumento);
 		
 		tTdocumento = new JTextField();
 		tTdocumento.setColumns(10);
-		tTdocumento.setBounds(129, 268, 120, 20);
+		tTdocumento.setBounds(129, 280, 120, 20);
 		contentPane.add(tTdocumento);
 		
 		tGenero = new JTextField();
 		tGenero.setColumns(10);
-		tGenero.setBounds(129, 241, 120, 20);
+		tGenero.setBounds(129, 250, 120, 20);
 		contentPane.add(tGenero);
 		
 		tEdad = new JTextField();
 		tEdad.setColumns(10);
-		tEdad.setBounds(129, 214, 120, 20);
+		tEdad.setBounds(129, 220, 120, 20);
 		contentPane.add(tEdad);
 		
 		tApellido = new JTextField();
 		tApellido.setColumns(10);
-		tApellido.setBounds(129, 187, 120, 20);
+		tApellido.setBounds(129, 190, 120, 20);
 		contentPane.add(tApellido);
 		
 		tNombre = new JTextField();
@@ -348,8 +337,7 @@ public class adminPacientes extends JFrame {
 				paciente[5]=tDocumento.getText();
 				paciente[6]=tSangre.getText();
 				paciente[7]="Paciente";
-				paciente[8]=tVacuna.getText();
-				paciente[9]=tDosis.getText();
+				paciente[8]=cEnfermedades.getSelectedItem().toString();
 
 				asisGrafica.agregarPaciente(paciente);
 				actualizarTabla(tDatos,tVisible,asisGrafica.getDatosPacientes());
@@ -416,21 +404,22 @@ public class adminPacientes extends JFrame {
 		tTdocumento.setText("");
 		tDocumento.setText("");
 		tSangre.setText("");
-		tVacuna.setText("");
-		tDosis.setText("");
+		
 		
 	}
 	void actualizarTabla(JTable tabla, JTable tVisible, String[][] datos) {
 		 tabla.setModel(new javax.swing.table.DefaultTableModel(datos,new String []{"nombre","apellido","edad","genero","tipo de Documento", "Documento", "tipo de sangre","perfil","tipo de vacuna","dosis"}
 			        ));
-		 String[][] datosV=new String[datos.length][2];
+		 String[][] datosV=new String[datos.length][4];
 		 int i=0;
 		while(i<datos.length) {
 		 datosV[i][0]=datos[i][0];
 		 datosV[i][1]=datos[i][5];
+		 datosV[i][2]=datos[i][12];
+		 datosV[i][3]=datos[i][9];
 		 i++;
 		 }
-		 tVisible.setModel(new javax.swing.table.DefaultTableModel(datosV,new String []{"Nombre", "Documento"}
+		 tVisible.setModel(new javax.swing.table.DefaultTableModel(datosV,new String []{"Nombre", "Documento", "Fecha","Vacuna"}
 			        ));
 	}
 	public JTable getTVisible() {
