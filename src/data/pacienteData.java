@@ -92,6 +92,7 @@ public class pacienteData {
 	public void eliminar(String key) {
 		this.pPerfiles.delete(Integer.valueOf(key));
 		this.pPrioridad.Remove(Integer.valueOf(key));
+		pIds.nodeDrop(Integer.valueOf(key));
 	}
 	
 	public Paciente getPerfil(String key) {
