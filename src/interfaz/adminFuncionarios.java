@@ -68,6 +68,7 @@ public class adminFuncionarios extends JFrame {
 	 * @param asistenteInterfaz 
 	 */
 	public adminFuncionarios(asistenteInterfaz grafica) {
+		this.setLocationRelativeTo(null);
 		asisGrafica=grafica;
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

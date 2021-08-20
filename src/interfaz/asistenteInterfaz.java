@@ -1,15 +1,14 @@
 package interfaz;
 
 import Test.generadorDatos;
+import analisis.Analisis;
 import data.Data;
 import data.Profile;
 import gest.Funcionario;
 import gest.Paciente;
-import gest.Vacunas;
-import util.ArrayDinamic;
 import util.NodeA;
-import util.NodeU;
 import util.StackU;
+
 
 public class asistenteInterfaz {
 	
@@ -19,11 +18,11 @@ public class asistenteInterfaz {
 	private adminPacientes aPaci;
 	private adminFuncionarios aFun;
 	private adminVacunas aVac;
-	private Pruebasmenu tMenu;
 	private Pruebasiteradas tIterado;
-	private PruebasDatos tDatos;
 	private Data datos;
 	private generadorDatos gen;
+	private Graficas aGraficas;
+	private Analisis analisis;
 	
 	
 	public asistenteInterfaz(){
@@ -38,9 +37,9 @@ public class asistenteInterfaz {
 		aFun=new adminFuncionarios(this);
 		aVac=new adminVacunas(this);
 		tIterado= new Pruebasiteradas(this);
-		tDatos=new PruebasDatos(this);
-		tMenu= new Pruebasmenu(this);
+		aGraficas=new Graficas(this);
 		gen= new generadorDatos();
+		analisis=new Analisis();
 	}
 	
 	
@@ -71,15 +70,11 @@ public class asistenteInterfaz {
 					break;
 				}
 				case 4:{
-					tMenu.setVisible(true);
+					aGraficas.setVisible(true);
 					break;
 				}
-				case 41:{
+				case 9:{
 					tIterado.setVisible(true);
-					break;
-				}
-				case 42:{
-					tDatos.setVisible(true);
 					break;
 				}
 			}
@@ -92,8 +87,7 @@ public class asistenteInterfaz {
 		aFun.setVisible(false);
 		aVac.setVisible(false);
 		tIterado.setVisible(false);
-		tMenu.setVisible(false);
-		tDatos.setVisible(false);
+		aGraficas.setVisible(false);
 		
 	}
 	
@@ -379,6 +373,12 @@ public class asistenteInterfaz {
 		int tiempoTotal=(int) (tiempofinal-tiempoinicio);
 		System.out.println(tiempoTotal);
 		return tiempoTotal;
+	}
+	public int[] vacunadosGenero(String fecha) {
+		return this.analisis.pacSexo(this.datos.vacunados.getHashMap(), this.datos.vacunados.getIds());
+	}
+	public int[] vacunadosEdad(String fecha) {	
+		return this.analisis.pacEdades(this.datos.vacunados.getHashMap(), this.datos.vacunados.getIds());
 	}
 	
 	

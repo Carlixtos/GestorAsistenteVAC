@@ -42,6 +42,7 @@ public class admin extends JFrame {
 	 * @param asistenteInterfaz 
 	 */
 	public admin(asistenteInterfaz grafica) {
+		this.setLocationRelativeTo(null);
 		asisGrafica=grafica;
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -58,12 +59,26 @@ public class admin extends JFrame {
 				
 			}
 		});
+		
+		JButton btnGenerGrafica_1 = new JButton("Generador de graficas.");
+		btnGenerGrafica_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				grafica.setScreen(4	);
+				
+			}
+		});
+		btnGenerGrafica_1.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		btnGenerGrafica_1.setBorderPainted(false);
+		btnGenerGrafica_1.setBorder(new LineBorder(new Color(0, 0, 0)));
+		btnGenerGrafica_1.setBackground(new Color(2, 167, 220));
+		btnGenerGrafica_1.setBounds(65, 260, 366, 60);
+		contentPane.add(btnGenerGrafica_1);
 		btnDatosPacientes.setBorderPainted(false);
 		btnDatosPacientes.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnDatosPacientes.setBackground(new Color(2, 167, 220));
 		btnDatosPacientes.setForeground(Color.BLACK);
 		btnDatosPacientes.setFont(new Font("Times New Roman", Font.PLAIN, 18));
-		btnDatosPacientes.setBounds(65, 83, 366, 68);
+		btnDatosPacientes.setBounds(65, 65, 366, 60);
 		contentPane.add(btnDatosPacientes);
 		
 		JButton btnDatosFuncionarios = new JButton("Administracion de datos de funcinarios.");
@@ -76,7 +91,7 @@ public class admin extends JFrame {
 		btnDatosFuncionarios.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnDatosFuncionarios.setBorderPainted(false);
 		btnDatosFuncionarios.setFont(new Font("Times New Roman", Font.PLAIN, 18));
-		btnDatosFuncionarios.setBounds(65, 161, 366, 68);
+		btnDatosFuncionarios.setBounds(65, 130, 366, 60);
 		contentPane.add(btnDatosFuncionarios);
 		
 		JButton btnAdminVacuna = new JButton("Administracion de datos de vacunas.");
@@ -89,20 +104,20 @@ public class admin extends JFrame {
 		btnAdminVacuna.setBackground(new Color(2, 167, 220));
 		btnAdminVacuna.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnAdminVacuna.setBorderPainted(false);
-		btnAdminVacuna.setBounds(65, 239, 366, 68);
+		btnAdminVacuna.setBounds(65, 195, 366, 60);
 		contentPane.add(btnAdminVacuna);
 		
 		JButton btnGenerGrafica = new JButton("Generador de datos ( Pruebas ).");
 		btnGenerGrafica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				grafica.setScreen(4);
+				grafica.setScreen(9);
 			}
 		});
 		btnGenerGrafica.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 		btnGenerGrafica.setBackground(new Color(2, 167, 220));
 		btnGenerGrafica.setBorderPainted(false);
 		btnGenerGrafica.setBorder(new LineBorder(new Color(0, 0, 0)));
-		btnGenerGrafica.setBounds(65, 317, 366, 68);
+		btnGenerGrafica.setBounds(65, 325, 366, 60);
 		contentPane.add(btnGenerGrafica);
 		
 		JButton btnSalir = new JButton("Salir");
@@ -136,5 +151,4 @@ public class admin extends JFrame {
 		lblfondoAdmin.setBounds(-12, -95, 807, 629);
 		contentPane.add(lblfondoAdmin);
 	}
-
 }

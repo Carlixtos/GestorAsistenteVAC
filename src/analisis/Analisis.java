@@ -7,7 +7,7 @@ import util.NodeU;
 
 public class Analisis {
 	
-	public static  int[] pacSexo(MapIntU<Paciente> vPerfiles, LinkedListU<Integer> vIds) {
+	public int[] pacSexo(MapIntU<Paciente> vPerfiles, LinkedListU<Integer> vIds) {
 		int[] vacSexo = {0,0}; // vacSexo[0]--> mujer, vacSexo[1]--> hombre
 		NodeU currId = vIds.getHead();
 		
@@ -31,7 +31,7 @@ public class Analisis {
 	 *  lista enlazada de numeros de identificación.
 	 */
 	
-	public static int[] pacEdades(MapIntU<Paciente> vPerfiles, LinkedListU<Integer> vIds) {
+	public int[] pacEdades(MapIntU<Paciente> vPerfiles, LinkedListU<Integer> vIds) {
 		int[] vacEdades = {0,0,0,0,0,0}; // [0]-->12-30, [1]-->30-45, [2]-->45-55
 										 // [3]-->55-65, [4]-->65-75, [5]--> edad>75
 		NodeU currId = vIds.getHead();

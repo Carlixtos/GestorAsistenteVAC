@@ -58,6 +58,7 @@ public class interfazGrafica extends JFrame {
 	 * @param asistenteInterfaz 
 	 */
 	public interfazGrafica(asistenteInterfaz grafica) {
+		this.setLocationRelativeTo(null);
 		asisGrafica=grafica;
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -76,10 +76,11 @@ public class adminPacientes extends JFrame {
 	 * @param asistenteInterfaz 
 	 */
 	public adminPacientes(asistenteInterfaz grafica) {
+		this.setLocationRelativeTo(null);
 		asisGrafica=grafica;
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 510, 440);
+		setBounds(100, 100, 600, 440);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -166,7 +167,7 @@ public class adminPacientes extends JFrame {
 		});
 		
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(284, 139, 216, 274);
+		scrollPane.setBounds(284, 139, 290, 274);
 		contentPane.add(scrollPane);
 		
 		tVisible = new JTable();
@@ -393,7 +394,7 @@ public class adminPacientes extends JFrame {
 		
 		JLabel lblfondoAdmin = new JLabel("");
 		lblfondoAdmin.setIcon(new ImageIcon(admin.class.getResource("/imagenes/fondoAdmin.jpg")));
-		lblfondoAdmin.setBounds(0, -51, 522, 543);
+		lblfondoAdmin.setBounds(0, -51, 681, 543);
 		contentPane.add(lblfondoAdmin);
 	}
 	void limpiar() {
