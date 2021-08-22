@@ -7,6 +7,7 @@ import data.Profile;
 import gest.Funcionario;
 import gest.Paciente;
 import util.NodeA;
+import util.NodeU;
 import util.StackU;
 
 
@@ -375,6 +376,16 @@ public class asistenteInterfaz {
 		return tiempoTotal;
 	}
 	public int[] vacunadosGenero(String fecha) {
+		NodeU<Integer> idntPaci= this.datos.paciente.pIds.getHead();
+		Paciente paci;
+		for (int i =0;i<this.datos.paciente.getCantidad();i++) {
+			paci = this.datos.paciente.getPerfil(String.valueOf(idntPaci.getKey()));
+			if(paci.getFechaCita()<=Integer.valueOf(fecha)) {
+				this.datos.vacunados.agregar(paci);
+				//this.datos.paciente.eliminar(String.valueOf(paci.getIntKey()));
+			}
+			idntPaci=idntPaci.getNext();
+		}
 		return this.analisis.pacSexo(this.datos.vacunados.getHashMap(), this.datos.vacunados.getIds());
 	}
 	public int[] vacunadosEdad(String fecha) {	

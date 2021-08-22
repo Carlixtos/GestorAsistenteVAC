@@ -73,7 +73,7 @@ public class Graficas extends JFrame {
 		contentPane.add(lblNewLabel_3);
 		
 		tdatos = new JTextField();
-		tdatos.setText("0");
+		tdatos.setText("");
 		tdatos.setColumns(10);
 		tdatos.setBounds(167, 71, 166, 20);
 		contentPane.add(tdatos);
@@ -146,25 +146,27 @@ public class Graficas extends JFrame {
 		if(pintar) {
 		
 		int[] genero;
+		int[] edad;
 			try {
-				genero = this.asisGrafica.vacunadosGenero(tdatos.getText());}
+				genero = this.asisGrafica.vacunadosGenero(tdatos.getText());
+				edad = this.asisGrafica.vacunadosEdad(tdatos.getText());
+				tdatos.setText("");
+				}
 			catch(NullPointerException e1) {
 				genero=new int[2];
+				edad=new int[6];
 			}
-		genero[0]=100;
+			
+		/*genero[0]=100;
 		genero[1]=200;
-		int[] edad;
-		try {
-			edad = this.asisGrafica.vacunadosEdad(tdatos.getText());}
-		catch(NullPointerException e1) {
-			edad=new int[6];
-		}
+		
+
 		edad[0]=100;
 		edad[1]=200;
 		edad[2]=300;
 		edad[3]=400;
 		edad[4]=500;
-		edad[5]=600;
+		edad[5]=600;*/
 
 		
 		int mujeres=genero[0];

@@ -17,7 +17,7 @@ public class generadorDatos {
 	public void agregarPacientes(int n,Data d){
 		for (int i=0;i<n;i++) {
 		
-			int l=this.numeroAleatorioEnRango(0,130);
+			int l=this.numeroAleatorioEnRango(0,122);
 			String[] a= {	this.nombreAleatoreo(),										//nombre
 							this.nombreAleatoreo(),										//apellido
 							String.valueOf(l),											//edad
@@ -38,7 +38,7 @@ public class generadorDatos {
 	public void agregarFuncionarios(int n,Data d){
 		for (int i=0;i<n;i++) {
 		
-			int l=this.numeroAleatorioEnRango(0,130);
+			int l=this.numeroAleatorioEnRango(0,122);
 			String[] a= {	this.nombreAleatoreo(),									//nombre
 							this.nombreAleatoreo(),									//apellido
 							String.valueOf(l),										//edad
@@ -144,7 +144,7 @@ public class generadorDatos {
         banco.pushback("hombre");
         banco.pushback("mujer");
       
-        return banco.remove(this.numeroAleatorioEnRango(0,1));
+        return banco.remove(this.numeroAleatorioEnRango(0,2));
     }
 	public String sangreAleatoreo() {
         

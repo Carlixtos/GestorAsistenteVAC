@@ -10,11 +10,12 @@ public class pacienteData {
 	//public AVL<Paciente> pacientes;
 	public MapIntU<Paciente> pPerfiles; //Almacena los perfiles en una tabla hash donde la llave es el numero del documento de identidad
 	public Maxheap<Integer> pPrioridad; //Ordena los documentos de identidad en orden de prioridad
-	private LinkedListU<Integer> pIds;
+	public LinkedListU<Integer> pIds;
 	
 	public pacienteData(){
 		this.pPerfiles=new MapIntU<Paciente>(50);
 		this.pPrioridad=new Maxheap<Integer>();
+		this.pIds=new LinkedListU<Integer>();
 	}
 	
 	public LinkedListU<Integer> getIds(){
@@ -82,7 +83,7 @@ public class pacienteData {
 		Paciente paciente=new Paciente(pa[0],pa[1], Integer.valueOf(pa[2]),pa[3], pa[4],Integer.valueOf(pa[5]), pa[6],pa[7], Boolean.parseBoolean(pa[8]),va[0],Integer.valueOf(va[1]),hora,fecha,aplic);          
 		this.pPerfiles.set(paciente.getIntKey(), paciente);
 		this.pPrioridad.Insert(prioridadAuto(paciente),paciente.getIntKey());
-		pIds.addBack(paciente.getIntKey());
+		this.pIds.addBack(paciente.getIntKey());
 	}
 
 	public boolean existe(String key) {		

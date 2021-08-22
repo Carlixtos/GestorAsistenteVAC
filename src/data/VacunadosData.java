@@ -11,6 +11,7 @@ public class VacunadosData {
 	
 	public VacunadosData() {
 		this.vPerfiles = new MapIntU<Paciente>(50);
+		this.vIds= new LinkedListU<Integer>();
 	}
 	
 	public MapIntU<Paciente> getHashMap() {

@@ -14,20 +14,15 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import java.awt.ScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import gest.Paciente;
 
-import java.awt.Point;
 import javax.swing.JTextField;
-import javax.swing.JTextPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JScrollPane;
-import javax.swing.JList;
-import java.awt.Choice;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
@@ -86,8 +81,8 @@ public class adminPacientes extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JComboBox cEnfermedades = new JComboBox();
-		cEnfermedades.setModel(new DefaultComboBoxModel(new String[] {"false", "true"}));
+		JComboBox<String> cEnfermedades = new JComboBox<String>();
+		cEnfermedades.setModel(new DefaultComboBoxModel<String>(new String[] {"false", "true"}));
 		cEnfermedades.setBounds(129, 370, 120, 23);
 		contentPane.add(cEnfermedades);
 		
