@@ -151,7 +151,7 @@ public class Pruebasiteradas extends JFrame {
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				try {
+					try {
 					int tiempo =asisGrafica.TpacientesEliminar(Integer.valueOf(tnumPacientes.getText()));
 					lAvisoPacientes.setText("<html>Pacientes eliminados con exito<p>Tiempo requerido: <html>"+tiempo+" milisegundos.");
 					}

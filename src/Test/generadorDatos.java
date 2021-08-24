@@ -17,7 +17,7 @@ public class generadorDatos {
 	public void agregarPacientes(int n,Data d){
 		for (int i=0;i<n;i++) {
 		
-			int l=this.numeroAleatorioEnRango(0,122);
+			int l=this.numeroAleatorioEnRango(12,122);
 			String[] a= {	this.nombreAleatoreo(),										//nombre
 							this.nombreAleatoreo(),										//apellido
 							String.valueOf(l),											//edad
@@ -38,7 +38,7 @@ public class generadorDatos {
 	public void agregarFuncionarios(int n,Data d){
 		for (int i=0;i<n;i++) {
 		
-			int l=this.numeroAleatorioEnRango(0,122);
+			int l=this.numeroAleatorioEnRango(12,122);
 			String[] a= {	this.nombreAleatoreo(),									//nombre
 							this.nombreAleatoreo(),									//apellido
 							String.valueOf(l),										//edad
@@ -57,9 +57,11 @@ public class generadorDatos {
 	}
 	
 	public void eliminarPacientes(int l, Data datos) {
+		Paciente paci ;
 		for (int i = l-1;i>=0;i--) {
-			if(datos.paciente.getCantidad()>0) {
-			datos.paciente.eliminar(String.valueOf(datos.paciente.getMax().getDocumento()));
+			paci= datos.paciente.getMax();
+			if(paci!=null && datos.paciente.getCantidad()>0) {
+			datos.paciente.eliminar(String.valueOf(paci.getDocumento()));
 			}
 			
 		}
@@ -105,7 +107,7 @@ public class generadorDatos {
 	}
 	public void buscarPacientes(int num, Data datos) {
 		for (int i=0;i<num;i++) {
-			//datos.paciente.pacientes.find(i);
+			datos.paciente.pPerfiles.get(i);
 		}
 		
 	}

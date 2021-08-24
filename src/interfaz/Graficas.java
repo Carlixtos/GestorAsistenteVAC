@@ -65,6 +65,20 @@ public class Graficas extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JLabel lblNewLabel_3_1_1 = new JLabel("<html> Segmentacion por edad. <html>");
+		lblNewLabel_3_1_1.setToolTipText("");
+		lblNewLabel_3_1_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3_1_1.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		lblNewLabel_3_1_1.setBounds(344, 90, 232, 33);
+		contentPane.add(lblNewLabel_3_1_1);
+		
+		JLabel lblNewLabel_3_1 = new JLabel("<html> Segmentacion por genero. <html>");
+		lblNewLabel_3_1.setToolTipText("");
+		lblNewLabel_3_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3_1.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		lblNewLabel_3_1.setBounds(27, 90, 232, 33);
+		contentPane.add(lblNewLabel_3_1);
+		
 		JLabel lblNewLabel_3 = new JLabel("<html> Inserte la fecha que quiere consultar. <html>");
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3.setToolTipText("");
@@ -195,12 +209,13 @@ public class Graficas extends JFrame {
 		g.fillArc(50, 120, 200,200,0,gradosHombre);
 		g.fillRect(50, 350, 10,10);
 		g.setColor(new Color(0,0,0));
-		g.drawString("Hombre", 70, 360);
+		//g.drawString(""+totalGenero+" Vacunados", 70, 340);
+		g.drawString("Hombre  ("+hombres*100/totalGenero+"%)", 70, 360);
 		g.setColor(new Color(255,0,0));
 		g.fillArc(50, 120, 200,200,gradosHombre,gradosMujer);
 		g.fillRect(50, 370, 10,10);
 		g.setColor(new Color(0,0,0));
-		g.drawString("Mujer", 70, 380);
+		g.drawString("Mujer("+mujeres*100/totalGenero+"%)", 70, 380);
 		
 		
 		g.setColor(new Color(255,0,255));
@@ -228,12 +243,13 @@ public class Graficas extends JFrame {
 		g.fillRect(480, 390, 10,10);
 		
 		g.setColor(new Color(0,0,0));
-		g.drawString("12-30", 370, 360);
-		g.drawString("30-45", 370, 380);
-		g.drawString("45-55", 370, 400);
-		g.drawString("55-65", 500, 360);
-		g.drawString("65-75", 500, 380);
-		g.drawString("Mayores de 75", 500, 400);
+		g.drawString("Cantidad de personas vacunadas: "+totalEdad, 170, 340);
+		g.drawString("12-30("+e12*100/totalEdad+"%)", 370, 360);
+		g.drawString("30-45("+e30*100/totalEdad+"%)", 370, 380);
+		g.drawString("45-55("+e45*100/totalEdad+"%)", 370, 400);
+		g.drawString("55-65("+e55*100/totalEdad+"%)", 500, 360);
+		g.drawString("65-75("+e65*100/totalEdad+"%)", 500, 380);
+		g.drawString(">75("+e75*100/totalEdad+"%)", 500, 400);
 		pintar=false;
 		}
 	}

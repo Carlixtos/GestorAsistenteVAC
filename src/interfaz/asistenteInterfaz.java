@@ -308,12 +308,12 @@ public class asistenteInterfaz {
 	}
 	public Paciente buscarPaciente(int num) {
 		try {
-		//return datos.paciente.pacientes.find(num).getValue();
+			return datos.paciente.pPerfiles.get(num);
 		}
 		catch(NullPointerException e){
 			return null;
 		}
-		return null;
+		
 		
 		
 	}
